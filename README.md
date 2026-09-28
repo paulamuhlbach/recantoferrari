@@ -3,7 +3,7 @@ Intranet do condomínio Recanto Ferrari
 
 
 ## Objetivo:
-Disponibilizar site intranet, gerenciável pela administração do condomínio, que possibilite centralização da comunicação, gestão de espaços e integração com as ferramentas digitais já contratadas (Casa do Síndico, Condify…) e de acesso exclusivo aos moradores do condomínio Recanto Ferrari, via autenticação.
+Disponibilizar site intranet, gerenciável pela administração do condomínio, que possibilite centralização da comunicação, gestão de espaços e integração com as ferramentas digitais já contratadas (Casa do Síndico, Condfy…) e de acesso exclusivo aos moradores do condomínio Recanto Ferrari, via autenticação.
 
 ## Premissas:
 Uso de tecnologias de código aberto, proporcionando o uso e consumo de webservices de serviços de terceiros.
@@ -11,3 +11,11 @@ Ter interface amigável, tendo em vista a amplitude de faixas etárias dos morad
 Ter custo baixo, ou nulo, primando pela fácil manutenção da plataforma.
 O sistema deve ser escalável e aderente a adaptação para novas tecnologias.
 Ser responsivo, visando a utilização tanto em telas maiores (computadores), quanto em dispositivos móveis (celulares e tablets).
+
+## Módulos do MVP:
+Autenticação e perfis que se somam (morador; gestão: síndico, subsíndico e conselho; administrador do site, sem acesso a dados sensíveis); cadastro por unidade com convite, perfil principal de cada casa e aprovação dos moradores pelo síndico; ouvidoria (demandas identificadas e sem identificação, Minhas demandas); avisos e coleta de lixo; serviços com adesão (ex.: corte de grama da área privativa, uma adesão por casa, cobrança no boleto); documentos institucionais; links para os apps já contratados (Condfy, Auxiliadora Predial).
+Detalhes em [arquitetura-mvp.md](arquitetura-mvp.md).
+
+## Interface:
+Design System Recanto Ferrari: https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN
+Protótipo navegável das telas: https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
