@@ -1,0 +1,27 @@
+<!-- @dsCard group="Feedback" height=400 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Alert</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var s = React.useState(true), open = s[0], set = s[1];
+    return h('div', { className: 'col', style: { maxWidth: 640 } },
+      h(R.Alert, { tone: 'info', title: 'Nova coleta seletiva' }, 'A partir de outubro, o recolhimento de recicláveis passa a ser às terças e sextas.'),
+      h(R.Alert, { tone: 'success', title: 'Reserva confirmada' }, 'Churrasqueira 2, sábado 17/10, das 12h às 18h.'),
+      h(R.Alert, { tone: 'warning', title: 'Boleto vence em 3 dias', action: h(R.Button, { variant: 'outlined', size: 'sm', icon: 'download' }, 'Baixar boleto') }),
+      open ? h(R.Alert, { tone: 'error', title: 'Não foi possível enviar', onClose: function () { set(false); } }, 'Verifique sua conexão e tente de novo.') : null);
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

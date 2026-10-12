@@ -1,0 +1,32 @@
+<!-- @dsCard group="Ações" height=150 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Button</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { className: 'col' },
+      h('div', { className: 'row' },
+        h(R.Button, { icon: 'event' }, 'Reservar horário'),
+        h(R.Button, { variant: 'tonal' }, 'Ver regimento'),
+        h(R.Button, { variant: 'outlined' }, 'Cancelar'),
+        h(R.Button, { variant: 'text', trailingIcon: 'arrow_forward' }, 'Todos os avisos')),
+      h('div', { className: 'row' },
+        h(R.Button, { variant: 'secondary', size: 'sm', icon: 'download' }, 'Baixar boleto'),
+        h(R.Button, { variant: 'danger', size: 'sm' }, 'Excluir reserva'),
+        h(R.Button, { size: 'lg' }, 'Entrar'),
+        h(R.Button, { disabled: true }, 'Indisponível')));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

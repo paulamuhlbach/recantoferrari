@@ -1,0 +1,30 @@
+<!-- @dsCard group="Navegação" height=340 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Menu</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .anchor { position:relative; display:inline-flex; margin-left:auto; }
+  .bar { display:flex; max-width:560px; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var s = React.useState(true), open = s[0], set = s[1];
+    return h('div', { className: 'bar' },
+      h('div', { className: 'anchor' },
+        h(R.Chip, { icon: 'person', 'aria-haspopup': 'true', 'aria-expanded': open, onClick: function () { set(!open); } }, 'Carlos Menezes'),
+        h(R.Menu, { open: open, onClose: function () { set(false); }, title: 'Carlos Menezes', subtitle: 'Casa 07 · Síndico', label: 'Minha conta',
+          items: [
+            { value: 'config', label: 'Configurações', icon: 'settings', href: '#' },
+            { value: 'condfy', label: 'Condfy', icon: 'payments', href: 'https://web.condfy.com.br/login', external: true },
+            { divider: true },
+            { value: 'sair', label: 'Sair do portal', icon: 'logout', href: '#' }
+          ] })));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

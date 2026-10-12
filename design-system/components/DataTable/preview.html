@@ -1,0 +1,44 @@
+<!-- @dsCard group="Conteúdo" height=520 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>DataTable</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  var brl = function (n) { return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }); };
+  var TONE = { Pago: 'success', Pendente: 'warning', Atrasado: 'error', Acordo: 'info' };
+  var rows = [
+    { id: 1, unidade: 'Casa 03', morador: 'Ana Ribeiro', venc: '2026-10-10', valor: 685.4, status: 'Pago' },
+    { id: 2, unidade: 'Casa 07', morador: 'Carlos Menezes', venc: '2026-10-10', valor: 685.4, status: 'Pendente' },
+    { id: 3, unidade: 'Casa 11', morador: 'Juliana Prado', venc: '2026-09-10', valor: 712.95, status: 'Atrasado' },
+    { id: 4, unidade: 'Casa 14', morador: 'Marcos e Lia Tavares', venc: '2026-10-10', valor: 685.4, status: 'Pago' },
+    { id: 5, unidade: 'Casa 18', morador: 'Roberto Nunes', venc: '2026-10-10', valor: 1284.5, status: 'Acordo' },
+    { id: 6, unidade: 'Casa 21', morador: 'Fernanda Lopes', venc: '2026-10-10', valor: 685.4, status: 'Pendente' },
+    { id: 7, unidade: 'Casa 22', morador: 'Paulo Henrique Dias', venc: '2026-10-10', valor: 685.4, status: 'Pago' },
+    { id: 8, unidade: 'Casa 25', morador: 'Beatriz Souza', venc: '2026-08-10', valor: 740.1, status: 'Atrasado' }
+  ];
+  var columns = [
+    { key: 'unidade', label: 'Unidade', sortable: true, primary: true },
+    { key: 'morador', label: 'Morador', sortable: true },
+    { key: 'venc', label: 'Vencimento', sortable: true, render: function (r) { return r.venc.split('-').reverse().join('/'); } },
+    { key: 'valor', label: 'Valor', numeric: true, sortable: true, render: function (r) { return brl(r.valor); } },
+    { key: 'status', label: 'Situação', render: function (r) { return h(R.Badge, { tone: TONE[r.status] }, r.status); } }
+  ];
+  function App() {
+    return h(R.DataTable, {
+      title: 'Taxa condominial · outubro 2026', subtitle: '42 unidades · R$ 28.786,80 previstos',
+      caption: 'Taxa condominial de outubro de 2026 por unidade',
+      columns: columns, rows: rows, selectable: true, defaultSort: { key: 'unidade', dir: 'asc' }, pageSize: 6,
+      rowLabel: function (r) { return r.unidade; },
+      actions: h(R.Button, { variant: 'outlined', size: 'sm', icon: 'download' }, 'Exportar'),
+      bulkActions: h(R.Button, { size: 'sm', icon: 'notifications' }, 'Enviar lembrete')
+    });
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

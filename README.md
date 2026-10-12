@@ -17,5 +17,5 @@ Autenticação e perfis que se somam (morador; gestão: síndico, subsíndico e 
 Detalhes em [arquitetura-mvp.md](arquitetura-mvp.md).
 
 ## Interface:
-Design System Recanto Ferrari: https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN
+Design System Recanto Ferrari: https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cópia no repositório em [design-system/](design-system/README.md): tokens, componentes, logos, ícones e fontes)
 Protótipo navegável das telas: https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr

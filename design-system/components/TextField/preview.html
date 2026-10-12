@@ -1,0 +1,29 @@
+<!-- @dsCard group="Formulários" height=380 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>TextField</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { className: 'grid' },
+      h(R.TextField, { label: 'Nome completo', placeholder: 'Como está no contrato', helper: 'Use o nome do titular da unidade.' }),
+      h(R.TextField, { label: 'Unidade', defaultValue: 'Casa 14', status: 'success', helper: 'Unidade encontrada.' }),
+      h(R.TextField, { label: 'E-mail', defaultValue: 'maria@exemplo', status: 'error', helper: 'Falta o domínio. Exemplo: maria@email.com' }),
+      h(R.TextField, { label: 'Data da assembleia', defaultValue: '14/11/2026', status: 'highlight', helper: 'Definida pela administração.' }),
+      h(R.TextField, { label: 'CPF', defaultValue: '•••.•••.•••-12', disabled: true, helper: 'Para alterar, fale com a portaria.' }),
+      h(R.TextField, { label: 'Buscar documento', leadingIcon: 'search', placeholder: 'Ata, regimento, boleto…' }),
+      h('div', { style: { gridColumn: '1 / -1' } }, h(R.TextField, { label: 'Mensagem para a administração', multiline: true, rows: 3, placeholder: 'Descreva o assunto' })));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

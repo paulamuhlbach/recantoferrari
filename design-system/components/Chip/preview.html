@@ -1,0 +1,28 @@
+<!-- @dsCard group="Ações" height=72 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Chip</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var s = React.useState(['avisos']), sel = s[0], set = s[1];
+    function tog(v) { set(sel.indexOf(v) >= 0 ? sel.filter(function (x) { return x !== v; }) : sel.concat(v)); }
+    return h('div', { className: 'row' },
+      ['avisos', 'eventos', 'manutenção', 'financeiro'].map(function (v) {
+        return h(R.Chip, { key: v, variant: 'filter', selected: sel.indexOf(v) >= 0, onClick: function () { tog(v); } }, v.charAt(0).toUpperCase() + v.slice(1));
+      }),
+      h(R.Chip, { icon: 'event' }, 'Adicionar à agenda'));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Formulários" height=360 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>RadioGroup</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .col { display:flex; flex-direction:column; gap:24px; max-width:640px; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { className: 'col' },
+      h(R.RadioGroup, { label: 'Como você quer enviar', variant: 'cards', orientation: 'horizontal', defaultValue: 'com-nome', options: [
+        { value: 'com-nome', label: 'Com meu nome', supporting: 'O síndico responde em Minhas demandas.' },
+        { value: 'sem-nome', label: 'Sem identificação', supporting: 'Seu nome não fica registrado e não há resposta individual.' }] }),
+      h(R.RadioGroup, { label: 'Tipo', orientation: 'horizontal', defaultValue: 'sugestao', options: [
+        { value: 'sugestao', label: 'Sugestão' }, { value: 'queixa', label: 'Queixa' }, { value: 'informacao', label: 'Pedido de informação' }, { value: 'denuncia', label: 'Denúncia' }] }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

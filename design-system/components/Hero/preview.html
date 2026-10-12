@@ -1,0 +1,21 @@
+<!-- @dsCard group="Conteúdo" height=380 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Hero</title>
+<style>
+  body { margin:0; padding:0; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h(R.Hero, { image: '/_blob/c7c84d0793b06c5d070c42a3403bf5bf', imageAlt: '', imagePosition: 'center 45%',
+      eyebrow: 'Casa 14 · Moradora', title: 'Olá, Ana',
+      actions: [h(R.Button, { key: 'a', icon: 'add' }, 'Enviar demanda'), h(R.Button, { key: 'b', variant: 'outlined' }, 'Ver avisos')] },
+      h('p', null, 'Os avisos da administração, a coleta de lixo e o canal com o síndico estão aqui.'));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
