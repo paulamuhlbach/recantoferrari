@@ -4,8 +4,8 @@
 
 **Props:** `name` (um de `Icon.names`), `size` (padrão 24), `label` (só quando o ícone aparece sozinho e tem significado).
 
-- Nomes disponíveis: home, notifications, event, description, person, check, close, menu, add, info, warning, error, check_circle, arrow_forward, chevron_left, chevron_right, arrow_upward, arrow_downward, remove, search, download, local_parking, payments, settings, logout, edit, block, lock, visibility, visibility_off, mail, open_in_new, expand_more, cloud, grass, pest_control, plumbing, cleaning_services, link, person_add, swap_horiz, group, water_drop, photo_camera, calculate, pets.
-- Cadastro das casas: `group` (Minha casa, moradores da unidade), `person_add` (indicar morador), `swap_horiz` (passar o perfil principal), `link` (copiar link de convite), `mail` (enviar ou reenviar convite).
+- Nomes disponíveis: home, notifications, event, description, person, check, close, menu, add, info, warning, error, check_circle, arrow_forward, chevron_left, chevron_right, arrow_upward, arrow_downward, remove, search, download, local_parking, payments, settings, logout, edit, block, lock, visibility, visibility_off, mail, open_in_new, expand_more, cloud, grass, pest_control, plumbing, cleaning_services, link, person_add, person_remove, swap_horiz, group, water_drop, photo_camera, calculate, pets.
+- Cadastro das casas: `group` (Minha casa, moradores da unidade), `person_add` (indicar morador), `person_remove` (remover morador ou cancelar a indicação), `swap_horiz` (passar o perfil principal), `link` (copiar link de convite), `mail` (enviar ou reenviar convite).
 - Leitura do hidrômetro (10/10/2026): `water_drop` (conta de água, leitura do hidrômetro), `photo_camera` (tirar ou trocar a foto, padrão do `FileUpload`), `calculate` (cálculo da água pela gestão).
 - Pets da casa (12/10/2026): `pets` (cadastro de pets em Minha casa).
 - `cloud` marca o que depende do tempo, como o badge "Se chover, remarcamos" dos serviços ao ar livre.

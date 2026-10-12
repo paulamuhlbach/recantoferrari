@@ -79,6 +79,24 @@
 .rf-iconbtn-outlined { border-color: var(--outline); }
 .rf-iconbtn.is-selected { color: var(--primary); }
 .rf-iconbtn:disabled { color: color-mix(in srgb, var(--on-surface) 38%, transparent); cursor: not-allowed; }
+.rf-iconbtn { position: relative; }
+.rf-iconbtn[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute; bottom: calc(100% + 4px); left: 50%; z-index: 20;
+  transform: translate(-50%, 4px);
+  padding: 4px 8px; border-radius: var(--radius-xs);
+  background: var(--inverse-surface); color: var(--inverse-on-surface);
+  font: 500 12px/16px var(--font-body); letter-spacing: .02em; white-space: nowrap;
+  pointer-events: none; opacity: 0; transition: opacity 120ms ease, transform 120ms ease;
+}
+.rf-iconbtn[data-tooltip]:hover::after, .rf-iconbtn[data-tooltip]:focus-visible::after {
+  opacity: 1; transform: translate(-50%, 0); transition-delay: 300ms;
+}
+.rf-iconbtn-danger { color: var(--error); }
+/* Na última coluna de uma tabela, a dica alinha pela direita para não ser cortada. */
+.rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child::after { left: auto; right: 0; transform: translate(0, 4px); }
+.rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child:hover::after,
+.rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child:focus-visible::after { transform: translate(0, 0); }
 
 /* ---------- Chip ---------- */
 .rf-chip {
