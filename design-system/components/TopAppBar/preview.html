@@ -1,0 +1,33 @@
+<!-- @dsCard group="Navegação" height=300 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>TopAppBar</title>
+<style>
+  body { margin:0; padding:0; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var s = React.useState('inicio'), v = s[0], set = s[1];
+    var a = React.useState(null), aberto = a[0], abrir = a[1];
+    function toggle(k) { return function () { abrir(aberto === k ? null : k); }; }
+    return h(R.TopAppBar, { value: v, onChange: set,
+      items: [{ value: 'inicio', label: 'Início' }, { value: 'ouvidoria', label: 'Ouvidoria' }, { value: 'avisos', label: 'Avisos' }, { value: 'servicos', label: 'Serviços' }, { value: 'documentos', label: 'Documentos' }],
+      actions: [
+        h('span', { key: 'apps', style: { position: 'relative', display: 'inline-flex' } },
+          h(R.Button, { variant: 'text', trailingIcon: 'expand_more', 'aria-haspopup': 'true', 'aria-expanded': aberto === 'apps', onClick: toggle('apps') }, 'Apps'),
+          h(R.Menu, { open: aberto === 'apps', onClose: function () { abrir(null); }, label: 'Apps do condomínio',
+            items: [{ value: 'condfy', label: 'Condfy', href: 'https://web.condfy.com.br/login', external: true },
+                    { value: 'aux', label: 'Auxiliadora Predial', href: 'https://portal.auxiliadorapredial.com.br/Login.aspx', external: true }] })),
+        h('span', { key: 'conta', style: { position: 'relative', display: 'inline-flex' } },
+          h(R.Chip, { icon: 'person', 'aria-haspopup': 'true', 'aria-expanded': aberto === 'conta', onClick: toggle('conta') }, 'Ana Ribeiro'),
+          h(R.Menu, { open: aberto === 'conta', onClose: function () { abrir(null); }, title: 'Ana Ribeiro', subtitle: 'Casa 14 · Moradora', label: 'Minha conta',
+            items: [{ value: 'sair', label: 'Sair do portal', icon: 'logout', href: '#' }] }))
+      ] });
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

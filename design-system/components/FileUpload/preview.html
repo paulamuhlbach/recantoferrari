@@ -1,0 +1,25 @@
+<!-- @dsCard group="Formulários" height=440 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>FileUpload</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start; }
+  .foto { width:100%; height:100%; display:grid; place-items:center; background:var(--surface-container); color:var(--on-surface-variant); font-size:12px; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var foto = h('div', { className: 'foto', role: 'img', 'aria-label': 'Miniatura da foto do hidrômetro' }, h(R.Icon, { name: 'water_drop', size: 32 }));
+    return h('div', { className: 'grid' },
+      h(R.FileUpload, { label: 'Foto do hidrômetro', capture: 'environment', hint: 'JPG ou PNG, até 10 MB', helper: 'Mostre todos os números, com boa luz.' }),
+      h(R.FileUpload, { label: 'Foto do hidrômetro', fileName: 'hidrometro-casa14.jpg', fileInfo: '2,4 MB · tirada agora', preview: foto, onRemove: function () {} }),
+      h(R.FileUpload, { label: 'Foto do hidrômetro', status: 'error', hint: 'JPG ou PNG, até 10 MB', helper: 'A foto passou de 10 MB. Tire outra ou reduza o tamanho.' }),
+      h(R.FileUpload, { label: 'Anexos (opcional)', icon: 'add', accept: 'image/*,application/pdf', multiple: true, buttonLabel: 'Anexar fotos ou arquivos', hint: 'Fotos ou PDF, até 10 MB cada' }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

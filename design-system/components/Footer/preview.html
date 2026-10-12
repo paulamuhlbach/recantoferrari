@@ -1,0 +1,19 @@
+<!-- @dsCard group="Navegação" height=140 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Footer</title>
+<style>
+  body { margin:0; padding:0; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h(R.Footer, { logo: true, text: 'Condomínio Recanto Ferrari · Portal dos moradores',
+      links: [{ label: 'Termos de uso', href: '#' }, { label: 'Política de privacidade', href: '#' }] });
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

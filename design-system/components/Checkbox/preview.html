@@ -1,0 +1,25 @@
+<!-- @dsCard group="Formulários" height=120 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Checkbox</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { className: 'col' },
+      h(R.Checkbox, { label: 'Li e aceito o regulamento do salão de festas', defaultChecked: true }),
+      h(R.Checkbox, { label: 'Receber avisos por e-mail', supporting: 'Enviamos no máximo um resumo por semana.' }),
+      h(R.Checkbox, { label: 'Opção indisponível', disabled: true }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

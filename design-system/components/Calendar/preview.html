@@ -1,0 +1,29 @@
+<!-- @dsCard group="Formulários" height=460 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Calendar</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:24px; align-items:flex-start; }
+  .out { margin:12px 0 0; font-size:14px; color:var(--on-surface-variant); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var s = React.useState('2026-10-17'), v = s[0], set = s[1];
+    return h('div', { className: 'row' },
+      h('div', null,
+        h(R.Calendar, {
+          month: '2026-10', today: '2026-10-05', value: v, onChange: set, min: '2026-10-05',
+          unavailable: ['2026-10-10', '2026-10-11', '2026-10-24'],
+          marked: { '2026-10-14': { tone: 'tertiary', label: 'assembleia' }, '2026-10-03': { tone: 'warning', label: 'limpeza da caixa d\u2019água' }, '2026-10-31': { tone: 'tertiary', label: 'festa de Halloween' } },
+          legend: [{ kind: 'selected', label: 'Sua reserva' }, { kind: 'today', label: 'Hoje' }, { kind: 'booked', label: 'Reservado' }, { kind: 'tertiary', label: 'Evento' }, { kind: 'warning', label: 'Manutenção' }]
+        }),
+        h('p', { className: 'out' }, 'Data escolhida: ', h('strong', null, v.split('-').reverse().join('/')))));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

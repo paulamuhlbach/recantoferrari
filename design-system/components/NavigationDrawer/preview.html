@@ -1,0 +1,30 @@
+<!-- @dsCard group="Navegação" height=600 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>NavigationDrawer</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .phone { position:relative; width:390px; height:560px; max-width:100%; overflow:hidden; border:1px solid var(--outline-variant); border-radius:12px; background:var(--surface); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var s = React.useState('inicio'), v = s[0], set = s[1];
+    return h('div', { className: 'phone' },
+      h(R.NavigationDrawer, { inline: true, value: v, onChange: set, onClose: function () {},
+        user: { name: 'Ana Ribeiro', detail: 'Casa 14 · Moradora' },
+        items: [
+          { value: 'inicio', label: 'Início', icon: 'home', href: '#' },
+          { value: 'ouvidoria', label: 'Ouvidoria', icon: 'person', supporting: 'Enviar e acompanhar demandas', href: '#' },
+          { value: 'avisos', label: 'Avisos', icon: 'notifications', href: '#' },
+          { value: 'documentos', label: 'Documentos', icon: 'description', href: '#' },
+          { value: 'condfy', label: 'Condfy', icon: 'payments', href: 'https://web.condfy.com.br/login', external: true }
+        ],
+        footer: h(R.Button, { variant: 'outlined', icon: 'logout', fullWidth: true, href: '#' }, 'Sair do portal') }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

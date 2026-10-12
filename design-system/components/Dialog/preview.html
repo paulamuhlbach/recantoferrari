@@ -1,0 +1,24 @@
+<!-- @dsCard group="Feedback" height=340 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Dialog</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  .rf-dialog-inline{min-height:300px;border-radius:12px}
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h(R.Dialog, { inline: true, icon: 'event', title: 'Cancelar a reserva da churrasqueira?',
+      actions: [h(R.Button, { key: 'n', variant: 'text' }, 'Manter reserva'), h(R.Button, { key: 'y', variant: 'danger' }, 'Cancelar reserva')] },
+      h('p', null, 'O horário de sábado, 17/10, fica livre para outros moradores. Esta ação não pode ser desfeita.'));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

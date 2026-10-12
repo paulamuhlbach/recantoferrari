@@ -1,0 +1,38 @@
+<!-- @dsCard group="Marca" height=520 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Logo</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .deep { display:flex; flex-wrap:wrap; gap:16px; margin-top:24px; }
+  .panel { flex:1 1 260px; padding:28px; display:flex; flex-direction:column; gap:20px; align-items:flex-start; border-radius:var(--radius-xs); }
+  .panel-1 { background:var(--blue-1); }
+  .panel-2 { background:var(--surface-deep); border-top:4px solid var(--accent); }
+  .cap { margin:0; font-size:13px; color:var(--on-surface-deep-variant); }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', null,
+      h('div', { className: 'row', style: { gap: 40, alignItems: 'flex-end' } },
+        h(R.Logo, { variant: 'vertical', size: 'lg' }),
+        h('div', { className: 'col', style: { gap: 28 } },
+          h(R.Logo, { variant: 'horizontal', size: 'md' }),
+          h(R.Logo, { variant: 'horizontal', size: 'sm', tagline: false }),
+          h(R.Logo, { variant: 'simbolo', size: 'sm' }))),
+      h('div', { className: 'deep' },
+        h('div', { className: 'panel panel-1' },
+          h(R.Logo, { variant: 'vertical', size: 'md', tone: 'deep' }),
+          h('p', { className: 'cap' }, 'tone="deep" sobre blue-1 (lateral do login)')),
+        h('div', { className: 'panel panel-2' },
+          h(R.Logo, { variant: 'horizontal', size: 'md', tone: 'deep' }),
+          h('p', { className: 'cap' }, 'tone="deep" sobre surface-deep (rodapé)'))));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

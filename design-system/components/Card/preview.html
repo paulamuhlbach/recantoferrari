@@ -1,0 +1,30 @@
+<!-- @dsCard group="Conteúdo" height=620 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Card</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { className: 'grid' },
+      h(R.Card, { eyebrow: 'Aviso', badge: h(R.Badge, { tone: 'warning' }, 'Atenção'), title: 'Limpeza da caixa d\u2019água', meta: 'Sábado, 3 de outubro · 8h às 12h',
+        actions: h(R.Button, { variant: 'text', size: 'sm', trailingIcon: 'arrow_forward' }, 'Ler aviso') },
+        h('p', null, 'O abastecimento será interrompido durante o serviço. Separe água para o período.')),
+      h(R.Card, { variant: 'filled', eyebrow: 'Evento', title: 'Assembleia geral ordinária', meta: '14 de novembro · 19h30 · Salão de festas',
+        actions: [h(R.Button, { key: 'a', size: 'sm' }, 'Confirmar presença'), h(R.Button, { key: 'b', size: 'sm', variant: 'outlined' }, 'Pauta')] }),
+      h(R.Card, { variant: 'outlined', href: '#', eyebrow: 'Documento', title: 'Regimento interno 2026', meta: 'PDF · 1,2 MB · atualizado em 02/09' }),
+      h(R.Card, { variant: 'elevated', icon: 'grass', eyebrow: 'Serviço com adesão', badge: h(R.Badge, { tone: 'warning', icon: 'cloud' }, 'Se chover, remarcamos'), title: 'Corte de grama', meta: 'Sábado, 17/10 · R$ 60,00 por casa' },
+        h('p', null, 'Inclua o gramado da área privativa da sua casa.')));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

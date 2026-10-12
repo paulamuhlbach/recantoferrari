@@ -1,0 +1,26 @@
+<!-- @dsCard group="Conteúdo" height=300 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>ListItem</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:center; }
+  .col { display:flex; flex-direction:column; gap:16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { style: { background: 'var(--surface-container-lowest)', border: '1px solid var(--outline-variant)', borderRadius: 3, maxWidth: 560 } },
+      h(R.ListItem, { icon: 'payments', overline: 'Outubro 2026', headline: 'Taxa condominial', supporting: 'Vence em 10/10', trailing: h(R.Badge, { tone: 'warning' }, 'Pendente'), onClick: function () {} }),
+      h(R.ListItem, { icon: 'payments', overline: 'Setembro 2026', headline: 'Taxa condominial', supporting: 'Pago em 08/09', trailing: h(R.Badge, { tone: 'success' }, 'Pago'), onClick: function () {} }),
+      h(R.ListItem, { icon: 'description', tone: 'secondary', headline: 'Ata da assembleia de agosto', supporting: 'PDF · 480 KB', href: '#' }),
+      h(R.ListItem, { icon: 'local_parking', headline: 'Vaga 22 · Bloco B', supporting: 'Placa ABC-1D23', trailing: 'Ativa' }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
