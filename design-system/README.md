@@ -4,7 +4,7 @@ Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferra
 
 - **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
 - **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 11/10/2026 (Logo com `tone="deep"` para fundo azul e SVG `vertical-dark` com CONDOMÍNIO em terracota clara).
+- **Versão copiada:** 12/10/2026 (ícone `pets`, `Dialog` que rola quando é mais alto que a tela, células do `DataTable` com espaço vertical e seção Minha casa no guia).
 
 ## O que tem aqui
 
@@ -104,6 +104,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Ícones herdam a cor do texto ao lado. Ícone sozinho precisa de rótulo (`label` no `IconButton`).
 - Sempre os desenhos oficiais (pacote `@material-design-icons/svg`, estilo filled). Nunca redesenhe um ícone à mão.
 - Água: `water_drop` (leitura do hidrômetro, conta de água), `photo_camera` (foto), `calculate` (cálculo da gestão).
+- Pets (12/10/2026): `pets` (cadastro de pets da casa, em Minha casa).
 - Ícones de serviço (`Icon.servicos`): `grass`, `pest_control`, `plumbing`, `cleaning_services` e `event` (genérico). Quem cadastra o serviço escolhe o ícone numa lista; nada fica fixo no código.
 
 ## Dados pessoais nas telas
@@ -120,6 +121,12 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Apps contratados pelo condomínio, como o **Condfy** (`https://web.condfy.com.br/login`) e a **Auxiliadora Predial** (`https://portal.auxiliadorapredial.com.br/Login.aspx`), ficam num botão "Apps" à direita do cabeçalho, que abre um `Menu`. Os itens usam `external`: abrem em nova aba, mostram o ícone `open_in_new` e avisam leitores de tela "(abre em outra aba)".
 - Rodapé (`Footer`) em todas as páginas, com termos de uso e política de privacidade. Por padrão em azul profundo.
 - Página inicial pós-login: `Hero` com a foto do condomínio (`assets/Fotos`) e a saudação ("Olá, Ana"), logo abaixo do cabeçalho.
+
+## Minha casa
+
+- Moradores da casa num `DataTable` no tamanho padrão: nome e e-mail, vínculo com o `Badge` `primary` "Principal", parentesco com o perfil principal e situação (`Badge` `success` "Ativo", `warning` "Aguardando aprovação", `info` "Aguardando criar o acesso").
+- O parentesco tem uma lista de sugestões vinda das configurações e aceita texto livre: use `TextField` com `list` (datalist) até o sistema ter um Select.
+- Pets em cartões com foto (miniatura 96px, `radius-xs`; sem foto, o ícone `pets` sobre `surface-container-high`), nome, espécie · raça · porte, cor, sinais e observações. Cadastro e edição num `Dialog` com `FileUpload`.
 
 ## Serviços com adesão
 
