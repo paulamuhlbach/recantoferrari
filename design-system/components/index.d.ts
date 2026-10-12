@@ -4,7 +4,7 @@ import * as React from 'react';
 export type IconName = 'home' | 'notifications' | 'event' | 'description' | 'person' | 'check' | 'close' | 'menu' | 'add'
   | 'info' | 'warning' | 'error' | 'check_circle' | 'arrow_forward' | 'chevron_right' | 'search' | 'download' | 'local_parking' | 'payments' | 'chevron_left' | 'arrow_upward' | 'arrow_downward' | 'remove'
   | 'settings' | 'logout' | 'edit' | 'block' | 'lock' | 'visibility' | 'visibility_off' | 'mail' | 'open_in_new' | 'expand_more' | 'cloud' | 'link' | 'person_add' | 'swap_horiz' | 'group'
-  | 'grass' | 'pest_control' | 'plumbing' | 'cleaning_services' | 'water_drop' | 'photo_camera' | 'calculate';
+  | 'grass' | 'pest_control' | 'plumbing' | 'cleaning_services' | 'water_drop' | 'photo_camera' | 'calculate' | 'pets';
 
 export interface LogoProps { variant?: 'horizontal' | 'vertical' | 'simbolo'; size?: 'sm' | 'md' | 'lg'; tagline?: boolean;
   /** "deep": versão para fundo azul profundo (surface-deep, blue-1, Hero, rodapé). Nome em on-surface-deep e tagline em primary-container. */ tone?: 'default' | 'deep'; className?: string; }

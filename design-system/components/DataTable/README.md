@@ -11,4 +11,4 @@ Tabela de dados do Material 3 para listas com várias colunas: boletos por unida
 - Clique no cabeçalho ordena: crescente, decrescente e volta à ordem original.
 - Com `selectable`, a barra superior vira contador ("2 selecionados") com as ações em lote.
 - No celular a tabela rola na horizontal dentro do próprio contêiner. Com mais de 5 colunas, considere trocar por cards em telas estreitas.
-- Use `dense` em telas administrativas com muitas linhas; mantenha o padrão (52px) nas telas dos moradores.
+- Use `dense` em telas administrativas com muitas linhas (44px, espaço vertical `space-2`); mantenha o padrão (56px, espaço vertical `space-3`) nas telas dos moradores. As células têm espaço em cima e embaixo, então conteúdo em duas linhas (nome e e-mail, badge e data) não encosta nas bordas (12/10/2026).
