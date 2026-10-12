@@ -13,7 +13,7 @@ O sistema deve ser escalável e aderente a adaptação para novas tecnologias.
 Ser responsivo, visando a utilização tanto em telas maiores (computadores), quanto em dispositivos móveis (celulares e tablets).
 
 ## Módulos do MVP:
-Autenticação e perfis que se somam (morador; gestão: síndico, subsíndico e conselho; administrador do site, sem acesso a dados sensíveis); cadastro por unidade com convite, perfil principal de cada casa e aprovação dos moradores pelo síndico; ouvidoria (demandas identificadas e sem identificação, Minhas demandas); avisos e coleta de lixo; serviços com adesão (ex.: corte de grama da área privativa, uma adesão por casa, cobrança no boleto); documentos institucionais; links para os apps já contratados (Condfy, Auxiliadora Predial).
+Autenticação e perfis que se somam (morador; gestão: síndico, subsíndico e conselho; administrador do site, sem acesso a dados sensíveis; administradora condominial — Auxiliadora Predial —, não moradora, com acesso aos dados e às denúncias, vinculado ao contrato e com prazo prorrogável); cadastro por unidade com convite, perfil principal de cada casa e aprovação dos moradores pelo síndico; ouvidoria (demandas identificadas e sem identificação, Minhas demandas); avisos e coleta de lixo; serviços com adesão (ex.: corte de grama da área privativa, uma adesão por casa, cobrança no boleto); leitura mensal do hidrômetro (foto e número de cada casa até o dia 10, e-mails ao síndico e ao morador, cálculo da água para o boleto do mês seguinte); documentos institucionais; links para os apps já contratados (Condfy, Auxiliadora Predial).
 Detalhes em [arquitetura-mvp.md](arquitetura-mvp.md).
 
 ## Interface:
