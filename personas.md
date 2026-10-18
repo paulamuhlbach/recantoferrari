@@ -14,11 +14,14 @@ Atualizado em 18/10/2026. Avatares ilustrados (originais, de pessoas fictícias)
 | <img src="assets/personas/camila.svg" alt="Avatar de Camila Duarte" width="48"> | Camila Duarte, 33 | Morador · perfil principal (locatária recém-chegada) | Celular | Média | "Acabei de me mudar e não sei como as coisas funcionam aqui." |
 | <img src="assets/personas/carlos.svg" alt="Avatar de Carlos Menezes" width="48"> | Carlos Menezes, 58 | Gestão · síndico (e administrador do site) | Computador e celular | Média | "Sou voluntário. Preciso que o portal me poupe tempo, não que me dê trabalho." |
 | <img src="assets/personas/sueli.svg" alt="Avatar de Sueli Ramos" width="48"> | Sueli Ramos, 51 | Gestão · subsíndica | Celular | Média | "Quando o Carlos viaja, sou eu que respondo." |
-| <img src="assets/personas/otavio.svg" alt="Avatar de Otávio Lima" width="48"> | Otávio Lima, 63 | Gestão · conselho | Computador | Média | "Quero acompanhar se a gestão está funcionando, sem me meter na vida dos vizinhos." |
+| <img src="assets/personas/helena.svg" alt="Avatar de Helena Barros" width="48"> | Helena Barros, 66 | Gestão · presidente do conselho | Computador e celular | Média | "O conselho responde aos moradores. Preciso ver tudo para fiscalizar de verdade." |
+| <img src="assets/personas/otavio.svg" alt="Avatar de Otávio Lima" width="48"> | Otávio Lima, 63 | Gestão · membro do conselho | Computador | Média | "Quero acompanhar se a gestão está funcionando, sem me meter na vida dos vizinhos." |
 | <img src="assets/personas/fernanda.svg" alt="Avatar de Fernanda Costa" width="48"> | Fernanda Costa, 38 | Gestão · administradora condominial (não moradora) | Computador do escritório | Alta | "Cuido de vinte condomínios. Preciso dos dados certos, rápido, e de registro de tudo." |
-| <img src="assets/personas/marcos.svg" alt="Avatar de Marcos Teixeira" width="48"> | Marcos Teixeira, 41 | Administrador do site (sem cargo na gestão) | Computador | Muito alta | "Faço o portal funcionar, mas não devo ver a vida de ninguém." |
+| <img src="assets/personas/marcos.svg" alt="Avatar de Marcos Teixeira" width="48"> | Marcos Teixeira, 41 | Administrador do site (com o termo de confidencialidade) | Computador | Muito alta | "Tenho acesso a tudo, então assinei o termo de confidencialidade. Sigilo é parte do trabalho." |
 
 Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesmo tempo; Marcos é morador e administrador do site. Só a Fernanda não é moradora.
+
+**Quem vê tudo (decisão de 18/10/2026):** o síndico, o administrador do site que assinou o termo de confidencialidade (com os mesmos poderes do síndico) e a presidente do conselho (vê tudo, sem os poderes de aprovar, atribuir cargos e configurar). Os demais membros do conselho continuam vendo as denúncias só em números e o registro de atividades sem nomes.
 
 ---
 
@@ -160,11 +163,32 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 - Histórico da demanda com quem leu, respondeu e quando.
 - Mesmas telas da gestão funcionando bem no celular.
 
+### Helena Barros, 66 · presidente do conselho
+
+<img src="assets/personas/helena.svg" alt="Avatar de Helena Barros" width="120">
+
+**Quem é.** Advogada aposentada, mora no condomínio há 15 anos e preside o conselho. Conduz as reuniões do conselho e responde aos moradores pela fiscalização da gestão. Usa o computador para ler com calma e o celular para acompanhar.
+
+**O que faz no portal.**
+- Vê tudo, como o síndico: dados dos moradores, composição das casas, ex-moradores e pets.
+- Lê as denúncias com o conteúdo e quem denunciou, e pode responder, como o síndico e o subsíndico.
+- Vê o registro de atividades com nomes, para conferir quem fez o quê.
+- **Não** aprova moradores, **não** atribui cargos e **não** muda configurações: isso fica com o síndico e com o administrador do site.
+
+**O que ela quer.** Fiscalizar com informação completa e levar fatos às reuniões do conselho.
+
+**O que a incomoda.** Ter de pedir ao síndico um dado que o conselho precisa conferir. Decisões sem registro.
+
+**O que isso pede das telas.**
+- As mesmas telas da gestão, com os dados completos.
+- Histórico e registro de atividades fáceis de filtrar por pessoa e por tipo.
+- Deixar claro, nas ações que ela não pode fazer, quem pode.
+
 ### Otávio Lima, 63 · membro do conselho
 
 <img src="assets/personas/otavio.svg" alt="Avatar de Otávio Lima" width="120">
 
-**Quem é.** Contador aposentado, eleito para o conselho. Confere contas e acompanha a gestão. Prefere o computador e relatórios.
+**Quem é.** Contador aposentado, membro do conselho (a presidente é a Helena). Confere contas e acompanha a gestão. Prefere o computador e relatórios.
 
 **O que faz no portal.**
 - Vê as estatísticas das denúncias (quantidade, categoria, andamento, tempo de resposta), sem o conteúdo nem quem denunciou.
@@ -205,27 +229,27 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 
 ## Funcionamento do site
 
-### Marcos Teixeira, 41 · administrador do site (sem cargo na gestão)
+### Marcos Teixeira, 41 · administrador do site
 
 <img src="assets/personas/marcos.svg" alt="Avatar de Marcos Teixeira" width="120">
 
 **Quem é.** Desenvolvedor de software, morador. Ofereceu-se para cuidar do portal: conteúdo institucional, categorias da ouvidoria, configurações gerais, e-mail e integrações.
 
+**Decisão de 18/10/2026 (pedido do síndico):** o administrador do site tem os mesmos poderes do síndico, depois de **assinar o termo de confidencialidade** no portal (lê o termo, confirma e digita o nome completo; ficam guardados o texto assinado, o nome, a data e o IP). Se o síndico mudar o texto do termo, é preciso assinar de novo.
+
 **O que faz no portal.**
-- Cadastra casas e envia convites (vê o e-mail do convite mascarado: `pa•••@gmail.com`).
-- Publica regimento, convenção, termos e política de privacidade.
-- Ajusta configurações do grupo "site" (validade dos links, textos dos e-mails, tamanho de fotos).
-- Muda o prazo de guarda do registro de atividades.
-- Vê o registro de atividades com nomes (exceção pedida pela gestão em 18/10/2026).
+- Antes de assinar o termo: cadastra casas e envia convites (vê o e-mail mascarado: `pa•••@gmail.com`), publica o conteúdo institucional, ajusta as configurações do site e vê o registro de atividades sem nomes. Um aviso no Início pede a assinatura.
+- Depois de assinar: vê e usa tudo, como o síndico. Dados dos moradores, denúncias, registro de atividades com nomes, aprovação de moradores, troca do perfil principal, cargos e todas as configurações.
 - Como morador, vê a própria casa normalmente.
 
-**O que ele quer.** Manter o portal funcionando sem depender do síndico para cada ajuste.
+**O que ele quer.** Manter o portal funcionando e resolver os pedidos da gestão sem depender do síndico para cada ajuste.
 
-**O que o incomoda.** Pedidos para "ver um dado" que ele não deve ver.
+**O que o incomoda.** Ficar sem saber o que pode ou não pode fazer. Assinar algo sem entender.
 
 **O que isso pede das telas.**
-- Fora o registro de atividades, nenhum dado sensível: nem moradores, casas, contatos, valores, leituras, pets ou demandas. Só números, situações e o número da casa.
-- Explicar a restrição com um aviso no topo da tela.
+- Termo em linguagem simples, numa tela só, com a assinatura no fim.
+- Enquanto não assina, as telas explicam a restrição e levam ao termo.
+- Depois de assinar, a data da assinatura sempre consultável no menu da conta.
 
 ---
 
@@ -239,7 +263,7 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 ## Princípios que saem das personas
 
 1. **Primeiro o morador.** As telas são desenhadas para o morador; as funções da gestão entram sobre essa base, no mesmo portal.
-2. **Celular primeiro, sem esquecer o computador.** Renata, Lucas, Camila e Sueli usam o celular; Seu Antônio, Otávio e Fernanda, o computador.
+2. **Celular primeiro, sem esquecer o computador.** Renata, Lucas, Camila e Sueli usam o celular; Seu Antônio, Helena, Otávio e Fernanda, o computador.
 3. **Clareza para todas as idades.** Textos simples, verbos nos botões, letra grande, confirmação depois de cada envio. Se o Seu Antônio entende, todos entendem.
 4. **A casa responde uma vez.** Adesão e leitura são da unidade: a tela mostra quem da casa já respondeu.
 5. **Cada um vê só o que precisa.** Dados pessoais só para quem tem permissão, com a regra aplicada na API. Quando algo fica oculto, a tela explica.
