@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Avatar ilustrado de Marcos Teixeira (persona fictícia)">
+<defs><clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath></defs>
+<g clip-path="url(#c)">
+<rect width="200" height="200" fill="#F3D7C2"/>
+
+<rect x="88" y="112" width="24" height="30" rx="6" fill="#E2B99C"/>
+<path d="M26 200 C26 152 58 134 100 134 C142 134 174 152 174 200 Z" fill="#D46A43"/><path d="M78 136 C84 152 116 152 122 136" fill="none" stroke="#2B1E1C" stroke-width="6"/><path d="M92 150 L90 172 M108 150 L110 172" stroke="#2B1E1C" stroke-width="3"/>
+<circle cx="66" cy="94" r="8" fill="#E2B99C"/><circle cx="134" cy="94" r="8" fill="#E2B99C"/>
+<ellipse cx="100" cy="90" rx="35" ry="40" fill="#F2D3BC"/>
+<path d="M64 88 C60 52 80 40 100 40 C122 40 142 52 136 88 C132 70 120 60 100 60 C82 60 70 70 64 88 Z" fill="#5A3A22"/>
+<path d="M80 80 Q87 76 94 80 M106 80 Q113 76 120 80" fill="none" stroke="#5A3A22" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="87" cy="92" r="3.6" fill="#2B1E1C"/><circle cx="113" cy="92" r="3.6" fill="#2B1E1C"/>
+<path d="M100 96 Q97 104 101 106" fill="none" stroke="#E2B99C" stroke-width="3" stroke-linecap="round"/>
+<path d="M90 112 C95 118 105 118 110 112" fill="none" stroke="#2B1E1C" stroke-width="3" stroke-linecap="round"/>
+<path d="M68 96 C68 128 84 134 100 134 C116 134 132 128 132 96 C128 112 118 116 100 116 C82 116 72 112 68 96 Z" fill="#5A3A22"/>
+</g>
+</svg>

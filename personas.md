@@ -2,21 +2,21 @@
 
 Quem usa o portal, o que precisa fazer nele e o que isso pede das telas. As personas são **fictícias**: nomes, idades e histórias foram inventados para representar os perfis definidos em [arquitetura-mvp.md](arquitetura-mvp.md) (seção 4, "Perfis de usuário e permissões"). Servem para desenhar e revisar telas, escrever textos e decidir prioridades.
 
-Atualizado em 18/10/2026.
+Atualizado em 18/10/2026. Avatares ilustrados (originais, de pessoas fictícias) em [assets/personas/](assets/personas/).
 
 ## Resumo
 
-| Persona | Perfil no portal | Aparelho principal | Familiaridade digital | Em uma frase |
-| --- | --- | --- | --- | --- |
-| Renata Lopes, 46 | Morador · perfil principal (proprietária) | Celular | Alta | "Quero resolver as coisas da casa em dois minutos, entre uma reunião e outra." |
-| Seu Antônio Prado, 74 | Morador · perfil principal (proprietário) | Computador de mesa e tablet | Baixa | "Se eu não entender a tela, eu ligo para o síndico." |
-| Lucas Lopes, 21 | Morador (filho, só os serviços) | Celular | Alta | "Só entro quando alguém me pede para mandar a foto do relógio da água." |
-| Camila Duarte, 33 | Morador · perfil principal (locatária recém-chegada) | Celular | Média | "Acabei de me mudar e não sei como as coisas funcionam aqui." |
-| Carlos Menezes, 58 | Gestão · síndico (e administrador do site) | Computador e celular | Média | "Sou voluntário. Preciso que o portal me poupe tempo, não que me dê trabalho." |
-| Sueli Ramos, 51 | Gestão · subsíndica | Celular | Média | "Quando o Carlos viaja, sou eu que respondo." |
-| Otávio Lima, 63 | Gestão · conselho | Computador | Média | "Quero acompanhar se a gestão está funcionando, sem me meter na vida dos vizinhos." |
-| Fernanda Costa, 38 | Gestão · administradora condominial (não moradora) | Computador do escritório | Alta | "Cuido de vinte condomínios. Preciso dos dados certos, rápido, e de registro de tudo." |
-| Marcos Teixeira, 41 | Administrador do site (sem cargo na gestão) | Computador | Muito alta | "Faço o portal funcionar, mas não devo ver a vida de ninguém." |
+| | Persona | Perfil no portal | Aparelho principal | Familiaridade digital | Em uma frase |
+| --- | --- | --- | --- | --- | --- |
+| <img src="assets/personas/renata.svg" alt="Avatar de Renata Lopes" width="48"> | Renata Lopes, 46 | Morador · perfil principal (proprietária) | Celular | Alta | "Quero resolver as coisas da casa em dois minutos, entre uma reunião e outra." |
+| <img src="assets/personas/antonio.svg" alt="Avatar de Seu Antônio Prado" width="48"> | Seu Antônio Prado, 74 | Morador · perfil principal (proprietário) | Computador de mesa e tablet | Baixa | "Se eu não entender a tela, eu ligo para o síndico." |
+| <img src="assets/personas/lucas.svg" alt="Avatar de Lucas Lopes" width="48"> | Lucas Lopes, 21 | Morador (filho, só os serviços) | Celular | Alta | "Só entro quando alguém me pede para mandar a foto do relógio da água." |
+| <img src="assets/personas/camila.svg" alt="Avatar de Camila Duarte" width="48"> | Camila Duarte, 33 | Morador · perfil principal (locatária recém-chegada) | Celular | Média | "Acabei de me mudar e não sei como as coisas funcionam aqui." |
+| <img src="assets/personas/carlos.svg" alt="Avatar de Carlos Menezes" width="48"> | Carlos Menezes, 58 | Gestão · síndico (e administrador do site) | Computador e celular | Média | "Sou voluntário. Preciso que o portal me poupe tempo, não que me dê trabalho." |
+| <img src="assets/personas/sueli.svg" alt="Avatar de Sueli Ramos" width="48"> | Sueli Ramos, 51 | Gestão · subsíndica | Celular | Média | "Quando o Carlos viaja, sou eu que respondo." |
+| <img src="assets/personas/otavio.svg" alt="Avatar de Otávio Lima" width="48"> | Otávio Lima, 63 | Gestão · conselho | Computador | Média | "Quero acompanhar se a gestão está funcionando, sem me meter na vida dos vizinhos." |
+| <img src="assets/personas/fernanda.svg" alt="Avatar de Fernanda Costa" width="48"> | Fernanda Costa, 38 | Gestão · administradora condominial (não moradora) | Computador do escritório | Alta | "Cuido de vinte condomínios. Preciso dos dados certos, rápido, e de registro de tudo." |
+| <img src="assets/personas/marcos.svg" alt="Avatar de Marcos Teixeira" width="48"> | Marcos Teixeira, 41 | Administrador do site (sem cargo na gestão) | Computador | Muito alta | "Faço o portal funcionar, mas não devo ver a vida de ninguém." |
 
 Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesmo tempo; Marcos é morador e administrador do site. Só a Fernanda não é moradora.
 
@@ -25,6 +25,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 ## Moradores
 
 ### Renata Lopes, 46 · perfil principal da casa
+
+<img src="assets/personas/renata.svg" alt="Avatar de Renata Lopes" width="120">
 
 **Quem é.** Proprietária, mora com o marido e dois filhos (um deles é o Lucas). Gerente numa empresa de logística, passa o dia em reuniões. Resolve tudo pelo celular, no intervalo ou à noite.
 
@@ -48,6 +50,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 
 ### Seu Antônio Prado, 74 · perfil principal da casa
 
+<img src="assets/personas/antonio.svg" alt="Avatar de Seu Antônio Prado" width="120">
+
 **Quem é.** Aposentado, mora com a esposa há 20 anos no condomínio. Usa o computador da sala com a letra grande e um tablet que ganhou dos netos. Lê tudo com calma, mas tem medo de "apertar o botão errado".
 
 **O que faz no portal.**
@@ -69,6 +73,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 
 ### Lucas Lopes, 21 · morador (só os serviços)
 
+<img src="assets/personas/lucas.svg" alt="Avatar de Lucas Lopes" width="120">
+
 **Quem é.** Filho da Renata, universitário. Indicado pela mãe, aprovado pelo síndico, criou o acesso pelo link do e-mail. Entra pouco.
 
 **O que faz no portal.**
@@ -86,6 +92,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 - Demanda sem identificação realmente anônima: sem registro de atividade, sem IP.
 
 ### Camila Duarte, 33 · locatária recém-chegada
+
+<img src="assets/personas/camila.svg" alt="Avatar de Camila Duarte" width="120">
 
 **Quem é.** Mudou-se há duas semanas com a companheira. O contrato de locação foi feito pela imobiliária; o síndico mandou o convite para o e-mail dela. Nunca morou em condomínio com portal.
 
@@ -108,6 +116,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 ## Gestão do condomínio
 
 ### Carlos Menezes, 58 · síndico (e administrador do site)
+
+<img src="assets/personas/carlos.svg" alt="Avatar de Carlos Menezes" width="120">
 
 **Quem é.** Engenheiro, síndico voluntário pelo segundo mandato. Usa o computador à noite para as tarefas maiores e o celular para aprovar e responder no dia a dia. Também cuida do funcionamento do portal até alguém assumir.
 
@@ -133,6 +143,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 
 ### Sueli Ramos, 51 · subsíndica
 
+<img src="assets/personas/sueli.svg" alt="Avatar de Sueli Ramos" width="120">
+
 **Quem é.** Professora, mora no condomínio há oito anos. Substitui o síndico nas férias e divide com ele a ouvidoria. Usa principalmente o celular.
 
 **O que faz no portal.**
@@ -150,6 +162,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 
 ### Otávio Lima, 63 · membro do conselho
 
+<img src="assets/personas/otavio.svg" alt="Avatar de Otávio Lima" width="120">
+
 **Quem é.** Contador aposentado, eleito para o conselho. Confere contas e acompanha a gestão. Prefere o computador e relatórios.
 
 **O que faz no portal.**
@@ -166,6 +180,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 - Filtro pelo código da pessoa, para acompanhar um caso sem saber quem é.
 
 ### Fernanda Costa, 38 · administradora condominial
+
+<img src="assets/personas/fernanda.svg" alt="Avatar de Fernanda Costa" width="120">
 
 **Quem é.** Analista da empresa de administração contratada pelo condomínio. **Não mora no condomínio.** Atende vários condomínios do escritório, no computador, em horário comercial.
 
@@ -190,6 +206,8 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 ## Funcionamento do site
 
 ### Marcos Teixeira, 41 · administrador do site (sem cargo na gestão)
+
+<img src="assets/personas/marcos.svg" alt="Avatar de Marcos Teixeira" width="120">
 
 **Quem é.** Desenvolvedor de software, morador. Ofereceu-se para cuidar do portal: conteúdo institucional, categorias da ouvidoria, configurações gerais, e-mail e integrações.
 
