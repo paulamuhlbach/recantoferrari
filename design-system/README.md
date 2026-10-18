@@ -4,7 +4,7 @@ Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferra
 
 - **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
 - **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 12/10/2026 (ícone `pets`, `Dialog` que rola quando é mais alto que a tela, células do `DataTable` com espaço vertical e seção Minha casa no guia).
+- **Versão copiada:** 18/10/2026 (ícone `history` para o registro de atividades e seção Ex-moradores e registro de atividades no guia).
 
 ## O que tem aqui
 
@@ -104,7 +104,8 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Ícones herdam a cor do texto ao lado. Ícone sozinho precisa de rótulo (`label` no `IconButton`).
 - Sempre os desenhos oficiais (pacote `@material-design-icons/svg`, estilo filled). Nunca redesenhe um ícone à mão.
 - Água: `water_drop` (leitura do hidrômetro, conta de água), `photo_camera` (foto), `calculate` (cálculo da gestão).
-- Pets (12/10/2026): `pets` (cadastro de pets da casa, em Minha casa).
+- Pets: `pets` (cadastro de pets da casa, em Minha casa).
+- Histórico: `history` (registro de atividades de uma pessoa e a tela Registro de atividades).
 - Ícones de serviço (`Icon.servicos`): `grass`, `pest_control`, `plumbing`, `cleaning_services` e `event` (genérico). Quem cadastra o serviço escolhe o ícone numa lista; nada fica fixo no código.
 
 ## Dados pessoais nas telas
@@ -127,6 +128,13 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Moradores da casa num `DataTable` no tamanho padrão: nome e e-mail, vínculo com o `Badge` `primary` "Principal", parentesco com o perfil principal e situação (`Badge` `success` "Ativo", `warning` "Aguardando aprovação", `info` "Aguardando criar o acesso").
 - O parentesco tem uma lista de sugestões vinda das configurações e aceita texto livre: use `TextField` com `list` (datalist) até o sistema ter um Select.
 - Pets em cartões com foto (miniatura 96px, `radius-xs`; sem foto, o ícone `pets` sobre `surface-container-high`), nome, espécie · raça · porte, cor, sinais e observações. Cadastro e edição num `Dialog` com `FileUpload`.
+
+## Ex-moradores e registro de atividades
+
+- Quem sai da casa fica **inativo**: não entra mais no portal, mas o cadastro e o histórico ficam guardados. Na casa vista pela gestão, abaixo dos moradores, um `DataTable` "Ex-moradores": nome e e-mail, vínculo (com `Badge` `neutral` "Foi principal"), período (entrada a saída), motivo da saída com quem registrou, e a situação hoje (`Badge` `neutral` "Inativo", ou "Ativo" com a casa onde mora hoje, se voltou).
+- O registro de atividades de uma pessoa abre num `Dialog` com o ícone `history`: a situação (`Badge`), as moradias (`ListItem` com `home`, período no `overline`) e as atividades (`ListItem` com data e hora no `overline`, a descrição no `headline` e "Feito por …" · IP no `supporting`), com "Carregar mais antigas" (`Button` `text`).
+- Quem abre: a pessoa (item "Meu registro" no menu da conta), o perfil principal para os moradores da casa (ação `history` na tabela de Minha casa) e a gestão e o administrador do site na tela "Registro de atividades" e nas tabelas da casa.
+- O conselho vê o registro sem identificar as pessoas: no lugar do nome, um código (`Pessoa 3fa2c1d0`), sem casa, e-mail ou IP. Explique com um `Alert` `info` no topo da tela.
 
 ## Serviços com adesão
 

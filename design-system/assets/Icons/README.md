@@ -5,4 +5,5 @@ Desenhos oficiais do Material Icons (Apache 2.0, pacote `@material-design-icons/
 - Ícones de serviço: `grass.svg` (corte de grama), `pest_control.svg` (desinsetização), `plumbing.svg` (desentupimento), `cleaning_services.svg` (limpeza em geral).
 - `cloud.svg`: condição do tempo. `open_in_new.svg`: link externo.
 - `pets.svg`: pets da casa (Minha casa).
+- `history.svg`: registro de atividades (histórico de uma pessoa).
 - Para um ícone novo, copie o SVG oficial do pacote; nunca redesenhe à mão.

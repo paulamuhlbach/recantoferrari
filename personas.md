@@ -1,0 +1,236 @@
+# Personas do Portal do Condomínio Recanto Ferrari
+
+Quem usa o portal, o que precisa fazer nele e o que isso pede das telas. As personas são **fictícias**: nomes, idades e histórias foram inventados para representar os perfis definidos em [arquitetura-mvp.md](arquitetura-mvp.md) (seção 4, "Perfis de usuário e permissões"). Servem para desenhar e revisar telas, escrever textos e decidir prioridades.
+
+Atualizado em 18/10/2026.
+
+## Resumo
+
+| Persona | Perfil no portal | Aparelho principal | Familiaridade digital | Em uma frase |
+| --- | --- | --- | --- | --- |
+| Renata Lopes, 46 | Morador · perfil principal (proprietária) | Celular | Alta | "Quero resolver as coisas da casa em dois minutos, entre uma reunião e outra." |
+| Seu Antônio Prado, 74 | Morador · perfil principal (proprietário) | Computador de mesa e tablet | Baixa | "Se eu não entender a tela, eu ligo para o síndico." |
+| Lucas Lopes, 21 | Morador (filho, só os serviços) | Celular | Alta | "Só entro quando alguém me pede para mandar a foto do relógio da água." |
+| Camila Duarte, 33 | Morador · perfil principal (locatária recém-chegada) | Celular | Média | "Acabei de me mudar e não sei como as coisas funcionam aqui." |
+| Carlos Menezes, 58 | Gestão · síndico (e administrador do site) | Computador e celular | Média | "Sou voluntário. Preciso que o portal me poupe tempo, não que me dê trabalho." |
+| Sueli Ramos, 51 | Gestão · subsíndica | Celular | Média | "Quando o Carlos viaja, sou eu que respondo." |
+| Otávio Lima, 63 | Gestão · conselho | Computador | Média | "Quero acompanhar se a gestão está funcionando, sem me meter na vida dos vizinhos." |
+| Fernanda Costa, 38 | Gestão · administradora condominial (não moradora) | Computador do escritório | Alta | "Cuido de vinte condomínios. Preciso dos dados certos, rápido, e de registro de tudo." |
+| Marcos Teixeira, 41 | Administrador do site (sem cargo na gestão) | Computador | Muito alta | "Faço o portal funcionar, mas não devo ver a vida de ninguém." |
+
+Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesmo tempo; Marcos é morador e administrador do site. Só a Fernanda não é moradora.
+
+---
+
+## Moradores
+
+### Renata Lopes, 46 · perfil principal da casa
+
+**Quem é.** Proprietária, mora com o marido e dois filhos (um deles é o Lucas). Gerente numa empresa de logística, passa o dia em reuniões. Resolve tudo pelo celular, no intervalo ou à noite.
+
+**O que faz no portal.**
+- Cadastrou a casa pelo convite e indicou o marido e os filhos, com o parentesco.
+- Escolhe quem vê a parte financeira: o marido vê, os filhos só os serviços.
+- Adere ao corte de grama e à desinsetização quando abrem as chamadas.
+- Envia a leitura do hidrômetro quando ninguém mais da casa enviou.
+- Cadastra os pets (o cachorro já fugiu uma vez).
+- Abre o registro de atividades dos moradores da casa quando quer saber quem aderiu a um serviço ou mandou a leitura.
+
+**O que ela quer.** Fazer em poucos toques, sem esquecer prazos. Saber o que já foi feito por alguém da casa, para não fazer duas vezes.
+
+**O que a incomoda.** E-mail demais. Telas que pedem a mesma informação de novo. Descobrir uma cobrança no boleto sem ter percebido que aderiu.
+
+**O que isso pede das telas.**
+- "Precisa da sua resposta" no Início, com prazo e valor visíveis sem abrir nada.
+- Mostrar quem da casa já respondeu e quando (adesão, leitura).
+- Confirmar a autorização de cobrança antes de aderir.
+- Tudo funcionando bem a partir de 360 px de largura.
+
+### Seu Antônio Prado, 74 · perfil principal da casa
+
+**Quem é.** Aposentado, mora com a esposa há 20 anos no condomínio. Usa o computador da sala com a letra grande e um tablet que ganhou dos netos. Lê tudo com calma, mas tem medo de "apertar o botão errado".
+
+**O que faz no portal.**
+- Lê avisos, coleta de lixo e o regimento.
+- Envia demandas à ouvidoria, sempre com o nome dele.
+- Envia a leitura do hidrômetro, às vezes com a ajuda da neta pelo telefone.
+- Indicou a esposa como moradora.
+
+**O que ele quer.** Entender o que cada botão faz antes de clicar. Ter certeza de que a mensagem chegou.
+
+**O que o incomoda.** Ícones sem texto. Prazos que somem. Mensagens de erro técnicas. Ser desconectado no meio de um formulário.
+
+**O que isso pede das telas.**
+- Botões com verbo e o que acontece ("Enviar leitura", "Cancelar adesão"); ícone sozinho só com dica no mouseover e no foco.
+- Texto grande (`body-large`, 18 px), alvos de toque de 44 px, contraste alto.
+- Confirmação clara depois de cada envio, com o que foi enviado e o e-mail de confirmação.
+- Mensagens de erro que dizem como resolver, sem jargão.
+- Diálogo de confirmação antes de ações que não voltam (remover morador, cancelar adesão).
+
+### Lucas Lopes, 21 · morador (só os serviços)
+
+**Quem é.** Filho da Renata, universitário. Indicado pela mãe, aprovado pelo síndico, criou o acesso pelo link do e-mail. Entra pouco.
+
+**O que faz no portal.**
+- Manda a foto e a leitura do hidrômetro quando a mãe pede.
+- Vê os serviços oferecidos, sem valores (acesso "Só os serviços").
+- Às vezes manda uma sugestão para a ouvidoria, sem identificação.
+
+**O que ele quer.** Entrar, fazer e sair. Login com Google.
+
+**O que o incomoda.** Esquecer a senha. Telas longas.
+
+**O que isso pede das telas.**
+- Envio da leitura com a câmera abrindo direto no celular e teclado numérico.
+- Não mostrar valores e cobranças a quem tem só os serviços (vale na API, não só na tela).
+- Demanda sem identificação realmente anônima: sem registro de atividade, sem IP.
+
+### Camila Duarte, 33 · locatária recém-chegada
+
+**Quem é.** Mudou-se há duas semanas com a companheira. O contrato de locação foi feito pela imobiliária; o síndico mandou o convite para o e-mail dela. Nunca morou em condomínio com portal.
+
+**O que faz no portal.**
+- Aceitou o convite, fez o cadastro e virou o perfil principal da casa.
+- Indicou a companheira e cadastrou a gata.
+- Procura o regimento (horário de obras, mudança, lixo).
+
+**O que ela quer.** Entender as regras e saber com quem falar. Não fazer nada errado nas primeiras semanas.
+
+**O que a incomoda.** Termos que só os antigos entendem ("perfil principal", "adesão"). Não saber se o cadastro "pegou".
+
+**O que isso pede das telas.**
+- Convite que explica o que é ser o perfil principal antes de pedir os dados.
+- Situação de cada pessoa da casa sempre visível ("Aguardando aprovação", "Aguardando criar o acesso", "Ativo").
+- Quando ela sair do condomínio, o cadastro fica inativo, com o histórico guardado; se voltar a morar aqui, o mesmo e-mail pode ser convidado de novo.
+
+---
+
+## Gestão do condomínio
+
+### Carlos Menezes, 58 · síndico (e administrador do site)
+
+**Quem é.** Engenheiro, síndico voluntário pelo segundo mandato. Usa o computador à noite para as tarefas maiores e o celular para aprovar e responder no dia a dia. Também cuida do funcionamento do portal até alguém assumir.
+
+**O que faz no portal.**
+- Cadastra as casas e envia os convites.
+- Aprova ou recusa os moradores indicados.
+- Troca o perfil principal quando a casa é vendida ou o principal some, e registra se ele saiu da casa.
+- Responde demandas da ouvidoria e lê denúncias.
+- Abre chamadas de serviços, registra adiamentos por chuva e exporta as adesões para o boleto.
+- Confere as leituras do hidrômetro e calcula a água.
+- Atribui cargos e o papel de administrador do site; passa o cargo de síndico no fim do mandato.
+- Consulta o registro de atividades e os ex-moradores de cada casa; define o prazo de guarda do registro.
+
+**O que ele quer.** Ver o que está pendente num lugar só. Fazer as tarefas repetitivas rápido. Ter registro de quem fez o quê, para responder a questionamentos em assembleia.
+
+**O que o incomoda.** Ser o "suporte técnico" dos vizinhos. Decisões presas no código ("isso não dá para mudar").
+
+**O que isso pede das telas.**
+- Filas claras com contagem (indicações aguardando, demandas novas, leituras faltando).
+- Regras configuráveis (prazos, textos dos e-mails, tipos de serviço), com padrão sugerido.
+- Ações em ícone nas tabelas, com dica; tabelas densas nas telas administrativas.
+- Registro de atividades com nome, data, hora e IP; ex-moradores com entrada, saída e motivo.
+
+### Sueli Ramos, 51 · subsíndica
+
+**Quem é.** Professora, mora no condomínio há oito anos. Substitui o síndico nas férias e divide com ele a ouvidoria. Usa principalmente o celular.
+
+**O que faz no portal.**
+- Lê e responde demandas, inclusive denúncias.
+- Acompanha os serviços e os avisos.
+- Vê o registro de atividades com nomes e pode mudar o prazo de guarda.
+
+**O que ela quer.** Pegar uma demanda do ponto em que o síndico parou, sabendo o que já foi respondido.
+
+**O que a incomoda.** Não saber se o síndico já leu ou respondeu.
+
+**O que isso pede das telas.**
+- Histórico da demanda com quem leu, respondeu e quando.
+- Mesmas telas da gestão funcionando bem no celular.
+
+### Otávio Lima, 63 · membro do conselho
+
+**Quem é.** Contador aposentado, eleito para o conselho. Confere contas e acompanha a gestão. Prefere o computador e relatórios.
+
+**O que faz no portal.**
+- Vê as estatísticas das denúncias (quantidade, categoria, andamento, tempo de resposta), sem o conteúdo nem quem denunciou.
+- Vê o registro de atividades **sem identificar as pessoas**: um código no lugar do nome ("Pessoa 3fa2c1d0"), sem casa, e-mail, motivo ou IP.
+- Acompanha demandas, serviços e avisos como a gestão.
+
+**O que ele quer.** Saber se as demandas estão sendo respondidas e se as regras estão sendo seguidas, com números.
+
+**O que o incomoda.** Dados pela metade sem explicação. Ser exposto a informações pessoais que ele não deveria ver.
+
+**O que isso pede das telas.**
+- Um aviso no topo explicando o que ele vê e por quê, em vez de colunas que somem sem aviso.
+- Filtro pelo código da pessoa, para acompanhar um caso sem saber quem é.
+
+### Fernanda Costa, 38 · administradora condominial
+
+**Quem é.** Analista da empresa de administração contratada pelo condomínio. **Não mora no condomínio.** Atende vários condomínios do escritório, no computador, em horário comercial.
+
+**O que faz no portal.**
+- Lança a água e as adesões no boleto a partir das exportações.
+- Lê e responde denúncias e marca "Em avaliação jurídica" quando precisa acionar o jurídico.
+- Vê os dados dos moradores para cobranças e notificações.
+- Aprova moradores indicados e troca o perfil principal só se a configuração permitir.
+- Vê o registro de atividades com nomes.
+
+**O que ela quer.** Encontrar o dado certo sem pedir ao síndico. Exportar no formato que o sistema da empresa aceita.
+
+**O que a incomoda.** Perder o acesso sem aviso. Telas pensadas para morador.
+
+**O que isso pede das telas.**
+- Entrar direto nas ferramentas de gestão, sem "Minha casa" nem os cards de morador.
+- O nome aparece com a empresa ("Fernanda · Administradora").
+- Acesso ligado ao contrato, com aviso ao síndico antes do vencimento; o histórico fica quando o acesso termina.
+
+---
+
+## Funcionamento do site
+
+### Marcos Teixeira, 41 · administrador do site (sem cargo na gestão)
+
+**Quem é.** Desenvolvedor de software, morador. Ofereceu-se para cuidar do portal: conteúdo institucional, categorias da ouvidoria, configurações gerais, e-mail e integrações.
+
+**O que faz no portal.**
+- Cadastra casas e envia convites (vê o e-mail do convite mascarado: `pa•••@gmail.com`).
+- Publica regimento, convenção, termos e política de privacidade.
+- Ajusta configurações do grupo "site" (validade dos links, textos dos e-mails, tamanho de fotos).
+- Muda o prazo de guarda do registro de atividades.
+- Vê o registro de atividades com nomes (exceção pedida pela gestão em 18/10/2026).
+- Como morador, vê a própria casa normalmente.
+
+**O que ele quer.** Manter o portal funcionando sem depender do síndico para cada ajuste.
+
+**O que o incomoda.** Pedidos para "ver um dado" que ele não deve ver.
+
+**O que isso pede das telas.**
+- Fora o registro de atividades, nenhum dado sensível: nem moradores, casas, contatos, valores, leituras, pets ou demandas. Só números, situações e o número da casa.
+- Explicar a restrição com um aviso no topo da tela.
+
+---
+
+## Quem não usa o portal, mas é afetado por ele
+
+- **Ex-moradores.** Quem saiu da casa fica com o cadastro inativo: não entra mais, mas a moradia (entrada, saída, motivo) e o registro de atividades ficam guardados para a gestão. Pode voltar a ser convidado.
+- **Indicados que não chegaram a morar.** Indicação cancelada ou recusada: o cadastro fica como "removido", sem aparecer entre os ex-moradores.
+- **Prestadores de serviço** (corte de grama, desinsetização). Recebem a lista de casas exportada pelo síndico, fora do portal.
+- **Visitantes, corretores e imobiliárias.** Não têm acesso. O portal é exclusivo de quem foi convidado ou aprovado.
+
+## Princípios que saem das personas
+
+1. **Primeiro o morador.** As telas são desenhadas para o morador; as funções da gestão entram sobre essa base, no mesmo portal.
+2. **Celular primeiro, sem esquecer o computador.** Renata, Lucas, Camila e Sueli usam o celular; Seu Antônio, Otávio e Fernanda, o computador.
+3. **Clareza para todas as idades.** Textos simples, verbos nos botões, letra grande, confirmação depois de cada envio. Se o Seu Antônio entende, todos entendem.
+4. **A casa responde uma vez.** Adesão e leitura são da unidade: a tela mostra quem da casa já respondeu.
+5. **Cada um vê só o que precisa.** Dados pessoais só para quem tem permissão, com a regra aplicada na API. Quando algo fica oculto, a tela explica.
+6. **Tudo fica registrado.** Quem fez o quê e quando, para a gestão prestar contas; com prazo de guarda configurável (padrão 5 anos) e sem quebrar o anonimato das demandas sem identificação.
+7. **Nada fixo no código.** Prazos, textos e regras ficam nas configurações, com padrão sugerido.
+
+## Como usar este documento
+
+- Ao desenhar uma tela, escolha a persona principal e uma secundária e confira a seção "O que isso pede das telas" das duas.
+- Ao escrever um texto, leia como o Seu Antônio e a Camila leriam.
+- Ao decidir quem vê um dado, confira o perfil na seção 4 de [arquitetura-mvp.md](arquitetura-mvp.md) e as personas da gestão.
+- Mudou um perfil ou uma permissão? Atualize as duas coisas juntas.
