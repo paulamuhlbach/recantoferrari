@@ -20,3 +20,4 @@ Detalhes em [arquitetura-mvp.md](arquitetura-mvp.md).
 Design System Recanto Ferrari: https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cópia no repositório em [design-system/](design-system/README.md): tokens, componentes, logos, ícones e fontes)
 Protótipo navegável das telas: https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
 Personas do portal: [personas.md](personas.md)
+Apresentação das personas e perfis de acesso (para o conselho): [apresentacoes/Personas-e-perfis-de-acesso.pptx](apresentacoes/Personas-e-perfis-de-acesso.pptx)
