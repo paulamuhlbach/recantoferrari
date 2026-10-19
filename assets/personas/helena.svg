@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Avatar ilustrado de Helena Barros (persona fictícia)">
+<defs><clipPath id="c"><circle cx="100" cy="100" r="100"/></clipPath></defs>
+<g clip-path="url(#c)">
+<rect width="200" height="200" fill="#C9D9E6"/>
+<path d="M58 92 C54 50 78 36 100 36 C122 36 146 50 142 92 L144 126 C130 132 70 132 56 126 Z" fill="#BDB6AE"/>
+<rect x="88" y="112" width="24" height="30" rx="6" fill="#C48C66"/>
+<path d="M26 200 C26 152 58 134 100 134 C142 134 174 152 174 200 Z" fill="#264B65"/><path d="M100 136 L84 136 L100 176 L116 136 Z" fill="#FAF7F2"/><path d="M84 136 L74 150 L100 182 Z M116 136 L126 150 L100 182 Z" fill="#264B65" stroke="#2B1E1C" stroke-opacity=".25" stroke-width="2"/>
+<circle cx="66" cy="94" r="8" fill="#C48C66"/><circle cx="134" cy="94" r="8" fill="#C48C66"/>
+<ellipse cx="100" cy="90" rx="35" ry="40" fill="#D9A47E"/>
+<path d="M64 92 C60 50 86 40 102 40 C124 40 142 54 136 90 C128 70 118 60 104 58 C96 72 80 82 64 92 Z" fill="#BDB6AE"/>
+<path d="M80 80 Q87 76 94 80 M106 80 Q113 76 120 80" fill="none" stroke="#8E8780" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="87" cy="92" r="3.6" fill="#2B1E1C"/><circle cx="113" cy="92" r="3.6" fill="#2B1E1C"/>
+<path d="M100 96 Q97 104 101 106" fill="none" stroke="#C48C66" stroke-width="3" stroke-linecap="round"/>
+<path d="M90 112 C95 118 105 118 110 112" fill="none" stroke="#2B1E1C" stroke-width="3" stroke-linecap="round"/>
+<circle cx="66" cy="104" r="4" fill="#FAF7F2"/><circle cx="134" cy="104" r="4" fill="#FAF7F2"/>
+</g>
+</svg>

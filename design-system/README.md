@@ -4,7 +4,7 @@ Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferra
 
 - **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
 - **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 18/10/2026 (ícone `history` para o registro de atividades e seção Ex-moradores e registro de atividades no guia).
+- **Versão copiada:** 18/10/2026, noite (termo de confidencialidade do administrador do site e presidente do conselho nas regras de dados pessoais e do registro; ícone `history`).
 
 ## O que tem aqui
 
@@ -110,9 +110,10 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 
 ## Dados pessoais nas telas
 
-- Nome, casa, contato, moradores, valores e serviços contratados só aparecem para quem tem permissão (a gestão, e o próprio morador para a sua casa). O administrador do site sem cargo vê só a situação de cada item.
+- Nome, casa, contato, moradores, valores e serviços contratados só aparecem para quem tem permissão (a gestão, e o próprio morador para a sua casa). O administrador do site sem o termo de confidencialidade assinado vê só a situação de cada item; com o termo, vê tudo, como o síndico.
 - Quando a tela precisa mostrar um contato para quem não tem essa permissão, o e-mail aparece mascarado: `pa•••@gmail.com`.
-- Explique a restrição com um `Alert` `info` no topo da tela ("Você vê só a situação de cada casa"), em vez de esconder colunas sem aviso.
+- Explique a restrição com um `Alert` `info` no topo da tela ("Você vê só a situação de cada casa"), em vez de esconder colunas sem aviso. Se a restrição sai com o termo de confidencialidade, o `Alert` leva à tela do termo (`Button` `text` com `icon="lock"`).
+- **Termo de confidencialidade** (administrador do site): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta.
 - Status de cadastro: `Badge` `success` "Cadastrada", `info` "Convite enviado", `error` "Convite vencido", `neutral` "Sem convite", `warning` "Aguardando aprovação". O perfil principal da casa leva o `Badge` `primary` "Principal".
 
 ## Navegação e links externos
@@ -133,8 +134,8 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 
 - Quem sai da casa fica **inativo**: não entra mais no portal, mas o cadastro e o histórico ficam guardados. Na casa vista pela gestão, abaixo dos moradores, um `DataTable` "Ex-moradores": nome e e-mail, vínculo (com `Badge` `neutral` "Foi principal"), período (entrada a saída), motivo da saída com quem registrou, e a situação hoje (`Badge` `neutral` "Inativo", ou "Ativo" com a casa onde mora hoje, se voltou).
 - O registro de atividades de uma pessoa abre num `Dialog` com o ícone `history`: a situação (`Badge`), as moradias (`ListItem` com `home`, período no `overline`) e as atividades (`ListItem` com data e hora no `overline`, a descrição no `headline` e "Feito por …" · IP no `supporting`), com "Carregar mais antigas" (`Button` `text`).
-- Quem abre: a pessoa (item "Meu registro" no menu da conta), o perfil principal para os moradores da casa (ação `history` na tabela de Minha casa) e a gestão e o administrador do site na tela "Registro de atividades" e nas tabelas da casa.
-- O conselho vê o registro sem identificar as pessoas: no lugar do nome, um código (`Pessoa 3fa2c1d0`), sem casa, e-mail ou IP. Explique com um `Alert` `info` no topo da tela.
+- Quem abre: a pessoa (item "Meu registro" no menu da conta), o perfil principal para os moradores da casa (ação `history` na tabela de Minha casa) e, na tela "Registro de atividades" e nas tabelas da casa, o síndico, o subsíndico, o presidente do conselho, a administradora e o administrador do site com o termo assinado.
+- Os demais membros do conselho (e o administrador do site antes de assinar o termo) veem o registro sem identificar as pessoas: no lugar do nome, um código (`Pessoa 3fa2c1d0`), sem casa, e-mail ou IP. Explique com um `Alert` `info` no topo da tela.
 
 ## Serviços com adesão
 
@@ -152,7 +153,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Mostre ao lado a leitura do mês anterior e o consumo calculado em quadros curtos (como os dados de serviço). Leitura menor que a anterior: `TextField` `error` com o motivo e como corrigir.
 - Situação do mês em `Badge`: `info` "Envie até 10/10", `success` "Leitura enviada", `warning` "Prazo encerrado" (ou "Enviada com atraso"), `neutral` "Conferida" (na visão da gestão), `error` "Consumo fora do padrão".
 - Depois de enviar: `Alert` `success` dizendo que o síndico foi avisado e que um e-mail de confirmação foi para a pessoa.
-- Leituras, fotos e valores são dados da casa: o administrador do site sem cargo vê só quantas casas enviaram.
+- Leituras, fotos e valores são dados da casa: o administrador do site sem o termo de confidencialidade vê só quantas casas enviaram.
 
 ## Componentes
 
