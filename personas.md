@@ -14,14 +14,14 @@ Atualizado em 18/10/2026. Avatares ilustrados (originais, de pessoas fictícias)
 | <img src="assets/personas/camila.svg" alt="Avatar de Camila Duarte" width="48"> | Camila Duarte, 33 | Morador · perfil principal (locatária recém-chegada) | Celular | Média | "Acabei de me mudar e não sei como as coisas funcionam aqui." |
 | <img src="assets/personas/carlos.svg" alt="Avatar de Carlos Menezes" width="48"> | Carlos Menezes, 58 | Gestão · síndico (e administrador do site) | Computador e celular | Média | "Sou voluntário. Preciso que o portal me poupe tempo, não que me dê trabalho." |
 | <img src="assets/personas/sueli.svg" alt="Avatar de Sueli Ramos" width="48"> | Sueli Ramos, 51 | Gestão · subsíndica | Celular | Média | "Quando o Carlos viaja, sou eu que respondo." |
-| <img src="assets/personas/helena.svg" alt="Avatar de Helena Barros" width="48"> | Helena Barros, 66 | Gestão · presidente do conselho | Computador e celular | Média | "O conselho responde aos moradores. Preciso ver tudo para fiscalizar de verdade." |
+| <img src="assets/personas/helena.svg" alt="Avatar de Helena Barros" width="48"> | Helena Barros, 66 | Gestão · presidente do conselho | Computador e celular | Média | "O conselho responde aos moradores. Assinei o termo para ver tudo e fiscalizar de verdade." |
 | <img src="assets/personas/otavio.svg" alt="Avatar de Otávio Lima" width="48"> | Otávio Lima, 63 | Gestão · membro do conselho | Computador | Média | "Quero acompanhar se a gestão está funcionando, sem me meter na vida dos vizinhos." |
 | <img src="assets/personas/fernanda.svg" alt="Avatar de Fernanda Costa" width="48"> | Fernanda Costa, 38 | Gestão · administradora condominial (não moradora) | Computador do escritório | Alta | "Cuido de vinte condomínios. Preciso dos dados certos, rápido, e de registro de tudo." |
 | <img src="assets/personas/marcos.svg" alt="Avatar de Marcos Teixeira" width="48"> | Marcos Teixeira, 41 | Administrador do site (com o termo de confidencialidade) | Computador | Muito alta | "Tenho acesso a tudo, então assinei o termo de confidencialidade. Sigilo é parte do trabalho." |
 
 Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesmo tempo; Marcos é morador e administrador do site. Só a Fernanda não é moradora.
 
-**Quem vê tudo (decisão de 18/10/2026):** o síndico, o administrador do site que assinou o termo de confidencialidade (com os mesmos poderes do síndico) e a presidente do conselho (vê tudo, sem os poderes de aprovar, atribuir cargos e configurar). Os demais membros do conselho continuam vendo as denúncias só em números e o registro de atividades sem nomes.
+**Quem vê tudo (decisão de 18/10/2026):** o síndico, o administrador do site que assinou o termo de confidencialidade (com os mesmos poderes do síndico) e a presidente do conselho que assinou o termo de confidencialidade (vê tudo, sem os poderes de aprovar, atribuir cargos e configurar). Os demais membros do conselho continuam vendo as denúncias só em números e o registro de atividades sem nomes.
 
 ---
 
@@ -170,9 +170,10 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 **Quem é.** Advogada aposentada, mora no condomínio há 15 anos e preside o conselho. Conduz as reuniões do conselho e responde aos moradores pela fiscalização da gestão. Usa o computador para ler com calma e o celular para acompanhar.
 
 **O que faz no portal.**
-- Vê tudo, como o síndico: dados dos moradores, composição das casas, ex-moradores e pets.
+- Primeiro, **assina o termo de confidencialidade** no portal (lê, confirma e digita o nome completo). Até assinar, vê como os demais membros do conselho: estatísticas e o registro sem nomes. Um aviso no Início leva ao termo.
+- Com o termo assinado, vê tudo, como o síndico: dados dos moradores, composição das casas, ex-moradores e pets.
 - Lê as denúncias com o conteúdo e quem denunciou, e pode responder, como o síndico e o subsíndico.
-- Vê o registro de atividades com nomes, para conferir quem fez o quê.
+- Vê o registro de atividades com nomes, para conferir quem fez o quê, e a tela de Pessoas com todos os cadastros.
 - **Não** aprova moradores, **não** atribui cargos e **não** muda configurações: isso fica com o síndico e com o administrador do site.
 
 **O que ela quer.** Fiscalizar com informação completa e levar fatos às reuniões do conselho.
