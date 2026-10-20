@@ -4,7 +4,7 @@ Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferra
 
 - **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
 - **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 19/10/2026, noite (seção Pessoas; termo de confidencialidade também para o presidente do conselho).
+- **Versão copiada:** 19/10/2026, noite (seção Pessoas; termo de confidencialidade também para o presidente do conselho e a administradora do condomínio; o síndico não assina).
 
 ## O que tem aqui
 
@@ -113,7 +113,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Nome, casa, contato, moradores, valores e serviços contratados só aparecem para quem tem permissão (a gestão, e o próprio morador para a sua casa). O administrador do site sem o termo de confidencialidade assinado vê só a situação de cada item; com o termo, vê tudo, como o síndico.
 - Quando a tela precisa mostrar um contato para quem não tem essa permissão, o e-mail aparece mascarado: `pa•••@gmail.com`.
 - Explique a restrição com um `Alert` `info` no topo da tela ("Você vê só a situação de cada casa"), em vez de esconder colunas sem aviso. Se a restrição sai com o termo de confidencialidade, o `Alert` leva à tela do termo (`Button` `text` com `icon="lock"`).
-- **Termo de confidencialidade** (administrador do site e presidente do conselho): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta. O nome digitado precisa ser igual ao do cadastro (sem diferença de acento ou maiúsculas); se não for, o `TextField` fica em `status="error"` com o nome esperado no `helper`. Se o texto do termo mudar, um `Alert` `warning` "O texto do termo mudou" pede nova assinatura.
+- **Termo de confidencialidade** (administrador do site, presidente do conselho e administradora do condomínio; o síndico não assina): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta. Na tela do contrato de administração, cada pessoa da administradora mostra "termo assinado" ou "falta assinar o termo" abaixo do `Badge` de acesso. O nome digitado precisa ser igual ao do cadastro (sem diferença de acento ou maiúsculas); se não for, o `TextField` fica em `status="error"` com o nome esperado no `helper`. Se o texto do termo mudar, um `Alert` `warning` "O texto do termo mudou" pede nova assinatura.
 - Status de cadastro: `Badge` `success` "Cadastrada", `info` "Convite enviado", `error` "Convite vencido", `neutral` "Sem convite", `warning` "Aguardando aprovação". O perfil principal da casa leva o `Badge` `primary` "Principal".
 
 ## Navegação e links externos
