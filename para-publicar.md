@@ -17,6 +17,7 @@ Atualizada em 19/10/2026.
 ## 2. Banco de dados
 
 - [ ] Criar o banco PostgreSQL e anotar a conexão (`postgresql://usuario:senha@host:5432/banco`).
+- [ ] Instalar o driver do PostgreSQL na API: `python -m pip install "psycopg[binary]"`. Ele não está no `requirements.txt`, porque em desenvolvimento o banco é SQLite (vale acrescentar ao `requirements.txt` antes de publicar).
 - [ ] Na API, configurar `DATABASE_URL` com essa conexão.
 - [ ] Rodar as migrações: `python -m alembic upgrade head`. Elas já foram testadas em PostgreSQL 16.
 - [ ] Criar o primeiro síndico: `python criar_primeiro_sindico.py`.
@@ -73,7 +74,8 @@ O projeto "Recanto Ferrari" no Google Cloud e o ID do cliente foram criados em 1
 - [ ] **Termo de confidencialidade**: revisar o texto com o jurídico e salvar nas configurações (`termo_confidencialidade.texto`). Mudar o texto depois pede nova assinatura de todos.
 - [ ] **Política de privacidade** e termos de uso: texto final revisado, publicado e com link no portal e no Google.
 - [ ] **Contrato com a Auxiliadora Predial**: cláusula de proteção de dados, com ela como operadora.
-- [ ] Revisar os textos padrão dos e-mails e os prazos nas configurações (validade do convite, prazo da leitura do hidrômetro, prazo de guarda do registro de atividades).
+- [ ] Revisar os textos padrão dos e-mails e os prazos nas configurações (validade do convite, prazo da leitura do hidrômetro, prazo de guarda do registro de atividades, antecedência do aviso de fim do contrato de administração).
+- [ ] Cadastrar o contrato de administração (razão social, CNPJ, nº, vigência e o PDF) e convidar as pessoas da administradora.
 - [ ] Confirmar com a gestão as decisões que ainda estão em aberto (ver as notas de andamento).
 
 ## 8. Primeiros passos no ar
