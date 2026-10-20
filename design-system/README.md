@@ -4,7 +4,7 @@ Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferra
 
 - **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
 - **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 18/10/2026, noite (termo de confidencialidade do administrador do site e presidente do conselho nas regras de dados pessoais e do registro; ícone `history`).
+- **Versão copiada:** 19/10/2026, noite (seção Pessoas; termo de confidencialidade também para o presidente do conselho).
 
 ## O que tem aqui
 
@@ -113,7 +113,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Nome, casa, contato, moradores, valores e serviços contratados só aparecem para quem tem permissão (a gestão, e o próprio morador para a sua casa). O administrador do site sem o termo de confidencialidade assinado vê só a situação de cada item; com o termo, vê tudo, como o síndico.
 - Quando a tela precisa mostrar um contato para quem não tem essa permissão, o e-mail aparece mascarado: `pa•••@gmail.com`.
 - Explique a restrição com um `Alert` `info` no topo da tela ("Você vê só a situação de cada casa"), em vez de esconder colunas sem aviso. Se a restrição sai com o termo de confidencialidade, o `Alert` leva à tela do termo (`Button` `text` com `icon="lock"`).
-- **Termo de confidencialidade** (administrador do site): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta.
+- **Termo de confidencialidade** (administrador do site e presidente do conselho): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta. O nome digitado precisa ser igual ao do cadastro (sem diferença de acento ou maiúsculas); se não for, o `TextField` fica em `status="error"` com o nome esperado no `helper`. Se o texto do termo mudar, um `Alert` `warning` "O texto do termo mudou" pede nova assinatura.
 - Status de cadastro: `Badge` `success` "Cadastrada", `info` "Convite enviado", `error` "Convite vencido", `neutral` "Sem convite", `warning` "Aguardando aprovação". O perfil principal da casa leva o `Badge` `primary` "Principal".
 
 ## Navegação e links externos
@@ -136,6 +136,13 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - O registro de atividades de uma pessoa abre num `Dialog` com o ícone `history`: a situação (`Badge`), as moradias (`ListItem` com `home`, período no `overline`) e as atividades (`ListItem` com data e hora no `overline`, a descrição no `headline` e "Feito por …" · IP no `supporting`), com "Carregar mais antigas" (`Button` `text`).
 - Quem abre: a pessoa (item "Meu registro" no menu da conta), o perfil principal para os moradores da casa (ação `history` na tabela de Minha casa) e, na tela "Registro de atividades" e nas tabelas da casa, o síndico, o subsíndico, o presidente do conselho, a administradora e o administrador do site com o termo assinado.
 - Os demais membros do conselho (e o administrador do site antes de assinar o termo) veem o registro sem identificar as pessoas: no lugar do nome, um código (`Pessoa 3fa2c1d0`), sem casa, e-mail ou IP. Explique com um `Alert` `info` no topo da tela.
+
+## Pessoas
+
+- Tela "Pessoas" (menu da conta da gestão e do administrador do site, ícone `person`): todos que têm ou já tiveram cadastro, inclusive quem saiu. `TextField` "Buscar" com `leadingIcon="search"` (nome, e-mail ou casa), dois grupos de `Chip` `filter` (situação, com a contagem entre parênteses; papel) e um `DataTable` no tamanho padrão.
+- Colunas: pessoa (nome e e-mail), casa (`Badge` `primary` "Principal"; vínculo · parentesco abaixo; sem casa, o vínculo, ex.: "Administradora do condomínio"), papel (`Badge` `primary` para o síndico, `info` para os outros cargos e para "Administrador do site", com "Termo assinado em …" ou "Termo de confidencialidade não assinado" abaixo) e situação (`Badge` `success` "Ativo", `warning` "Aguardando aprovação", `info` "Aguardando criar o acesso", `error` "Bloqueado", `neutral` "Inativo", com a data e "Entra com Google" abaixo).
+- Ações só com ícone: `history` (ver o registro), `edit` (mudar os papéis: `Dialog` com `RadioGroup` dos cargos e `Checkbox` "Administrador do site"; `Alert` `info` quando a pessoa precisa assinar o termo ou quando o presidente do conselho anterior volta a ser membro), `block` `danger` (bloquear, com `Dialog` de confirmação) e `check_circle` (desbloquear).
+- Administrador do site sem o termo: código no lugar do nome (`Pessoa a4e1b9c7`) e e-mail mascarado, com o `Alert` `info` que leva ao termo.
 
 ## Serviços com adesão
 
