@@ -74,7 +74,7 @@ O projeto "Recanto Ferrari" no Google Cloud e o ID do cliente foram criados em 1
 - [ ] **Política de privacidade** e termos de uso: texto final revisado, publicado e com link no portal e no Google.
 - [ ] **Contrato com a Auxiliadora Predial**: cláusula de proteção de dados, com ela como operadora.
 - [ ] Revisar os textos padrão dos e-mails e os prazos nas configurações (validade do convite, prazo da leitura do hidrômetro, prazo de guarda do registro de atividades).
-- [ ] Confirmar com a gestão as decisões que ainda estão em aberto (ver as notas de andamento).
+- [ ] Confirmar com a gestão as decisões que ainda estão em aberto: [decisoes-gestao.md](decisoes-gestao.md).
 
 ## 8. Primeiros passos no ar
 

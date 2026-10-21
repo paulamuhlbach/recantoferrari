@@ -16,6 +16,9 @@ Ser responsivo, visando a utilização tanto em telas maiores (computadores), qu
 Autenticação e perfis que se somam (morador; gestão: síndico, subsíndico e conselho; administrador do site, sem acesso a dados sensíveis; administradora condominial — Auxiliadora Predial —, não moradora, com acesso aos dados e às denúncias, vinculado ao contrato e com prazo prorrogável); cadastro por unidade com convite, perfil principal de cada casa e aprovação dos moradores pelo síndico; ouvidoria (demandas identificadas e sem identificação, Minhas demandas); avisos e coleta de lixo; serviços com adesão (ex.: corte de grama da área privativa, uma adesão por casa, cobrança no boleto); leitura mensal do hidrômetro (foto e número de cada casa até o dia 10, e-mails ao síndico e ao morador, cálculo da água para o boleto do mês seguinte); documentos institucionais; links para os apps já contratados (Condfy, Auxiliadora Predial).
 Detalhes em [arquitetura-mvp.md](arquitetura-mvp.md).
 
+## Decisões em aberto:
+Pontos para a reunião com o síndico e o Conselho, em forma de checklist: [decisoes-gestao.md](decisoes-gestao.md).
+
 ## Publicação:
 O que fazer quando o portal for para o ar (domínio, hospedagem, banco, e-mail, login com Google, LGPD): [para-publicar.md](para-publicar.md).
 
