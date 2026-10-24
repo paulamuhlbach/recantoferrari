@@ -10,5 +10,6 @@ Tabela de dados do Material 3 para listas com várias colunas: boletos por unida
 - Situação sempre como `Badge` com palavra (Pago, Pendente, Atrasado, Acordo), nunca só a cor.
 - Clique no cabeçalho ordena: crescente, decrescente e volta à ordem original.
 - Com `selectable`, a barra superior vira contador ("2 selecionados") com as ações em lote.
-- No celular a tabela rola na horizontal dentro do próprio contêiner. Com mais de 5 colunas, considere trocar por cards em telas estreitas.
+- **Sem rolagem horizontal por causa de texto (24/10/2026, pedido da Paula):** cabeçalhos e células quebram linha (inclusive e-mails longos). Coloque os botões de uma célula de ações dentro de `<div className="rf-dt-cell-actions">` (flex com quebra), nunca lado a lado sem quebra. Não use `white-space: nowrap` em textos das células, só em números curtos (`numeric`).
+- **No celular** (abaixo de 600px) cada linha vira um bloco empilhado: o rótulo da coluna (`label` em texto) à esquerda e o valor à direita; a coluna `primary` aparece como título do bloco. A rolagem horizontal do contêiner fica só como último recurso.
 - Use `dense` em telas administrativas com muitas linhas (44px, espaço vertical `space-2`); mantenha o padrão (56px, espaço vertical `space-3`) nas telas dos moradores. As células têm espaço em cima e embaixo, então conteúdo em duas linhas (nome e e-mail, badge e data) não encosta nas bordas (12/10/2026).

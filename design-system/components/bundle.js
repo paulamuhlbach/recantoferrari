@@ -57,6 +57,7 @@
     link: 'M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z',
     person_add: 'M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2V7H4v3H1v2h3v3h2v-3h3v-2H6zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z',
     person_remove: 'M14 8c0-2.21-1.79-4-4-4S6 5.79 6 8s1.79 4 4 4 4-1.79 4-4zm3 2v2h6v-2h-6zM2 18v2h16v-2c0-2.66-5.33-4-8-4s-8 1.34-8 4z',
+    key: 'M21 10h-8.35A5.99 5.99 0 0 0 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6a5.99 5.99 0 0 0 5.65-4H13l2 2 2-2 2 2 4-4.04L21 10zM7 15c-1.65 0-3-1.35-3-3s1.35-3 3-3 3 1.35 3 3-1.35 3-3 3z',
     history: 'M13 3a9 9 0 0 0-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0 0 13 21a9 9 0 0 0 0-18zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z',
     swap_horiz: 'M6.99 11 3 15l3.99 4v-3H14v-2H6.99v-3zM21 9l-3.99-4v3H10v2h7.01v3L21 9z',
     group: 'M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z',
@@ -458,7 +459,7 @@
                 h('label', { className: 'rf-dt-cb' }, h('input', { type: 'checkbox', checked: on, onChange: function () { toggle(id); }, 'aria-label': 'Selecionar ' + (props.rowLabel ? props.rowLabel(r) : 'linha') }),
                   h('span', { className: 'rf-check-box', 'aria-hidden': 'true' }, h(Icon, { name: 'check', size: 16 })))) : null,
               columns.map(function (c) {
-                return h('td', { key: c.key, className: cx(c.numeric && 'is-num', c.align === 'center' && 'is-center', c.primary && 'is-primary') }, c.render ? c.render(r) : r[c.key]);
+                return h('td', { key: c.key, 'data-label': typeof c.label === 'string' ? c.label : undefined, className: cx(c.numeric && 'is-num', c.align === 'center' && 'is-center', c.primary && 'is-primary') }, c.render ? c.render(r) : r[c.key]);
               }));
           }) : h('tr', null, h('td', { className: 'rf-dt-empty', colSpan: columns.length + (props.selectable ? 1 : 0) }, props.empty || 'Nada por aqui ainda.'))))),
       pageSize && sorted.length > pageSize ? h('div', { className: 'rf-dt-foot' },

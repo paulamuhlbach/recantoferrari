@@ -4,7 +4,7 @@ Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferra
 
 - **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
 - **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 19/10/2026, noite (seção Pessoas; termo de confidencialidade também para o presidente do conselho).
+- **Versão copiada:** 24/10/2026 (ícone `key` para Trocar a senha; guias de Trocar a senha e de reenviar ou cancelar um convite não aceito; DataTable sem rolagem horizontal por causa de texto, empilhada no celular; e-mails com o logo em imagem).
 
 ## O que tem aqui
 
@@ -87,6 +87,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Foco do teclado: contorno sólido de 2px em `focus-ring`, afastado 2px. Nunca remova.
 - Alvos de toque têm no mínimo `control-height` (44px).
 - Layout: conteúdo até `content-max` (1200px). Uma coluna abaixo de `bp-medium` (600px), duas até `bp-expanded` (840px), três acima. O cabeçalho mostra os links a partir de `bp-expanded`; abaixo disso, botão de menu.
+- **Sem rolagem horizontal por causa de texto ou de elementos pequenos (24/10/2026, pedido da Paula).** Textos quebram linha e grupos de botões, chips e badges ficam em flex com `flex-wrap: wrap` e `gap`. Rolagem horizontal só dentro de cards, e só quando não houver outro jeito. Sempre pense primeiro no celular: tabelas viram blocos empilhados abaixo de 600px (`DataTable`).
 
 ## Logotipo
 
@@ -106,6 +107,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Água: `water_drop` (leitura do hidrômetro, conta de água), `photo_camera` (foto), `calculate` (cálculo da gestão).
 - Pets: `pets` (cadastro de pets da casa, em Minha casa).
 - Histórico: `history` (registro de atividades de uma pessoa e a tela Registro de atividades).
+- Senha: `key` ("Trocar a senha" no menu da conta). `lock` fica para sigilo (termo de confidencialidade, denúncias).
 - Ícones de serviço (`Icon.servicos`): `grass`, `pest_control`, `plumbing`, `cleaning_services` e `event` (genérico). Quem cadastra o serviço escolhe o ícone numa lista; nada fica fixo no código.
 
 ## Dados pessoais nas telas
@@ -113,7 +115,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Nome, casa, contato, moradores, valores e serviços contratados só aparecem para quem tem permissão (a gestão, e o próprio morador para a sua casa). O administrador do site sem o termo de confidencialidade assinado vê só a situação de cada item; com o termo, vê tudo, como o síndico.
 - Quando a tela precisa mostrar um contato para quem não tem essa permissão, o e-mail aparece mascarado: `pa•••@gmail.com`.
 - Explique a restrição com um `Alert` `info` no topo da tela ("Você vê só a situação de cada casa"), em vez de esconder colunas sem aviso. Se a restrição sai com o termo de confidencialidade, o `Alert` leva à tela do termo (`Button` `text` com `icon="lock"`).
-- **Termo de confidencialidade** (administrador do site e presidente do conselho): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta. O nome digitado precisa ser igual ao do cadastro (sem diferença de acento ou maiúsculas); se não for, o `TextField` fica em `status="error"` com o nome esperado no `helper`. Se o texto do termo mudar, um `Alert` `warning` "O texto do termo mudou" pede nova assinatura.
+- **Termo de confidencialidade** (administrador do site, presidente do conselho e administradora do condomínio; o síndico não assina): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta. Na tela do contrato de administração, cada pessoa da administradora mostra "termo assinado" ou "falta assinar o termo" abaixo do `Badge` de acesso. O nome digitado precisa ser igual ao do cadastro (sem diferença de acento ou maiúsculas); se não for, o `TextField` fica em `status="error"` com o nome esperado no `helper`. Se o texto do termo mudar, um `Alert` `warning` "O texto do termo mudou" pede nova assinatura.
 - Status de cadastro: `Badge` `success` "Cadastrada", `info` "Convite enviado", `error` "Convite vencido", `neutral` "Sem convite", `warning` "Aguardando aprovação". O perfil principal da casa leva o `Badge` `primary` "Principal".
 
 ## Navegação e links externos
@@ -122,7 +124,32 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - A conta da pessoa logada fica à direita do cabeçalho: o nome abre um `Menu` com os itens do perfil (ex.: "Configurações", só para o síndico) e "Sair do portal".
 - Apps contratados pelo condomínio, como o **Condfy** (`https://web.condfy.com.br/login`) e a **Auxiliadora Predial** (`https://portal.auxiliadorapredial.com.br/Login.aspx`), ficam num botão "Apps" à direita do cabeçalho, que abre um `Menu`. Os itens usam `external`: abrem em nova aba, mostram o ícone `open_in_new` e avisam leitores de tela "(abre em outra aba)".
 - Rodapé (`Footer`) em todas as páginas, com termos de uso e política de privacidade. Por padrão em azul profundo.
+- Itens de todos no menu da conta, depois dos itens do perfil: "Meu registro" (`history`), "Trocar a senha" (`key`) e "Sair do portal" (`logout`).
 - Página inicial pós-login: `Hero` com a foto do condomínio (`assets/Fotos`) e a saudação ("Olá, Ana"), logo abaixo do cabeçalho.
+
+## E-mails automáticos
+
+- Mesmo desenho do portal: fundo `surface-container`, cartão branco com cantos `radius-xs`, cabeçalho com o logo horizontal e fio `accent` de 4px, corpo em `body-medium` (a saudação em `body-large`), botão em pílula `primary` "Abrir no portal" e rodapé em `surface-deep` com `on-surface-deep-variant`. Máximo de 600px de largura; no celular, o texto quebra linha (nunca rolagem horizontal; links longos com `overflow-wrap: anywhere`).
+- O logo vai como **imagem PNG dentro do e-mail** (2x, exibida com 280px), gerada do `recanto-ferrari-horizontal.svg`, com `alt="Condomínio Recanto Ferrari"`. Assim aparece em qualquer leitor de e-mail, sem depender da fonte da marca nem do site publicado.
+- Fontes: Outfit e Radio Canada Big pelo Google Fonts. Leitores que não carregam fontes externas (Gmail, Outlook no Windows) mostram Arial, a alternativa mais próxima; por isso nada importante depende da fonte (o nome da marca está no logo em imagem).
+- Os textos vêm das configurações; a última linha curta (a assinatura) vai para o rodapé.
+
+## Trocar a senha (Minha conta)
+
+- Abre num `Dialog` com o ícone `key`, a partir do item "Trocar a senha" do menu da conta (e da gaveta no celular).
+- Campos `TextField` `type="password"`: "Senha atual", "Senha nova" (helper "Pelo menos 8 caracteres.") e "Repita a senha nova". Erros no próprio campo (`status="error"`): senha atual em branco, senha nova curta ou igual à atual, as duas senhas diferentes. Senha atual errada: `Alert` `error` no topo do diálogo.
+- Abaixo dos campos, `Button` `text` com `icon="mail"` "Esqueci a senha atual": manda o link de senha nova para o e-mail da pessoa.
+- `Alert` `info` "Este aparelho continua conectado" quando a troca encerra as outras sessões (configuração). Ações: `outlined` "Cancelar" e `filled` com `icon="check"` "Trocar a senha".
+- Depois: `Alert` `success` "Senha trocada" (com o e-mail de login e o aviso enviado por e-mail) e `filled` "Fechar".
+- Quem entra só com a conta Google não tem senha atual: o diálogo explica e oferece `filled` com `icon="mail"` "Mandar o link"; `Alert` `info` com o e-mail e a validade do link.
+
+## Reenviar ou cancelar um convite não aceito
+
+- Enquanto o convite não foi aceito, "Reenviar convite" (Unidades) e o `IconButton` `mail` "Reenviar o link" (Contrato de administração) abrem um `Dialog` com o e-mail do convite num `TextField` editável, para corrigir um e-mail cadastrado errado.
+- Texto curto acima do campo: o convite ainda não foi aceito; confira o e-mail. O `helper` diz que o link anterior deixa de valer.
+- E-mail alterado: o campo fica em `status="highlight"` (roxo, campo destacado) e o `helper` diz para onde vai o link e que o enviado ao e-mail anterior deixa de valer.
+- O administrador do site sem o termo de confidencialidade não vê o e-mail: o campo vem vazio, com o e-mail mascarado no `placeholder` e no `helper` ("Em branco, vai de novo para pa•••@gmail.com").
+- **Cancelar convite** (24/10/2026): ao lado de "Reenviar convite", `Button` `text` com `icon="close"` "Cancelar convite" (no Contrato de administração, `IconButton` `close` `danger` "Cancelar o convite de …", no lugar do `block` de encerrar o acesso). Confirma num `Dialog` com ícone `close`: o texto diz para qual e-mail foi o link e que ele deixa de valer; ações `outlined` "Voltar" e `danger` "Cancelar convite". Depois, `Alert` `success` "Convite da Casa 43 cancelado".
 
 ## Minha casa
 
