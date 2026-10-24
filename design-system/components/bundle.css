@@ -529,7 +529,7 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
    No celular (abaixo de bp-medium, 600px), cada linha vira um bloco empilhado: rótulo da coluna à esquerda,
    valor à direita. A rolagem horizontal do contêiner fica só como último recurso. */
 .rf-dt-table th { white-space: normal; text-wrap: balance; }
-.rf-dt-table td { overflow-wrap: anywhere; }
+.rf-dt-table td { overflow-wrap: break-word; }
 .rf-dt-cell-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
 @media (max-width: 599px) {
   .rf-dt-scroll { overflow-x: visible; }
@@ -540,6 +540,7 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
   .rf-dt-table td, .rf-dt-dense .rf-dt-table td { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3);
     height: auto; padding: var(--space-1) var(--space-4); border-bottom: 0; text-align: left; }
   .rf-dt-table td > * { min-width: 0; }
+  .rf-dt-table td { overflow-wrap: anywhere; }
   .rf-dt-table td[data-label]::before { content: attr(data-label); flex: 0 0 36%; padding-top: 2px;
     font: 600 12px/16px var(--font-body); letter-spacing: .02em; text-transform: uppercase; color: var(--on-surface-variant); }
   .rf-dt-table td.is-primary { font-size: 16px; padding-bottom: var(--space-2); }
