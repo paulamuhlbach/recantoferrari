@@ -29,6 +29,7 @@ export declare function Chip(props: ChipProps): React.ReactElement;
 
 export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string; helper?: string; status?: 'default' | 'success' | 'error' | 'highlight'; leadingIcon?: IconName; multiline?: boolean; rows?: number;
+  /** Campo obrigatório: fundo colorido (field-fill). Sem required, o campo é opcional e tem fundo branco. */ required?: boolean;
   /** Unidade depois do valor, ex.: "m³" na leitura do hidrômetro. */ suffix?: string;
 }
 export declare function TextField(props: TextFieldProps): React.ReactElement;
@@ -116,7 +117,8 @@ export interface RadioGroupProps { label?: React.ReactNode; helper?: React.React
 export declare function RadioGroup(props: RadioGroupProps): React.ReactElement;
 
 export interface FileUploadProps {
-  label?: string; helper?: string; status?: 'default' | 'error'; disabled?: boolean; id?: string; name?: string; required?: boolean;
+  label?: string; helper?: string; status?: 'default' | 'error'; disabled?: boolean; id?: string; name?: string;
+  /** Obrigatório: área com fundo colorido; opcional (padrão): fundo branco. */ required?: boolean;
   /** Tipos aceitos (padrão image/*). */ accept?: string; /** "environment" abre a câmera traseira no celular. */ capture?: 'environment' | 'user'; multiple?: boolean;
   icon?: IconName; buttonLabel?: string; hint?: string; changeLabel?: string; removeLabel?: string;
   /** Arquivo escolhido: nome, detalhe (tamanho, data) e miniatura (URL ou elemento). */ fileName?: string; fileInfo?: string; preview?: string | React.ReactNode; previewAlt?: string;

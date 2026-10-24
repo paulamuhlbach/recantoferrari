@@ -114,8 +114,10 @@
 .rf-field-label { font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; color: var(--on-surface-variant); }
 .rf-field-box {
   display: flex; align-items: center; gap: var(--space-2); min-height: var(--control-height); padding: 0 var(--space-3);
-  background: var(--field-fill); border: 1px solid var(--field-stroke); border-radius: var(--radius-xs); color: var(--on-surface);
+  background: var(--field-optional-fill, #FFFFFF); border: 1px solid var(--field-stroke); border-radius: var(--radius-xs); color: var(--on-surface);
 }
+/* Opcional: fundo branco. Obrigatório (required): fundo colorido. */
+.rf-field-required .rf-field-box { background: var(--field-fill); }
 .rf-field-box > .rf-icon { color: var(--on-surface-variant); }
 .rf-field-box:focus-within { outline: 2px solid var(--focus-ring); outline-offset: 1px; }
 .rf-field-input {
@@ -498,7 +500,7 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
 .rf-upload-input { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .rf-upload-zone {
   display: flex; align-items: center; gap: var(--space-4); min-height: 112px; padding: var(--space-5);
-  background: var(--field-fill); border: 1.5px dashed var(--field-stroke); border-radius: var(--radius-xs);
+  background: var(--field-optional-fill, #FFFFFF); border: 1.5px dashed var(--field-stroke); border-radius: var(--radius-xs);
   color: var(--on-surface); cursor: pointer; font-family: var(--font-body);
 }
 .rf-upload-input:focus-visible + .rf-upload-zone,
@@ -518,6 +520,7 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
 .rf-upload-name > .rf-icon { color: var(--success); }
 .rf-upload-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }
 .rf-upload-actions label.rf-btn { cursor: pointer; }
+.rf-upload-required .rf-upload-zone { background: var(--field-fill); }
 .rf-upload-error .rf-upload-zone { background: var(--error-container); border-color: var(--error); border-style: solid; border-width: 2px; }
 .rf-upload-error .rf-upload-file { border-color: var(--error); border-width: 2px; }
 .rf-upload-error .rf-upload-name > .rf-icon, .rf-upload-error .rf-field-label, .rf-upload-error .rf-field-help { color: var(--on-error-container); }
@@ -549,3 +552,5 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
   .rf-dt-table td.rf-dt-empty { display: block; height: auto !important; padding: var(--space-6) var(--space-4); text-align: center; }
   .rf-dt-cell-actions { justify-content: flex-end; }
 }
+/* Tabs sem rolagem horizontal (24/10/2026): as abas quebram linha quando não cabem. */
+.rf-tabs { flex-wrap: wrap; overflow-x: visible; }

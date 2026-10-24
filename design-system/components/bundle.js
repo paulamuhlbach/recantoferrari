@@ -157,7 +157,7 @@
     if (status === 'error') rest['aria-invalid'] = 'true';
     var statusIcon = status === 'error' ? 'error' : status === 'success' ? 'check_circle' : null;
     var control = props.multiline ? h('textarea', Object.assign({ rows: props.rows || 4 }, rest)) : h('input', Object.assign({ type: 'text' }, rest));
-    return h('div', { className: cx('rf-field', 'rf-field-' + status, props.multiline && 'rf-field-multiline', props.className) },
+    return h('div', { className: cx('rf-field', 'rf-field-' + status, props.required && 'rf-field-required', props.multiline && 'rf-field-multiline', props.className) },
       h('label', { className: 'rf-field-label', htmlFor: id }, props.label),
       h('div', { className: 'rf-field-box' },
         props.leadingIcon ? h(Icon, { name: props.leadingIcon, size: 20 }) : null,
@@ -602,7 +602,7 @@
             h('div', { className: 'rf-upload-actions' },
               h(Button, { as: 'label', htmlFor: id, variant: 'outlined', size: 'sm', icon: props.icon || 'photo_camera' }, props.changeLabel || 'Trocar foto'),
               props.onRemove ? h(Button, { variant: 'text', size: 'sm', icon: 'close', onClick: props.onRemove }, props.removeLabel || 'Remover') : null)));
-    return h('div', { className: cx('rf-field', 'rf-upload', 'rf-upload-' + status, filled && 'is-filled', props.className) },
+    return h('div', { className: cx('rf-field', 'rf-upload', 'rf-upload-' + status, props.required && 'rf-upload-required', filled && 'is-filled', props.className) },
       props.label ? h('span', { className: 'rf-field-label', id: id + '-label' }, props.label) : null,
       input, body,
       props.helper ? h('p', { className: 'rf-field-help', id: helpId }, props.helper) : null);
