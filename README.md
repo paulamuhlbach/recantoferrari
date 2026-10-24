@@ -3,7 +3,7 @@ Intranet do condomínio Recanto Ferrari
 
 
 ## Objetivo:
-Disponibilizar site intranet, gerenciável pela administração do condomínio, que possibilite centralização da comunicação, gestão de espaços e integração com as ferramentas digitais já contratadas (Casa do Síndico, Condfy…) e de acesso exclusivo aos moradores do condomínio Recanto Ferrari, via autenticação.
+Disponibilizar site intranet, gerenciável pela administração do condomínio, que possibilite centralização da comunicação, gestão de espaços e integração com as ferramentas digitais já contratadas (Auxiliadora Predial, Condfy…) e de acesso exclusivo aos moradores do condomínio Recanto Ferrari, via autenticação.
 
 ## Premissas:
 Uso de tecnologias de código aberto, proporcionando o uso e consumo de webservices de serviços de terceiros.
