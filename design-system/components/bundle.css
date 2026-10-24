@@ -80,23 +80,24 @@
 .rf-iconbtn.is-selected { color: var(--primary); }
 .rf-iconbtn:disabled { color: color-mix(in srgb, var(--on-surface) 38%, transparent); cursor: not-allowed; }
 .rf-iconbtn { position: relative; }
-.rf-iconbtn[data-tooltip]::after {
+/* A dica só existe no mouseover e no foco: escondida, ela não ocupa espaço nem cria rolagem horizontal (24/10/2026). */
+.rf-iconbtn[data-tooltip] { --rf-tip-x: -50%; }
+.rf-iconbtn[data-tooltip]:hover::after, .rf-iconbtn[data-tooltip]:focus-visible::after {
   content: attr(data-tooltip);
   position: absolute; bottom: calc(100% + 4px); left: 50%; z-index: 20;
-  transform: translate(-50%, 4px);
+  transform: translate(var(--rf-tip-x), 0);
   padding: 4px 8px; border-radius: var(--radius-xs);
   background: var(--inverse-surface); color: var(--inverse-on-surface);
   font: 500 12px/16px var(--font-body); letter-spacing: .02em; white-space: nowrap;
-  pointer-events: none; opacity: 0; transition: opacity 120ms ease, transform 120ms ease;
+  pointer-events: none; animation: rf-tip-in 120ms ease 300ms both;
 }
-.rf-iconbtn[data-tooltip]:hover::after, .rf-iconbtn[data-tooltip]:focus-visible::after {
-  opacity: 1; transform: translate(-50%, 0); transition-delay: 300ms;
-}
+@keyframes rf-tip-in { from { opacity: 0; transform: translate(var(--rf-tip-x), 4px); } to { opacity: 1; transform: translate(var(--rf-tip-x), 0); } }
+@media (prefers-reduced-motion: reduce) { .rf-iconbtn[data-tooltip]:hover::after, .rf-iconbtn[data-tooltip]:focus-visible::after { animation-duration: 1ms; } }
 .rf-iconbtn-danger { color: var(--error); }
 /* Na última coluna de uma tabela, a dica alinha pela direita para não ser cortada. */
-.rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child::after { left: auto; right: 0; transform: translate(0, 4px); }
+.rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child { --rf-tip-x: 0; }
 .rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child:hover::after,
-.rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child:focus-visible::after { transform: translate(0, 0); }
+.rf-dt td:last-child .rf-iconbtn[data-tooltip]:last-child:focus-visible::after { left: auto; right: 0; }
 
 /* ---------- Chip ---------- */
 .rf-chip {
@@ -522,3 +523,28 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
 .rf-upload-error .rf-upload-name > .rf-icon, .rf-upload-error .rf-field-label, .rf-upload-error .rf-field-help { color: var(--on-error-container); }
 .rf-upload-disabled .rf-upload-zone { background: var(--field-disabled-fill); border-color: var(--field-disabled-stroke); cursor: not-allowed; opacity: var(--opacity-disabled); }
 @media (max-width: 599px) { .rf-upload-preview { width: 100%; } }
+
+/* ---------- DataTable sem rolagem horizontal por causa de texto (24/10/2026) ----------
+   Cabeçalhos e células quebram linha (e-mails longos também); grupos de ações quebram com flex.
+   No celular (abaixo de bp-medium, 600px), cada linha vira um bloco empilhado: rótulo da coluna à esquerda,
+   valor à direita. A rolagem horizontal do contêiner fica só como último recurso. */
+.rf-dt-table th { white-space: normal; text-wrap: balance; }
+.rf-dt-table td { overflow-wrap: anywhere; }
+.rf-dt-cell-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-1) var(--space-2); }
+@media (max-width: 599px) {
+  .rf-dt-scroll { overflow-x: visible; }
+  .rf-dt-table, .rf-dt-table tbody, .rf-dt-table tr { display: block; width: 100%; }
+  .rf-dt-table thead { display: none; }
+  .rf-dt-table tbody tr { padding: var(--space-3) 0; border-bottom: 1px solid var(--outline-variant); }
+  .rf-dt-table tbody tr:last-child { border-bottom: 0; }
+  .rf-dt-table td, .rf-dt-dense .rf-dt-table td { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3);
+    height: auto; padding: var(--space-1) var(--space-4); border-bottom: 0; text-align: left; }
+  .rf-dt-table td > * { min-width: 0; }
+  .rf-dt-table td[data-label]::before { content: attr(data-label); flex: 0 0 36%; padding-top: 2px;
+    font: 600 12px/16px var(--font-body); letter-spacing: .02em; text-transform: uppercase; color: var(--on-surface-variant); }
+  .rf-dt-table td.is-primary { font-size: 16px; padding-bottom: var(--space-2); }
+  .rf-dt-table td.is-primary::before { display: none; }
+  .rf-dt-table td.rf-dt-check { width: auto; padding: 0 var(--space-4) !important; }
+  .rf-dt-table td.rf-dt-empty { display: block; height: auto !important; padding: var(--space-6) var(--space-4); text-align: center; }
+  .rf-dt-cell-actions { justify-content: flex-end; }
+}
