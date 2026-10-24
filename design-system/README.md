@@ -4,7 +4,7 @@ Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferra
 
 - **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
 - **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 24/10/2026 (ícone `key` para Trocar a senha; guias de Trocar a senha e de reenviar ou cancelar um convite não aceito; DataTable sem rolagem horizontal por causa de texto, empilhada no celular; e-mails com o logo em imagem).
+- **Versão copiada:** 24/10/2026, tarde (ícone `key` para Trocar a senha; guias de Trocar a senha e de reenviar ou cancelar um convite não aceito; DataTable sem rolagem horizontal por causa de texto, empilhada no celular; e-mails com o logo em imagem).
 
 ## O que tem aqui
 
