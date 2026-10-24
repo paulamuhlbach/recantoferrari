@@ -15,13 +15,14 @@
   var R = window.RecantoFerrari, h = React.createElement;
   function App() {
     return h('div', { className: 'grid' },
-      h(R.TextField, { label: 'Nome completo', placeholder: 'Como está no contrato', helper: 'Use o nome do titular da unidade.' }),
+      h(R.TextField, { label: 'Nome completo', required: true, placeholder: 'Como está no contrato', helper: 'Obrigatório: fundo colorido.' }),
+      h(R.TextField, { label: 'Telefone (opcional)', type: 'tel', placeholder: '(51) 99999-0000', helper: 'Opcional: fundo branco.' }),
       h(R.TextField, { label: 'Unidade', defaultValue: 'Casa 14', status: 'success', helper: 'Unidade encontrada.' }),
       h(R.TextField, { label: 'E-mail', defaultValue: 'maria@exemplo', status: 'error', helper: 'Falta o domínio. Exemplo: maria@email.com' }),
       h(R.TextField, { label: 'Data da assembleia', defaultValue: '14/11/2026', status: 'highlight', helper: 'Definida pela administração.' }),
       h(R.TextField, { label: 'CPF', defaultValue: '•••.•••.•••-12', disabled: true, helper: 'Para alterar, fale com a portaria.' }),
       h(R.TextField, { label: 'Buscar documento', leadingIcon: 'search', placeholder: 'Ata, regimento, boleto…' }),
-      h('div', { style: { gridColumn: '1 / -1' } }, h(R.TextField, { label: 'Mensagem para a administração', multiline: true, rows: 3, placeholder: 'Descreva o assunto' })));
+      h('div', { style: { gridColumn: '1 / -1' } }, h(R.TextField, { label: 'Mensagem para a administração', required: true, multiline: true, rows: 3, placeholder: 'Descreva o assunto' })));
   }
   ReactDOM.createRoot(document.getElementById('root')).render(h(App));
 </script>

@@ -1,42 +1,3 @@
-# Design System Recanto Ferrari
-
-Cópia, no repositório, do Design System do portal do Condomínio Recanto Ferrari: cores, fontes, logotipo, ícones e componentes React usados em todas as telas.
-
-- **Fonte oficial:** o Design System publicado em https://claude.ai/artifact/XVqFUtTaue7JzAr29zQtnN (cards dos componentes, guia da marca e tokens editáveis). As mudanças são feitas lá e copiadas para esta pasta.
-- **Protótipo navegável das telas:** https://claude.ai/artifact/Kk5D5SEBTTDLgKp9c2DhVr
-- **Versão copiada:** 24/10/2026, tarde (ícone `key` para Trocar a senha; guias de Trocar a senha e de reenviar ou cancelar um convite não aceito; DataTable sem rolagem horizontal por causa de texto, empilhada no celular; e-mails com o logo em imagem).
-
-## O que tem aqui
-
-| Pasta ou arquivo | Conteúdo |
-| --- | --- |
-| `tokens.json` | Todos os tokens: cores (tema claro e escuro), tipografia, espaço, cantos, elevação. É a referência para o código do site. |
-| `tokens.css` | Variáveis CSS do tema claro geradas do `tokens.json` (`--primary`, `--surface`, `--space-4`…). |
-| `components/bundle.js` | Componentes React 18 em `window.RecantoFerrari` (Logo, Button, TextField, Card, DataTable, Dialog, TopAppBar, Footer, FileUpload…). |
-| `components/bundle.css` | Estilos dos componentes; só lê as variáveis de `tokens.css`. Classes começam com `rf-`. |
-| `components/index.d.ts` | Tipos e props de cada componente (documentação). |
-| `components/<Componente>/README.md` | Quando e como usar cada componente. |
-| `components/<Componente>/preview.html` | Exemplo de uso de cada componente (roda dentro do Design System publicado). |
-| `assets/Logos/` | Logotipo em SVG, com texto em curvas: vertical, horizontal, símbolo e versões para fundo escuro. |
-| `assets/Icons/` | Ícones do Material Icons (Apache 2.0) usados no portal, em SVG na cor `ink`. |
-| `assets/Fotos/` | Foto do condomínio usada no `Hero` da página inicial. |
-| `fonts/` | Radio Canada Big, Outfit e Raleway em woff2 (licença SIL Open Font License). |
-
-## Como usar no site
-
-1. Carregue as fontes (`fonts/`) com `@font-face`, depois `tokens.css` e `components/bundle.css`.
-2. Carregue React 18 e `components/bundle.js`; os componentes ficam em `window.RecantoFerrari`.
-3. Nas telas, use os papéis de cor (`--primary`, `--surface`, `--on-surface-deep`…), não as primitivas (`--terracotta-1`, `--blue-2`…).
-4. Para o tema escuro, gere as variáveis a partir dos valores `dark` do `tokens.json`.
-
-## Como atualizar
-
-Toda mudança no Design System (componente novo, cor, ícone, logo) é feita no Design System publicado e reinstalada no protótipo. Depois, esta pasta é atualizada com a versão nova e entra num commit junto com a documentação (`arquitetura-mvp.md`). Design System, telas e documentação ficam sempre alinhados.
-
----
-
-# Guia da marca
-
 Sistema visual do site do **Condomínio Recanto Ferrari**. As cores, as fontes e o logotipo vêm do arquivo de identidade (Figma). A estrutura de papéis de cor, a escala tipográfica, os estados e os componentes seguem o **Material Design 3**, adaptados à marca: cantos quase retos (como as casas do logo), tons terrosos e texto maior para leitura confortável de moradores de todas as idades.
 
 ## Voz e conteúdo
@@ -87,7 +48,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Foco do teclado: contorno sólido de 2px em `focus-ring`, afastado 2px. Nunca remova.
 - Alvos de toque têm no mínimo `control-height` (44px).
 - Layout: conteúdo até `content-max` (1200px). Uma coluna abaixo de `bp-medium` (600px), duas até `bp-expanded` (840px), três acima. O cabeçalho mostra os links a partir de `bp-expanded`; abaixo disso, botão de menu.
-- **Sem rolagem horizontal por causa de texto ou de elementos pequenos (24/10/2026, pedido da Paula).** Textos quebram linha e grupos de botões, chips e badges ficam em flex com `flex-wrap: wrap` e `gap`. Rolagem horizontal só dentro de cards, e só quando não houver outro jeito. Sempre pense primeiro no celular: tabelas viram blocos empilhados abaixo de 600px (`DataTable`).
+- **Sem rolagem horizontal por causa de texto ou de elementos pequenos (24/10/2026, pedido da Paula).** As abas (`Tabs`) quebram linha quando não cabem. Textos quebram linha e grupos de botões, chips e badges ficam em flex com `flex-wrap: wrap` e `gap`. Rolagem horizontal só dentro de cards, e só quando não houver outro jeito. Sempre pense primeiro no celular: tabelas viram blocos empilhados abaixo de 600px (`DataTable`).
 
 ## Logotipo
 
@@ -109,6 +70,18 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Histórico: `history` (registro de atividades de uma pessoa e a tela Registro de atividades).
 - Senha: `key` ("Trocar a senha" no menu da conta). `lock` fica para sigilo (termo de confidencialidade, denúncias).
 - Ícones de serviço (`Icon.servicos`): `grass`, `pest_control`, `plumbing`, `cleaning_services` e `event` (genérico). Quem cadastra o serviço escolhe o ícone numa lista; nada fica fixo no código.
+
+## Formulários: obrigatório e opcional
+
+- **Campo obrigatório tem fundo colorido; campo opcional, fundo branco** (pedido da Paula, 24/10/2026). Vale para `TextField` e `FileUpload`: passe `required` nos obrigatórios (fundo `field-fill`); sem `required`, o fundo é `field-optional-fill` (branco), com a mesma borda.
+- Quando a tela tem os dois tipos, o rótulo do opcional termina em "(opcional)", para não depender só da cor.
+- `status` continua mandando no fundo: `error` (vermelho), `success` (verde), `highlight` (roxo, valor pré-preenchido que pode mudar) e `disabled` (cinza).
+- Os formulários usam `noValidate` e mostram os próprios erros no campo; o `required` também avisa o leitor de tela.
+
+## Lista e detalhe (uma coluna)
+
+- Telas de lista com detalhe (ex.: Ouvidoria da gestão, Denúncias, Minhas demandas) ficam **em uma coluna** (pedido da Paula, 24/10/2026): filtros (`Chip` `filter`) em cima, a lista (`ListItem`) na largura toda e, ao abrir um item, o detalhe no lugar da lista, com `Button` `text` `icon="chevron_left"` "Voltar para …" acima. Os filtros escolhidos continuam ao voltar.
+- Nada de painel lateral vazio esperando a escolha. O `selected` do `ListItem` fica para listas em diálogos ou menus.
 
 ## Dados pessoais nas telas
 
