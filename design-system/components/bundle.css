@@ -211,6 +211,9 @@ textarea.rf-field-input { resize: vertical; }
 .rf-list-item.is-selected { background: var(--secondary-container); color: var(--on-secondary-container); }
 .rf-list-item.is-selected .rf-list-supporting, .rf-list-item.is-selected .rf-list-overline { color: var(--on-secondary-container); }
 .rf-list-lead-secondary { background: var(--secondary-container); color: var(--on-secondary-container); }
+.rf-list-lead-success { background: var(--success-container); color: var(--on-success-container); }
+.rf-list-lead-tertiary { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+.rf-list-lead-error { background: var(--error-container); color: var(--error); }
 
 /* ---------- Badge ---------- */
 .rf-badge {

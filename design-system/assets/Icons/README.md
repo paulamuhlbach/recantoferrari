@@ -7,4 +7,5 @@ Desenhos oficiais do Material Icons (Apache 2.0, pacote `@material-design-icons/
 - `pets.svg`: pets da casa (Minha casa).
 - `history.svg`: registro de atividades (histórico de uma pessoa).
 - `key.svg`: senha (Trocar a senha, no menu da conta).
+- `compost.svg` (orgânico), `recycling.svg` (reciclável), `location_on.svg` (endereço, ex.: ecoponto), `help.svg` (ajuda curta): coleta de lixo.
 - Para um ícone novo, copie o SVG oficial do pacote; nunca redesenhe à mão.

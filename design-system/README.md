@@ -83,6 +83,13 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Telas de lista com detalhe (ex.: Ouvidoria da gestão, Denúncias, Minhas demandas) ficam **em uma coluna** (pedido da Paula, 24/10/2026): filtros (`Chip` `filter`) em cima, a lista (`ListItem`) na largura toda e, ao abrir um item, o detalhe no lugar da lista, com `Button` `text` `icon="chevron_left"` "Voltar para …" acima. Os filtros escolhidos continuam ao voltar.
 - Nada de painel lateral vazio esperando a escolha. O `selected` do `ListItem` fica para listas em diálogos ou menus.
 
+## Coleta de lixo
+
+- Cada tipo de coleta tem ícone e cor próprios, para não confundir: **orgânico** `compost` em círculo verde (`ListItem` `tone="success"`), **reciclável** `recycling` em azul (`secondary`). O dia aparece em destaque (`headline`) e o horário abaixo.
+- Ao lado de cada tipo, `IconButton` `help` ("O que é orgânico?") abre um `Dialog` com a lista do que vai naquele tipo.
+- Abaixo, o bloco **"Não pode ir para a lixeira"** (`block` em círculo vermelho, `tone="error"`): a lista dos itens (óleo de cozinha, eletrodomésticos, pilhas…) e onde levar, com o endereço do ecoponto (`location_on`) e um link "Ver no mapa" (abre em outra aba).
+- Tudo editável por quem edita conteúdo ("Editar dias"). Até a primeira edição, aparece o conteúdo sugerido.
+
 ## Dados pessoais nas telas
 
 - Nome, casa, contato, moradores, valores e serviços contratados só aparecem para quem tem permissão (a gestão, e o próprio morador para a sua casa). O administrador do site sem o termo de confidencialidade assinado vê só a situação de cada item; com o termo, vê tudo, como o síndico.
