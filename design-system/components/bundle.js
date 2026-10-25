@@ -64,6 +64,10 @@
     water_drop: 'M12 2c-5.33 4.55-8 8.48-8 11.8 0 4.98 3.8 8.2 8 8.2s8-3.22 8-8.2c0-3.32-2.67-7.25-8-11.8zM7.83 14c.37 0 .67.26.74.62.41 2.22 2.28 2.98 3.64 2.87.43-.02.79.32.79.75 0 .4-.32.73-.72.75-2.13.13-4.62-1.09-5.19-4.12a.75.75 0 0 1 .74-.87z',
     photo_camera: 'M12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 1 0 0-6.4zM9 2 7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z',
     calculate: 'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5.97 4.06L14.09 6l1.41 1.41L16.91 6l1.06 1.06-1.41 1.41 1.41 1.41-1.06 1.06-1.41-1.4-1.41 1.41-1.06-1.06 1.41-1.41-1.41-1.42zm-6.78.66h5v1.5h-5v-1.5zM11.5 16h-2v2H8v-2H6v-1.5h2v-2h1.5v2h2V16zm6.5 1.25h-5v-1.5h5v1.5zm0-2.5h-5v-1.5h5v1.5z',
+    compost: 'M12.87 11.81A2.5 2.5 0 0 1 15 8h1c1.51 0 2-1 2-1s.55 6-3 6c-.49 0-.94-.14-1.32-.38-.24.64-.59 1.76-.76 2.96 1.26.22 2.28.89 2.77 1.77A6.505 6.505 0 0 0 18.5 12h3c0 5.24-4.26 9.5-9.5 9.5S2.5 17.24 2.5 12 6.76 2.5 12 2.5V0l4 4-4 4V5.5c-3.58 0-6.5 2.92-6.5 6.5 0 2.21 1.11 4.17 2.81 5.35.51-.92 1.63-1.62 2.98-1.8-.09-.69-.26-1.42-.49-2.03-.35.3-.8.48-1.3.48-1.1 0-2-.9-2-2v-.99c0-.56-.19-1.09-.5-1.51 0 0 4.45-.23 4.5 2.5 0 .29-.06.56-.17.8-.42-.32-.86-.6-1.33-.8.58.43 1.37 1.37 2 2.6.67-1.62 1.68-3.27 3-4.6-.76.52-1.47 1.12-2.13 1.81z',
+    recycling: 'M5.77 7.15 7.2 4.78l1.03-1.71c.39-.65 1.33-.65 1.72 0l1.48 2.46-1.23 2.06-1 1.62-3.43-2.06zm15.95 5.82-1.6-2.66-3.46 2L18.87 16H20a2 2 0 0 0 2-2c0-.36-.1-.71-.28-1.03zM16 21h1.5a2 2 0 0 0 1.79-1.11L20.74 17H16v-2l-4 4 4 4v-2zm-6-4H5.7l-.84 1.41c-.3.5-.32 1.12-.06 1.65.28.57.87.94 1.52.94H10v-4zm-3.88-2.65 1.73 1.04L6.48 9.9 1 11.27l1.7 1.02-.41.69c-.35.59-.38 1.31-.07 1.92l1.63 3.26 2.27-3.81zm10.9-9.21-1.3-2.17C15.35 2.37 14.7 2 14 2h-3.53l3.12 5.2-1.72 1.03 5.49 1.37 1.37-5.49-1.71 1.03z',
+    help: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z',
+    location_on: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z',
     pets: 'M2 9.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM6.5 5.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM12.5 5.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM17 9.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z'
   };
   function Icon(props) {
@@ -221,7 +225,7 @@
     if (ext) { rest.target = '_blank'; rest.rel = 'noopener noreferrer'; }
     rest.className = cx('rf-list-item', Tag !== 'div' && 'rf-state rf-list-item-action', props.selected && 'is-selected', props.className);
     return h(Tag, rest,
-      props.icon ? h('span', { className: cx('rf-list-lead', props.tone === 'secondary' && 'rf-list-lead-secondary') }, h(Icon, { name: props.icon, size: 24 })) : null,
+      props.icon ? h('span', { className: cx('rf-list-lead', props.tone && props.tone !== 'primary' && 'rf-list-lead-' + props.tone) }, h(Icon, { name: props.icon, size: 24 })) : null,
       h('span', { className: 'rf-list-text' },
         props.overline ? h('span', { className: 'rf-list-overline' }, props.overline) : null,
         h('span', { className: 'rf-list-headline' }, props.headline),
@@ -255,6 +259,7 @@
 
   /* ---------- Dialog ---------- */
   function Dialog(props) {
+    var inicioNoFundo = React.useRef(false);
     if (props.open === false) return null;
     var titleId = 'rf-dlg-' + (props.id || 't');
     var panel = h('div', { className: 'rf-dialog', role: 'dialog', 'aria-modal': 'true', 'aria-labelledby': titleId },
@@ -262,7 +267,11 @@
       h('h2', { className: 'rf-dialog-title', id: titleId }, props.title),
       props.children ? h('div', { className: 'rf-dialog-content' }, props.children) : null,
       props.actions ? h('div', { className: 'rf-dialog-actions' }, props.actions) : null);
-    return h('div', { className: cx('rf-dialog-scrim', props.inline && 'rf-dialog-inline'), onClick: function (e) { if (e.target === e.currentTarget && props.onClose) props.onClose(); } }, panel);
+    // Fecha ao clicar no fundo, mas só se o clique começou no fundo: arrastar para selecionar um texto
+    // do diálogo e soltar fora dele não fecha (pedido da Paula, 24/10/2026).
+    return h('div', { className: cx('rf-dialog-scrim', props.inline && 'rf-dialog-inline'),
+      onMouseDown: function (e) { inicioNoFundo.current = e.target === e.currentTarget; },
+      onClick: function (e) { var ok = inicioNoFundo.current && e.target === e.currentTarget; inicioNoFundo.current = false; if (ok && props.onClose) props.onClose(); } }, panel);
   }
 
   /* ---------- TopAppBar ---------- */
