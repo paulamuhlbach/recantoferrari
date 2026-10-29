@@ -2,7 +2,7 @@
 
 Lista dos pontos que ainda precisam de uma decisão da gestão do condomínio. Para cada um, está como o portal funciona **hoje**, a **proposta** e um espaço para anotar a decisão.
 
-Atualizada em 20/10/2026.
+Atualizada em 28/10/2026.
 
 **Como usar**
 - Marque o item com `[x]` quando ele for decidido e anote a decisão e a data na linha "Decisão".
@@ -20,7 +20,7 @@ Atualizada em 20/10/2026.
   - Decisão:
 
 - [ ] **Denúncias para o Conselho: só números, ou o texto sem identificar quem fez?** ⚙️🔧
-  - Hoje: os membros do conselho veem só estatísticas, por categoria e andamento, sem texto, anexos, casa ou nome. Leem e respondem as denúncias o síndico, o subsíndico, a administradora e o presidente do conselho com o termo assinado.
+  - Hoje: os membros do conselho veem só estatísticas, por categoria e andamento, sem texto, anexos, casa ou nome. Leem e respondem as denúncias o síndico, o subsíndico, o presidente do conselho e a administradora (o presidente sem precisar do termo, decisão de 28/10/2026).
   - Proposta: manter só as estatísticas. Mostrar o texto "anonimizado" é arriscado, porque o próprio texto costuma identificar a casa.
   - Decisão:
 
@@ -30,7 +30,7 @@ Atualizada em 20/10/2026.
   - Decisão:
 
 - [ ] **Texto do termo de confidencialidade** ⚙️
-  - Hoje: texto provisório. Assinam o termo o administrador do site, o presidente do conselho e a administradora do condomínio. O síndico não assina.
+  - Hoje: texto provisório. Assinam o termo o administrador do site e a administradora do condomínio. O síndico e o presidente do conselho não assinam.
   - Proposta: revisar com o jurídico antes de publicar o portal. Mudar o texto depois pede nova assinatura de todos.
   - Decisão:
 
@@ -124,7 +124,19 @@ Atualizada em 20/10/2026.
   - Proposta: cobrar pela média dos últimos 3 meses.
   - Decisão:
 
-## 7. Para publicar o portal
+## 7. Página inicial e coleta de lixo
+
+- [ ] **O que cada perfil vê primeiro no Início** ⚙️
+  - Hoje: os avisos vêm primeiro para todos. Para o síndico, a gestão e a administradora, em seguida "Para a gestão" (ouvidoria, denúncias, publicar aviso) e depois "Para você" (enviar demanda, minhas demandas, regras); para os moradores, "Para você". A coleta de lixo fica por último.
+  - Proposta: manter. A ordem de cada perfil se muda nas configurações, sem mexer no código.
+  - Decisão:
+
+- [ ] **Ecoponto indicado aos moradores** ⚙️
+  - Hoje: Ecoponto Niterói (Rua Paulo Fonteles, 1560), com o mapa no Início. Ele não recebe pilhas, baterias e lâmpadas; o texto orienta a levar esses itens aos pontos de coleta de lojas e supermercados.
+  - Proposta: manter e conferir os dias da coleta de lixo do condomínio (ainda não informados no portal).
+  - Decisão:
+
+## 8. Para publicar o portal
 
 Detalhes no [para-publicar.md](para-publicar.md).
 

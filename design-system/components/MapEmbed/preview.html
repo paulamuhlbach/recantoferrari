@@ -1,0 +1,21 @@
+<!-- @dsCard group="Conteúdo" height=360 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>MapEmbed</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .caixa { max-width:560px; display:flex; flex-direction:column; gap:12px; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { className: 'caixa' },
+      h(R.ListItem, { icon: 'location_on', tone: 'secondary', overline: 'Onde levar', headline: 'Ecoponto (exemplo)', supporting: 'Praça da Sé, São Paulo' }),
+      h(R.MapEmbed, { address: 'Praça da Sé, São Paulo', title: 'Mapa do ecoponto (exemplo)', height: 220 }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

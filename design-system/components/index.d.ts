@@ -107,7 +107,8 @@ export interface FooterProps { /** deep (azul, padrão) ou surface (areia). */ t
 export declare function Footer(props: FooterProps): React.ReactElement;
 
 export interface HeroProps { title?: React.ReactNode; eyebrow?: React.ReactNode; children?: React.ReactNode; actions?: React.ReactNode;
-  image?: string; imageAlt?: string; imagePosition?: string; as?: 'h1' | 'h2'; label?: string; className?: string; }
+  image?: string; imageAlt?: string; imagePosition?: string; as?: 'h1' | 'h2'; label?: string; className?: string;
+  /** compact (padrão: faixa baixa, 184 px no computador e 160 px no celular) ou large (faixa alta, 340 px). */ size?: 'compact' | 'large'; }
 /** Faixa de boas-vindas com foto do condomínio e véu azul-escuro. Uma por página, logo abaixo do cabeçalho. */
 export declare function Hero(props: HeroProps): React.ReactElement;
 
@@ -127,3 +128,9 @@ export interface FileUploadProps {
 }
 /** Campo de foto ou arquivo: área tracejada para escolher; depois, miniatura com "Trocar foto" e "Remover". */
 export declare function FileUpload(props: FileUploadProps): React.ReactElement;
+
+export interface MapEmbedProps { /** Endereço buscado no Google Maps (rua, número, bairro e cidade). Sem endereço, não mostra nada. */ address?: string;
+  /** Título do mapa para o leitor de tela (padrão "Mapa: endereço"). */ title?: string; /** Altura em px (padrão 240). */ height?: number;
+  /** Aproximação do Google Maps (padrão 16, rua). */ zoom?: number; className?: string; }
+/** Mapa do Google Maps incorporado, a partir de um endereço (iframe de busca, sem chave de API). Largura total do contêiner. */
+export declare function MapEmbed(props: MapEmbedProps): React.ReactElement | null;

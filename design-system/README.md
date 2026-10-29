@@ -87,7 +87,8 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 
 - Cada tipo de coleta tem ícone e cor próprios, para não confundir: **orgânico** `compost` em círculo verde (`ListItem` `tone="success"`), **reciclável** `recycling` em azul (`secondary`). O dia aparece em destaque (`headline`) e o horário abaixo.
 - Ao lado de cada tipo, `IconButton` `help` ("O que é orgânico?") abre um `Dialog` com a lista do que vai naquele tipo.
-- Abaixo, o bloco **"Não pode ir para a lixeira"** (`block` em círculo vermelho, `tone="error"`): a lista dos itens (óleo de cozinha, eletrodomésticos, pilhas…) e onde levar, com o endereço do ecoponto (`location_on`) e um link "Ver no mapa" (abre em outra aba).
+- Abaixo, o bloco **"Não pode ir para a lixeira"** (`block` em círculo vermelho, `tone="error"`): a lista dos itens (óleo de cozinha, eletrodomésticos, pilhas…) e onde levar, com o endereço do ecoponto (`location_on`) e um link "Ver no mapa" (abre em outra aba). Logo abaixo do endereço, os horários e avisos do próprio ecoponto (ex.: o que ele não recebe), em texto, separados da orientação da lista; depois, o mapa do Google Maps incorporado (`MapEmbed`, 220 px de altura), que quem edita pode tirar ("Mostrar o mapa no Início").
+- Em telas largas, a coleta ocupa duas colunas: à esquerda, os tipos de coleta e, logo abaixo, o "Não pode ir para a lixeira" (lista e orientação); à direita, só o ecoponto, num cartão próprio (endereço, horários e avisos, "Ver no mapa" e o mapa). No celular, uma coluna, na mesma ordem.
 - Tudo editável por quem edita conteúdo ("Editar dias"). Até a primeira edição, aparece o conteúdo sugerido.
 
 ## Dados pessoais nas telas
@@ -95,7 +96,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Nome, casa, contato, moradores, valores e serviços contratados só aparecem para quem tem permissão (a gestão, e o próprio morador para a sua casa). O administrador do site sem o termo de confidencialidade assinado vê só a situação de cada item; com o termo, vê tudo, como o síndico.
 - Quando a tela precisa mostrar um contato para quem não tem essa permissão, o e-mail aparece mascarado: `pa•••@gmail.com`.
 - Explique a restrição com um `Alert` `info` no topo da tela ("Você vê só a situação de cada casa"), em vez de esconder colunas sem aviso. Se a restrição sai com o termo de confidencialidade, o `Alert` leva à tela do termo (`Button` `text` com `icon="lock"`).
-- **Termo de confidencialidade** (administrador do site, presidente do conselho e administradora do condomínio; o síndico não assina): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta. Na tela do contrato de administração, cada pessoa da administradora mostra "termo assinado" ou "falta assinar o termo" abaixo do `Badge` de acesso. O nome digitado precisa ser igual ao do cadastro (sem diferença de acento ou maiúsculas); se não for, o `TextField` fica em `status="error"` com o nome esperado no `helper`. Se o texto do termo mudar, um `Alert` `warning` "O texto do termo mudou" pede nova assinatura.
+- **Termo de confidencialidade** (administrador do site e administradora do condomínio; o síndico e, desde 28/10/2026, o presidente do conselho não assinam): página de leitura com o texto num quadro (`reading-max`, `surface-container-lowest`), `Checkbox` "Li o termo e aceito as condições", `TextField` "Assinatura: seu nome completo" e `Button` `filled` "Assinar termo". Enquanto não assina, um `Alert` `warning` no Início pede a assinatura; depois, `Alert` `success` com a data. Item "Termo de confidencialidade" (`lock`) no menu da conta. Na tela do contrato de administração, cada pessoa da administradora mostra "termo assinado" ou "falta assinar o termo" abaixo do `Badge` de acesso. O nome digitado precisa ser igual ao do cadastro (sem diferença de acento ou maiúsculas); se não for, o `TextField` fica em `status="error"` com o nome esperado no `helper`. Se o texto do termo mudar, um `Alert` `warning` "O texto do termo mudou" pede nova assinatura.
 - Status de cadastro: `Badge` `success` "Cadastrada", `info` "Convite enviado", `error` "Convite vencido", `neutral` "Sem convite", `warning` "Aguardando aprovação". O perfil principal da casa leva o `Badge` `primary` "Principal".
 
 ## Navegação e links externos
@@ -168,6 +169,14 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Situação do mês em `Badge`: `info` "Envie até 10/10", `success` "Leitura enviada", `warning` "Prazo encerrado" (ou "Enviada com atraso"), `neutral` "Conferida" (na visão da gestão), `error` "Consumo fora do padrão".
 - Depois de enviar: `Alert` `success` dizendo que o síndico foi avisado e que um e-mail de confirmação foi para a pessoa.
 - Leituras, fotos e valores são dados da casa: o administrador do site sem o termo de confidencialidade vê só quantas casas enviaram.
+
+## Início por perfil
+
+- O Início é feito de blocos: **avisos** (o último aviso do mural), **gestão** ("Para a gestão": Ouvidoria da gestão, Denúncias ou Números das denúncias, Publicar aviso), **para você** (Enviar demanda, Minhas demandas, Regras do condomínio) e **coleta de lixo**.
+- Os avisos vêm primeiro para todos. A gestão e a administradora do condomínio veem "Para a gestão" antes dos atalhos de morador; quem é só morador não vê o bloco da gestão.
+- A ordem de cada perfil (morador, gestão, administradora) fica nas configurações; nada fixo no código.
+- A faixa com a foto (`Hero`) é compacta (pedido da Paula, 28/10/2026): 184 px no computador e 160 px no celular, para os avisos aparecerem logo.
+- Atalhos são `Card` `outlined` com `href`. Na gestão, o card leva ícone (`description`, `lock`, `info`, `notifications`) e, quando há algo esperando, um `Badge` `warning` sem ícone ("3 novas", "1 não lida").
 
 ## Componentes
 
