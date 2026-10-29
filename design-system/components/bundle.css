@@ -472,6 +472,15 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
   .rf-hero-text { font-size: 16px; line-height: 24px; }
 }
 
+/* Hero compacto (padrão desde 28/10/2026): faixa baixa, para o conteúdo do Início aparecer logo. */
+.rf-hero-compact .rf-hero-inner { min-height: 184px; padding: var(--space-6) var(--space-4); gap: var(--space-2); }
+.rf-hero-compact .rf-hero-title { font-size: 36px; line-height: 44px; }
+.rf-hero-compact .rf-hero-text { font-size: 16px; line-height: 24px; }
+@media (max-width: 599px) {
+  .rf-hero-compact .rf-hero-inner { min-height: 160px; padding: var(--space-5) var(--space-4); }
+  .rf-hero-compact .rf-hero-title { font-size: 28px; line-height: 36px; }
+}
+
 /* Foco visível sobre azul profundo: o anel passa a ser claro */
 .rf-hero, .rf-footer-deep { --focus-ring: var(--on-surface-deep); }
 .rf-hero .rf-btn-outlined, .rf-hero .rf-btn-text { color: var(--on-surface-deep); border-color: var(--on-surface-deep-variant); }
@@ -557,3 +566,7 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
 }
 /* Tabs sem rolagem horizontal (24/10/2026): as abas quebram linha quando não cabem. */
 .rf-tabs { flex-wrap: wrap; overflow-x: visible; }
+
+/* ---------- MapEmbed ---------- */
+.rf-map { border: 1px solid var(--outline-variant); border-radius: var(--radius-xs); overflow: hidden; background: var(--surface-container); min-width: 0; }
+.rf-map-frame { display: block; width: 100%; border: 0; }

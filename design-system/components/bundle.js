@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"RecantoFerrari","components":[{"name":"Logo"},{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"Chip"},{"name":"TextField"},{"name":"Checkbox"},{"name":"Switch"},{"name":"Card"},{"name":"ListItem"},{"name":"Badge"},{"name":"Alert"},{"name":"Dialog"},{"name":"TopAppBar"},{"name":"Tabs"},{"name":"Calendar"},{"name":"DataTable"},{"name":"Menu"},{"name":"NavigationDrawer"},{"name":"Footer"},{"name":"Hero"},{"name":"RadioGroup"},{"name":"FileUpload"}]} */
+/* @ds-bundle: {"format":4,"namespace":"RecantoFerrari","components":[{"name":"Logo"},{"name":"Icon"},{"name":"Button"},{"name":"IconButton"},{"name":"Chip"},{"name":"TextField"},{"name":"Checkbox"},{"name":"Switch"},{"name":"Card"},{"name":"ListItem"},{"name":"Badge"},{"name":"Alert"},{"name":"Dialog"},{"name":"TopAppBar"},{"name":"Tabs"},{"name":"Calendar"},{"name":"DataTable"},{"name":"Menu"},{"name":"NavigationDrawer"},{"name":"Footer"},{"name":"Hero"},{"name":"RadioGroup"},{"name":"FileUpload"},{"name":"MapEmbed"}]} */
 (function () {
   var React = window.React;
   var h = React.createElement;
@@ -619,7 +619,8 @@
 
   /* ---------- Hero (faixa de boas-vindas com foto) ---------- */
   function Hero(props) {
-    return h('section', { className: cx('rf-hero', props.className), 'aria-label': props.label },
+    // size: "compact" (padrão desde 28/10/2026, faixa baixa) ou "large" (a faixa alta de antes).
+    return h('section', { className: cx('rf-hero', props.size !== 'large' && 'rf-hero-compact', props.className), 'aria-label': props.label },
       props.image ? h('img', { className: 'rf-hero-img', src: props.image, alt: props.imageAlt || '',
         style: props.imagePosition ? { objectPosition: props.imagePosition } : undefined }) : null,
       h('div', { className: 'rf-hero-overlay', 'aria-hidden': 'true' }),
@@ -630,10 +631,29 @@
         props.actions ? h('div', { className: 'rf-hero-actions' }, props.actions) : null));
   }
 
+  /* ---------- MapEmbed: mapa do Google Maps a partir de um endereço (sem chave de API) ---------- */
+  function MapEmbed(props) {
+    if (!props.address) return null;
+    var q = encodeURIComponent(props.address);
+    var rest = omit(props, ['address', 'title', 'height', 'zoom', 'className']);
+    rest.className = cx('rf-map', props.className);
+    return h('div', rest,
+      h('iframe', {
+        className: 'rf-map-frame',
+        title: props.title || ('Mapa: ' + props.address),
+        src: 'https://www.google.com/maps?q=' + q + '&z=' + (props.zoom || 16) + '&output=embed',
+        loading: 'lazy',
+        referrerPolicy: 'no-referrer-when-downgrade',
+        allowFullScreen: true,
+        style: { height: (props.height || 240) + 'px' }
+      }));
+  }
+
   window.RecantoFerrari = Object.assign(window.RecantoFerrari || {}, {
     Logo: Logo, Icon: Icon, Button: Button, IconButton: IconButton, Chip: Chip, TextField: TextField,
     Checkbox: Checkbox, Switch: Switch, Card: Card, ListItem: ListItem, Badge: Badge, Alert: Alert,
     Dialog: Dialog, TopAppBar: TopAppBar, Tabs: Tabs, Calendar: Calendar, DataTable: DataTable,
-    Menu: Menu, NavigationDrawer: NavigationDrawer, Footer: Footer, Hero: Hero, RadioGroup: RadioGroup, FileUpload: FileUpload
+    Menu: Menu, NavigationDrawer: NavigationDrawer, Footer: Footer, Hero: Hero, RadioGroup: RadioGroup, FileUpload: FileUpload,
+    MapEmbed: MapEmbed
   });
 })();
