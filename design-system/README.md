@@ -173,7 +173,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 ## Início por perfil
 
 - O Início é feito de blocos: **avisos** (o último aviso do mural), **gestão** ("Para a gestão": Ouvidoria da gestão, Denúncias ou Números das denúncias, Publicar aviso), **para você** (Enviar demanda, Minhas demandas, Regras do condomínio) e **coleta de lixo**.
-- Os avisos vêm primeiro para todos. A gestão e a administradora do condomínio veem "Para a gestão" antes dos atalhos de morador; quem é só morador não vê o bloco da gestão.
+- Os avisos vêm primeiro para todos, menos para o síndico, que vê "Para a gestão" no alto, acima dos avisos (pedido da Paula, 30/10/2026). A gestão e a administradora do condomínio veem "Para a gestão" antes dos atalhos de morador; quem é só morador não vê o bloco da gestão.
 - A ordem de cada perfil (morador, gestão, administradora) fica nas configurações; nada fixo no código.
 - A faixa com a foto (`Hero`) é compacta (pedido da Paula, 28/10/2026): 184 px no computador e 160 px no celular, para os avisos aparecerem logo.
 - Atalhos são `Card` `outlined` com `href`. Na gestão, o card leva ícone (`description`, `lock`, `info`, `notifications`) e, quando há algo esperando, um `Badge` `warning` sem ícone ("3 novas", "1 não lida").
