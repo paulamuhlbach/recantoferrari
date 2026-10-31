@@ -166,7 +166,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Todo mês, cada casa envia uma foto do hidrômetro e o número da leitura até o dia definido pela gestão (padrão sugerido: dia 10, nas configurações). O valor da água entra no boleto do mês seguinte.
 - Foto com `FileUpload` (`capture="environment"`, abre a câmera no celular). Leitura com `TextField` `suffix="m³"` e `inputMode="decimal"`.
 - Mostre ao lado a leitura do mês anterior e o consumo calculado em quadros curtos (como os dados de serviço). Leitura menor que a anterior: `TextField` `error` com o motivo e como corrigir.
-- Situação do mês em `Badge`: `info` "Envie até 10/10", `success` "Leitura enviada", `warning` "Prazo encerrado" (ou "Enviada com atraso"), `neutral` "Conferida" (na visão da gestão), `error` "Consumo fora do padrão".
+- Situação do mês em `Badge`: `info` "Envie até 10/10", `success` "Leitura enviada", `warning` "Prazo encerrado" (ou "Enviada com atraso"), `warning` com `icon="photo_camera"` "Nova foto pedida" (31/10/2026), `neutral` "Conferida" (na visão da gestão), `error` "Consumo fora do padrão". Na gestão, "Falta enviar" em `neutral`.
 - Depois de enviar: `Alert` `success` dizendo que o síndico foi avisado e que um e-mail de confirmação foi para a pessoa.
 - Leituras, fotos e valores são dados da casa: o administrador do site sem o termo de confidencialidade vê só quantas casas enviaram.
 
