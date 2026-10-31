@@ -2,7 +2,7 @@
 
 Lista dos pontos que ainda precisam de uma decisão da gestão do condomínio. Para cada um, está como o portal funciona **hoje**, a **proposta** e um espaço para anotar a decisão.
 
-Atualizada em 28/10/2026.
+Atualizada em 31/10/2026.
 
 **Como usar**
 - Marque o item com `[x]` quando ele for decidido e anote a decisão e a data na linha "Decisão".
@@ -106,28 +106,66 @@ Atualizada em 28/10/2026.
   - Hoje: 8 horas.
   - Decisão:
 
-## 6. Leitura do hidrômetro (próximas fases)
+## 6. Leitura do hidrômetro e cálculo da água
+
+O envio, a conferência e o cálculo já funcionam (31/10/2026). Falta a gestão confirmar os valores.
 
 - [ ] **Prazo de envio da leitura** ⚙️
-  - Proposta: até o dia 10 de cada mês. Depois do prazo, o portal aceita a leitura marcada como "enviada com atraso".
+  - Hoje: até o dia 10 de cada mês. Depois do prazo, o portal aceita a leitura marcada como "enviada com atraso", e quem calcula decide se ela entra no boleto.
+  - Proposta: manter.
   - Decisão:
 
 - [ ] **Onde fica a leitura do hidrômetro no portal**
-  - Proposta: no menu da conta e num cartão no Início do mês, e não na navegação principal.
+  - Hoje: no menu da conta ("Leitura do hidrômetro") e num cartão em "Precisa da sua resposta", no Início, enquanto a casa não envia. Não está na navegação principal.
+  - Proposta: manter.
   - Decisão:
 
 - [ ] **Quando o consumo é "fora do padrão"** ⚙️
-  - Proposta: quando passa de 3 vezes a média da casa.
+  - Hoje: quando passa de 3 vezes a média da casa nos últimos 6 meses.
+  - Proposta: manter.
+  - Decisão:
+
+- [ ] **Quem recebe o e-mail de cada leitura, quem confere e quem calcula a água** ⚙️
+  - Hoje: o e-mail vai para o síndico. Conferem as leituras e calculam a água o síndico e a administradora do condomínio. O conselho vê o painel, sem conferir.
+  - Proposta: manter. Se o subsíndico for ajudar, basta incluí-lo nas configurações.
+  - Decisão:
+
+- [ ] **Forma de cálculo da água** ⚙️
+  - Hoje: a sugestão é o valor do m³ vezes o consumo de cada casa. A outra forma é o rateio da conta da concessionária pelo consumo de cada casa. Quem calcula escolhe a cada mês.
+  - Proposta: definir com a administradora qual forma o condomínio usa hoje no boleto.
   - Decisão:
 
 - [ ] **Casas que não enviaram a leitura** ⚙️
-  - Proposta: cobrar pela média dos últimos 3 meses.
+  - Hoje: cobradas pela média dos últimos 3 meses da casa; sem histórico, pela média do condomínio no mês. A outra opção é não cobrar no mês. A primeira leitura de uma casa é cobrada pela média do condomínio (decisão da Paula, 31/10/2026).
+  - Proposta: manter a média.
   - Decisão:
 
-## 7. Página inicial e coleta de lixo
+## 7. Serviços com adesão
+
+- [ ] **Quem abre e gerencia as ofertas de serviço** ⚙️
+  - Hoje: só o síndico.
+  - Proposta: manter. Outros cargos (ex.: subsíndico) podem entrar nas configurações.
+  - Decisão:
+
+- [ ] **Prazo para aderir** ⚙️
+  - Hoje: o portal sugere 2 dias antes da data do serviço, e o síndico muda a cada oferta.
+  - Proposta: manter.
+  - Decisão:
+
+- [ ] **Quem da casa pode aderir** 🔧
+  - Hoje: o perfil principal e quem ele liberou com acesso financeiro, porque a adesão gera cobrança no boleto. Os demais moradores veem a oferta e quem aderiu.
+  - Proposta: manter.
+  - Decisão:
+
+- [ ] **Texto da autorização de cobrança** ⚙️
+  - Hoje: "Autorizo a cobrança de {valor} no boleto do condomínio de {mes} da Casa {casa}.", que a pessoa marca antes de aderir.
+  - Proposta: revisar com a administradora.
+  - Decisão:
+
+## 8. Página inicial e coleta de lixo
 
 - [ ] **O que cada perfil vê primeiro no Início** ⚙️
-  - Hoje: os avisos vêm primeiro para todos. Para o síndico, a gestão e a administradora, em seguida "Para a gestão" (ouvidoria, denúncias, publicar aviso) e depois "Para você" (enviar demanda, minhas demandas, regras); para os moradores, "Para você". A coleta de lixo fica por último.
+  - Hoje: para o síndico, "Para a gestão" (ouvidoria, denúncias, publicar aviso, serviços e leituras) vem no alto, acima dos avisos (pedido da Paula, 30/10/2026). Para os demais, os avisos vêm primeiro; em seguida, "Precisa da sua resposta" (ofertas de serviço não respondidas e a leitura do hidrômetro); para a gestão e a administradora, "Para a gestão"; depois "Para você" (enviar demanda, minhas demandas, regras). A coleta de lixo fica por último.
   - Proposta: manter. A ordem de cada perfil se muda nas configurações, sem mexer no código.
   - Decisão:
 
@@ -136,7 +174,7 @@ Atualizada em 28/10/2026.
   - Proposta: manter e conferir os dias da coleta de lixo do condomínio (ainda não informados no portal).
   - Decisão:
 
-## 8. Para publicar o portal
+## 9. Para publicar o portal
 
 Detalhes no [para-publicar.md](para-publicar.md).
 
