@@ -1,6 +1,6 @@
 # CLAUDE.md — documentação do Portal do Condomínio Recanto Ferrari
 
-Documentação do portal: `arquitetura-mvp.md` (escopo, perfis e permissões, módulos, modelo de dados, fases), `decisoes-gestao.md` (decisões para a reunião com o síndico e o conselho), `para-publicar.md` (checklist de publicação), `personas.md`, `apresentacoes/` e a cópia do Design System em `design-system/`.
+Documentação do portal: `arquitetura-mvp.md` (escopo, perfis e permissões, módulos, modelo de dados, fases), `decisoes-gestao.md` (decisões para a reunião com o síndico e o conselho), `para-publicar.md` (checklist de publicação), `testes-locais.md` (dados fictícios e roteiro de testes no computador), `personas.md`, `apresentacoes/` e a cópia do Design System em `design-system/`.
 
 ## Como trabalhamos (Paula)
 

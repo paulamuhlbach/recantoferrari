@@ -20,6 +20,8 @@ Detalhes em [arquitetura-mvp.md](arquitetura-mvp.md).
 Pontos para a reunião com o síndico e o Conselho, em forma de checklist: [decisoes-gestao.md](decisoes-gestao.md).
 
 ## Publicação:
+Como testar no computador com o condomínio de exemplo (dados fictícios, logins de cada perfil e roteiro de testes): [testes-locais.md](testes-locais.md).
+
 O que fazer quando o portal for para o ar (domínio, hospedagem, banco, e-mail, login com Google, LGPD): [para-publicar.md](para-publicar.md).
 
 ## Interface:
