@@ -2,7 +2,37 @@
 
 Lista do que precisa ser feito quando o portal sair da máquina de desenvolvimento e for para o ar. Vale para a primeira publicação; marque cada item quando estiver pronto. Os testes até agora rodaram com SQLite, o Gmail pessoal e o site em `localhost`, e nada disso vai para a produção.
 
-Atualizada em 19/10/2026.
+Atualizada em 31/10/2026.
+
+## 0. Roteiro até a produção (combinado em 31/10/2026)
+
+A ordem definida pela Paula, com as sugestões aceitas para cada etapa.
+
+1. [ ] **Testar bem no computador da Paula** com os dados fictícios completos ([testes-locais.md](testes-locais.md)).
+   - Cada problema vai para uma lista única (issue no GitHub ou planilha), com prioridade: **impede o uso** (corrigir antes de publicar), **atrapalha** (corrigir antes do passo 4) ou **ideia** (fica para depois).
+   - Testar também num celular de verdade (`npm run dev -- --host`, na mesma rede).
+2. [ ] **Fazer os ajustes** da lista (os de "impede o uso" e "atrapalha").
+3. [ ] **Publicar a homologação**: um ambiente de testes no servidor, com os mesmos dados fictícios.
+   - Dois ambientes, cada um com o seu banco e a sua pasta de arquivos: **homologação** (dados fictícios, para testar sempre) e **produção** (banco novo e vazio). Não se "limpa" a homologação para virar produção, porque fotos, anexos, e-mails e o registro de atividades deixariam restos.
+   - Faixa **"Ambiente de testes"** em todas as telas da homologação, ligada por configuração.
+   - E-mails da homologação vão **todos para uma caixa de testes** (os endereços `@example.com` não recebem nada, e os e-mails reais dos testadores ficam fora da base).
+4. [ ] **Síndico e demais pessoas reais testam** na homologação, com os logins fictícios.
+   - Roteiro curto por perfil (adaptado do `testes-locais.md`), formulário simples de retorno e prazo de cerca de duas semanas.
+   - Reunião com o síndico e o conselho para fechar o [decisoes-gestao.md](decisoes-gestao.md) vendo o site funcionando.
+5. [ ] **Ajustes** depois do uso deles, testados primeiro na homologação.
+6. [ ] **Criar a produção**: banco novo e vazio (ver a seção 2), sem nada da homologação. A homologação continua no ar para os próximos testes.
+7. [ ] **Site valendo para uso real**: backup automático ligado e uma restauração testada, casas reais importadas de uma planilha, convites em pequenos grupos, comunicado aos moradores com um passo a passo curto e canal para dúvidas nas primeiras semanas, login do Google publicado (seções 2 a 8).
+8. [ ] **Fase 4** (WhatsApp), testada primeiro na homologação.
+
+**Adiantar durante os passos 1 e 2** (coisas que demoram e não dependem dos testes):
+- [ ] Domínio e e-mail do condomínio, com SPF e DKIM no DNS (sem isso, os convites caem no spam).
+- [ ] Revisão jurídica do termo de confidencialidade, da política de privacidade e dos termos de uso, e a cláusula de proteção de dados no contrato com a Auxiliadora Predial.
+- [ ] Escolha da hospedagem (API, site, PostgreSQL e arquivos), já prevendo os dois ambientes.
+
+**Adiantar durante o passo 4** (para a Fase 4 começar sem espera):
+- [ ] Escolher o provedor de WhatsApp, verificar a empresa na Meta e pedir a aprovação dos modelos de mensagem (leva semanas).
+
+**A desenvolver para este roteiro**: faixa "Ambiente de testes" e e-mails para a caixa de testes (passo 3); importação das casas por planilha (passo 7); arquivos de publicação para o provedor escolhido, com homologação e produção separadas.
 
 ## 1. Decisões antes de começar
 
