@@ -102,7 +102,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 ## Navegação e links externos
 
 - Cabeçalho (`TopAppBar`) com até 6 destinos. No portal do morador: Início, Ouvidoria, Avisos, Serviços, Documentos. No celular, o botão de menu abre a gaveta (`NavigationDrawer`) com os mesmos destinos.
-- A conta da pessoa logada fica à direita do cabeçalho: o nome abre um `Menu` com os itens do perfil (ex.: "Configurações", só para o síndico) e "Sair do portal".
+- A conta da pessoa logada fica à direita do cabeçalho: o `IconButton` `person` abre um `Menu` com o nome, os itens do perfil (ex.: "Minha casa", "Leitura do hidrômetro", "Unidades", "Pessoas", "Leituras das casas", "Gestão dos serviços", "Registro de atividades") e "Sair do portal".
 - Apps contratados pelo condomínio, como o **Condfy** (`https://web.condfy.com.br/login`) e a **Auxiliadora Predial** (`https://portal.auxiliadorapredial.com.br/Login.aspx`), ficam num botão "Apps" à direita do cabeçalho, que abre um `Menu`. Os itens usam `external`: abrem em nova aba, mostram o ícone `open_in_new` e avisam leitores de tela "(abre em outra aba)".
 - Rodapé (`Footer`) em todas as páginas, com termos de uso e política de privacidade. Por padrão em azul profundo.
 - Itens de todos no menu da conta, depois dos itens do perfil: "Meu registro" (`history`), "Trocar a senha" (`key`) e "Sair do portal" (`logout`).
@@ -160,6 +160,9 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Dados do serviço em quadros curtos: data, prazo para responder, valor por casa e mês do boleto.
 - Uma ação por card: "Quero … na Casa 14" (`filled`, depois de marcar a autorização) ou "Cancelar adesão" (`outlined`, com `Dialog`).
 - Quem não quer o serviço não precisa responder; diga isso no card.
+- Sempre "oferta de serviço" (nunca "chamada", que fica para as reuniões do condomínio).
+- Para quem gerencia (padrão: o síndico), a página tem `Tabs`: "Ofertas" (o que o morador vê), "Gestão das ofertas" (`Switch` do e-mail a cada adesão, `Button` "Abrir oferta" e um `DataTable` com as casas inscritas e as ações `edit` (editar), `event` (adiar ou informar a nova data) e `download` (adesões e exportação), só com ícone) e "Tipos de serviço". Abrir uma oferta mostra o detalhe no lugar da tabela, com "Voltar".
+- Exportação numa seção própria, separada dos dados da oferta: um `Card` por lista (para o boleto e para o prestador), cada um com três botões, Excel, PDF e CSV, em flex com `flex-wrap`.
 
 ## Leitura do hidrômetro
 
@@ -172,11 +175,11 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 
 ## Início por perfil
 
-- O Início é feito de blocos: **avisos** (o último aviso do mural), **gestão** ("Para a gestão": Ouvidoria da gestão, Denúncias ou Números das denúncias, Publicar aviso), **para você** (Enviar demanda, Minhas demandas, Regras do condomínio) e **coleta de lixo**.
+- O Início é feito de blocos: **avisos** (o último aviso do mural), **serviços** ("Precisa da sua resposta": um card por oferta de serviço que a casa não respondeu, o `Alert` de cada oferta adiada e o card da leitura do hidrômetro enquanto a casa não envia), **gestão** ("Para a gestão": Ouvidoria da gestão, Denúncias ou Números das denúncias, Publicar aviso, Leituras das casas e Serviços com adesão, conforme o que a pessoa pode fazer), **para você** (Enviar demanda, Minhas demandas, Regras do condomínio) e **coleta de lixo**.
 - Os avisos vêm primeiro para todos, menos para o síndico, que vê "Para a gestão" no alto, acima dos avisos (pedido da Paula, 30/10/2026). A gestão e a administradora do condomínio veem "Para a gestão" antes dos atalhos de morador; quem é só morador não vê o bloco da gestão.
-- A ordem de cada perfil (morador, gestão, administradora) fica nas configurações; nada fixo no código.
+- A ordem de cada perfil (morador, síndico, gestão, administradora) fica nas configurações; nada fixo no código.
 - A faixa com a foto (`Hero`) é compacta (pedido da Paula, 28/10/2026): 184 px no computador e 160 px no celular, para os avisos aparecerem logo.
-- Atalhos são `Card` `outlined` com `href`. Na gestão, o card leva ícone (`description`, `lock`, `info`, `notifications`) e, quando há algo esperando, um `Badge` `warning` sem ícone ("3 novas", "1 não lida").
+- Atalhos são `Card` `outlined` com `href`. Na gestão, o card leva ícone (`description`, `lock`, `info`, `notifications`, `water_drop`, `event`) e, quando há algo esperando, um `Badge` `warning` sem ícone ("3 novas", "1 não lida").
 
 ## Componentes
 

@@ -36,7 +36,7 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 **O que faz no portal.**
 - Cadastrou a casa pelo convite e indicou o marido e os filhos, com o parentesco.
 - Escolhe quem vê a parte financeira: o marido vê, os filhos só os serviços.
-- Adere ao corte de grama e à desinsetização quando abrem as chamadas.
+- Adere ao corte de grama e à desinsetização quando abrem as ofertas de serviço.
 - Envia a leitura do hidrômetro quando ninguém mais da casa enviou.
 - Cadastra os pets (o cachorro já fugiu uma vez).
 - Abre o registro de atividades dos moradores da casa quando quer saber quem aderiu a um serviço ou mandou a leitura.
@@ -129,7 +129,7 @@ Os papéis se somam: Carlos é morador, síndico e administrador do site ao mesm
 - Aprova ou recusa os moradores indicados.
 - Troca o perfil principal quando a casa é vendida ou o principal some, e registra se ele saiu da casa.
 - Responde demandas da ouvidoria e lê denúncias.
-- Abre chamadas de serviços, registra adiamentos por chuva e exporta as adesões para o boleto.
+- Abre ofertas de serviço, registra adiamentos por chuva e exporta as adesões para o boleto.
 - Confere as leituras do hidrômetro e calcula a água.
 - Atribui cargos e o papel de administrador do site; passa o cargo de síndico no fim do mandato.
 - Consulta o registro de atividades e os ex-moradores de cada casa; define o prazo de guarda do registro.

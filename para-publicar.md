@@ -10,7 +10,7 @@ Atualizada em 19/10/2026.
 - [ ] **Hospedagem da API** (Python/FastAPI): PaaS de baixo custo (Render, Railway) ou um VPS simples. Precisa de HTTPS.
 - [ ] **Hospedagem do site** (arquivos estáticos da pasta `dist/`): Render Static Site, Cloudflare Pages, Netlify ou GitHub Pages. Tem que devolver `index.html` em qualquer caminho, porque o site usa rotas como `/entrar` e `/convite/...`.
 - [ ] **Banco de dados PostgreSQL**, de preferência o do próprio provedor da API, com backup automático.
-- [ ] **Onde ficam as fotos** (pets e, depois, hidrômetro). Hoje elas ficam na pasta `arquivos/` do servidor. Em PaaS, o disco costuma ser apagado a cada nova versão, então é preciso um **disco persistente** ou um **bucket privado** compatível com S3. O bucket exige uma pequena mudança no código, que deve ser feita antes da publicação.
+- [ ] **Onde ficam os arquivos** (fotos dos pets e do hidrômetro, anexos da ouvidoria, PDFs dos documentos e do contrato). Hoje elas ficam na pasta `arquivos/` do servidor. Em PaaS, o disco costuma ser apagado a cada nova versão, então é preciso um **disco persistente** ou um **bucket privado** compatível com S3. O bucket exige uma pequena mudança no código, que deve ser feita antes da publicação.
 - [ ] **Serviço de e-mail transacional** com endereço do domínio do condomínio: Brevo (grátis até 300 por dia), Amazon SES ou Resend.
 - [ ] **Quem será o responsável técnico** pela hospedagem, pelas senhas e pelos backups. Guardar os acessos num cofre de senhas, não em planilha.
 
@@ -22,6 +22,7 @@ Atualizada em 19/10/2026.
 - [ ] Criar o primeiro síndico: `python criar_primeiro_sindico.py`.
 - [ ] Ligar o backup diário do provedor e testar uma restauração pelo menos uma vez.
 - [ ] Não levar o `condominio.db` de desenvolvimento: ele só tem dados de teste.
+- [ ] **Nunca rodar `dados_ficticios.py` no banco de produção**: ele cria o condomínio de exemplo e, com `--apagar`, apaga tudo. O script recusa bancos que não sejam SQLite, a menos que se passe `--permitir-outro-banco`.
 
 ## 3. Variáveis do `.env` da API (produção)
 
@@ -73,7 +74,7 @@ O projeto "Recanto Ferrari" no Google Cloud e o ID do cliente foram criados em 1
 - [ ] **Termo de confidencialidade**: revisar o texto com o jurídico e salvar nas configurações (`termo_confidencialidade.texto`). Mudar o texto depois pede nova assinatura de todos.
 - [ ] **Política de privacidade** e termos de uso: texto final revisado, publicado e com link no portal e no Google.
 - [ ] **Contrato com a Auxiliadora Predial**: cláusula de proteção de dados, com ela como operadora.
-- [ ] Revisar os textos padrão dos e-mails e os prazos nas configurações (validade do convite, prazo da leitura do hidrômetro, prazo de guarda do registro de atividades).
+- [ ] Revisar os textos padrão dos e-mails e os prazos nas configurações (validade do convite, prazo da leitura do hidrômetro, forma de cálculo da água, prazo para aderir aos serviços, texto da autorização de cobrança, prazo de guarda do registro de atividades).
 - [ ] Confirmar com a gestão as decisões que ainda estão em aberto: [decisoes-gestao.md](decisoes-gestao.md).
 
 ## 8. Primeiros passos no ar
