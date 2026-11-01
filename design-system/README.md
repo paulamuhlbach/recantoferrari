@@ -69,6 +69,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Pets: `pets` (cadastro de pets da casa, em Minha casa).
 - Histórico: `history` (registro de atividades de uma pessoa e a tela Registro de atividades).
 - Senha: `key` ("Trocar a senha" no menu da conta). `lock` fica para sigilo (termo de confidencialidade, denúncias).
+- Ouvidoria: `campaign` (megafone) no card "Ouvidoria" da aba Para gestão (01/11/2026); `help` abre o "Como funciona".
 - Ícones de serviço (`Icon.servicos`): `grass`, `pest_control`, `plumbing`, `cleaning_services` e `event` (genérico). Quem cadastra o serviço escolhe o ícone numa lista; nada fica fixo no código.
 
 ## Formulários: obrigatório e opcional
@@ -77,11 +78,22 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Quando a tela tem os dois tipos, o rótulo do opcional termina em "(opcional)", para não depender só da cor.
 - `status` continua mandando no fundo: `error` (vermelho), `success` (verde), `highlight` (roxo, valor pré-preenchido que pode mudar) e `disabled` (cinza).
 - Os formulários usam `noValidate` e mostram os próprios erros no campo; o `required` também avisa o leitor de tela.
+- **Listas longas ou que crescem** (ex.: categorias da Ouvidoria, cadastradas pela gestão) usam o `Select` (01/11/2026), com a mesma regra de fundo. Chips e `RadioGroup` ficam para poucas opções fixas.
+- **Dicas nos campos**: texto curto no `helper`, sempre visível embaixo do campo (funciona no celular, sem depender do mouse). Ex.: o que é cada tipo de demanda, o que muda com e sem identificação, o que o morador vê da resposta.
 
 ## Lista e detalhe (uma coluna)
 
-- Telas de lista com detalhe (ex.: Ouvidoria da gestão, Denúncias, Minhas demandas) ficam **em uma coluna** (pedido da Paula, 24/10/2026): filtros (`Chip` `filter`) em cima, a lista (`ListItem`) na largura toda e, ao abrir um item, o detalhe no lugar da lista, com `Button` `text` `icon="chevron_left"` "Voltar para …" acima. Os filtros escolhidos continuam ao voltar.
+- Telas de lista com detalhe (ex.: Ouvidoria da gestão, Denúncias, Minhas demandas) ficam **em uma coluna** (pedido da Paula, 24/10/2026): filtros em cima, a lista (`ListItem`) na largura toda e, ao abrir um item, o detalhe no lugar da lista, com `Button` `text` `icon="chevron_left"` "Voltar para …" acima. Os filtros escolhidos continuam ao voltar.
+- **Filtros diferentes, visuais diferentes** (01/11/2026): o tipo em `Chip` `filter`; a categoria num `Select` (as categorias crescem); a **situação em abas secundárias** (`Tabs` `variant="secondary"`) logo acima da lista, com a contagem de cada uma, **na cor do selo da situação** (`tone` no item da aba, pedido da Paula, 01/11/2026). As contagens respeitam o tipo e a categoria escolhidos. Demandas e Denúncias usam o mesmo padrão.
 - Nada de painel lateral vazio esperando a escolha. O `selected` do `ListItem` fica para listas em diálogos ou menus.
+- Na lista do morador, o selo `Badge` `success` "Resposta nova" aparece acima da situação até ele abrir a demanda.
+
+## Ajuda de contexto ("Como funciona")
+
+- Botão `Button` `text` `icon="help"` "Como funciona" ao lado do título da página, que abre um `Dialog` com `icon="help"` e o botão "Entendi" (01/11/2026, Ouvidoria do morador e da gestão). A ajuda não ocupa espaço na página e está sempre à mão.
+- O texto vem das configurações (`ajuda.*`) e a gestão pode editá-lo. Formato simples: `## ` para títulos, `- ` para itens, linha em branco entre parágrafos.
+- Avisos de segurança (ex.: "A ouvidoria não é canal de emergência") continuam visíveis na página.
+- Para campos, use a dica no `helper` (ver Formulários).
 
 ## Coleta de lixo
 
@@ -175,11 +187,13 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 
 ## Início por perfil
 
-- O Início é feito de blocos: **avisos** (o último aviso do mural), **serviços** ("Precisa da sua resposta": um card por oferta de serviço que a casa não respondeu, o `Alert` de cada oferta adiada e o card da leitura do hidrômetro enquanto a casa não envia), **gestão** ("Para a gestão": Ouvidoria da gestão, Denúncias ou Números das denúncias, Publicar aviso, Leituras das casas e Serviços com adesão, conforme o que a pessoa pode fazer), **para você** (Enviar demanda, Minhas demandas, Regras do condomínio) e **coleta de lixo**.
-- Os avisos vêm primeiro para todos, menos para o síndico, que vê "Para a gestão" no alto, acima dos avisos (pedido da Paula, 30/10/2026). A gestão e a administradora do condomínio veem "Para a gestão" antes dos atalhos de morador; quem é só morador não vê o bloco da gestão.
-- A ordem de cada perfil (morador, síndico, gestão, administradora) fica nas configurações; nada fixo no código.
+- O Início é feito de blocos: **avisos** (o último aviso do mural), **serviços** ("Precisa da sua resposta": um card por oferta de serviço que a casa não respondeu, o `Alert` de cada oferta adiada e o card da leitura do hidrômetro enquanto a casa não envia), **gestão** (atalhos da gestão), **para você** (Enviar demanda, Minhas demandas, Regras do condomínio) e **coleta de lixo**.
+- **Abas para quem tem cargo** (pedido da Paula, 01/11/2026): síndico, subsíndico, presidência, conselho, administradora do condomínio e administrador do site com plenos poderes veem `Tabs` com **"Para você"** (os blocos de morador, na ordem configurada, com os atalhos sob o título "Atalhos") e **"Para gestão"** (os atalhos da gestão, com a contagem do que chegou de novo na pílula da aba). Abre em "Para você" (configuração `inicio.aba_inicial_gestao`); a aba fica no endereço (`?aba=gestao`). Quem é só morador não tem abas.
+- Na aba Para gestão, **um card só para a Ouvidoria** (ícone `campaign`), com um `Badge` `warning` somando as demandas novas e as denúncias não lidas ("4 novas"); as denúncias só entram para quem pode lê-las. Os outros atalhos: Publicar aviso (`notifications`), Leituras das casas (`water_drop`), Serviços com adesão (`event`), conforme o que a pessoa pode fazer.
+- **Alerta de resposta** no topo de Para você (e do Início do morador): `Alert` `success` com `onClose`, "Sua demanda foi respondida" ou "2 demandas suas foram respondidas", e o botão "Ver minhas demandas". Some quando a pessoa abre a demanda ou fecha o alerta, e volta com uma resposta nova. Vale para denúncias com nome. Textos em `ouvidoria.alerta_resposta.*`.
+- A ordem dos blocos de cada perfil (morador, síndico, gestão, administradora) fica nas configurações; nada fixo no código.
 - A faixa com a foto (`Hero`) é compacta (pedido da Paula, 28/10/2026): 184 px no computador e 160 px no celular, para os avisos aparecerem logo.
-- Atalhos são `Card` `outlined` com `href`. Na gestão, o card leva ícone (`description`, `lock`, `info`, `notifications`, `water_drop`, `event`) e, quando há algo esperando, um `Badge` `warning` sem ícone ("3 novas", "1 não lida").
+- Atalhos são `Card` `outlined` com `href`; os da gestão levam ícone e, quando há algo esperando, um `Badge` `warning` sem ícone.
 
 ## Componentes
 

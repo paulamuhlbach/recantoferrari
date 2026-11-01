@@ -165,8 +165,8 @@ O envio, a conferência e o cálculo já funcionam (31/10/2026). Falta a gestão
 ## 8. Página inicial e coleta de lixo
 
 - [ ] **O que cada perfil vê primeiro no Início** ⚙️
-  - Hoje: para o síndico, "Para a gestão" (ouvidoria, denúncias, publicar aviso, serviços e leituras) vem no alto, acima dos avisos (pedido da Paula, 30/10/2026). Para os demais, os avisos vêm primeiro; em seguida, "Precisa da sua resposta" (ofertas de serviço não respondidas e a leitura do hidrômetro); para a gestão e a administradora, "Para a gestão"; depois "Para você" (enviar demanda, minhas demandas, regras). A coleta de lixo fica por último.
-  - Proposta: manter. A ordem de cada perfil se muda nas configurações, sem mexer no código.
+  - Hoje (desde 01/11/2026, pedido da Paula): quem tem cargo na gestão (e a administradora) vê duas abas, **"Para você"** e **"Para gestão"**, e entra em "Para você". Em "Para você": o aviso de respostas da Ouvidoria, os avisos, "Precisa da sua resposta" (ofertas de serviço não respondidas e a leitura do hidrômetro), os atalhos (enviar demanda, minhas demandas, regras) e a coleta de lixo. Em "Para gestão": Ouvidoria (com o número do que chegou de novo), publicar aviso, leituras e serviços. Quem é só morador não tem abas.
+  - Proposta: manter. A aba que abre primeiro e a ordem dos blocos se mudam nas configurações, sem mexer no código.
   - Decisão:
 
 - [ ] **Ecoponto indicado aos moradores** ⚙️
