@@ -68,6 +68,8 @@
     recycling: 'M5.77 7.15 7.2 4.78l1.03-1.71c.39-.65 1.33-.65 1.72 0l1.48 2.46-1.23 2.06-1 1.62-3.43-2.06zm15.95 5.82-1.6-2.66-3.46 2L18.87 16H20a2 2 0 0 0 2-2c0-.36-.1-.71-.28-1.03zM16 21h1.5a2 2 0 0 0 1.79-1.11L20.74 17H16v-2l-4 4 4 4v-2zm-6-4H5.7l-.84 1.41c-.3.5-.32 1.12-.06 1.65.28.57.87.94 1.52.94H10v-4zm-3.88-2.65 1.73 1.04L6.48 9.9 1 11.27l1.7 1.02-.41.69c-.35.59-.38 1.31-.07 1.92l1.63 3.26 2.27-3.81zm10.9-9.21-1.3-2.17C15.35 2.37 14.7 2 14 2h-3.53l3.12 5.2-1.72 1.03 5.49 1.37 1.37-5.49-1.71 1.03z',
     help: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z',
     location_on: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z',
+    /* Ouvidoria (01/11/2026): megafone do card da gestão. */
+    campaign: 'M18 11v2h4v-2h-4zm-2 6.61c.96.71 2.21 1.65 3.2 2.39.4-.53.8-1.07 1.2-1.6-.99-.74-2.24-1.68-3.2-2.4-.4.54-.8 1.08-1.2 1.61zM20.4 5.6c-.4-.53-.8-1.07-1.2-1.6-.99.74-2.24 1.68-3.2 2.4.4.53.8 1.07 1.2 1.6.96-.72 2.21-1.65 3.2-2.4zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3V6L8 9H4zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z',
     pets: 'M2 9.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM6.5 5.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM12.5 5.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM17 9.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z'
   };
   function Icon(props) {
@@ -168,6 +170,32 @@
         control,
         props.suffix ? h('span', { className: 'rf-field-suffix', 'aria-hidden': 'true' }, props.suffix) : null,
         statusIcon ? h(Icon, { name: statusIcon, size: 20, className: 'rf-field-status' }) : null),
+      props.helper ? h('p', { className: 'rf-field-help', id: helpId }, props.helper) : null);
+  }
+
+  /* ---------- Select (01/11/2026) ----------
+     Lista de escolha (<select> nativo: acessível e bom no celular) com a aparência dos campos.
+     options: [{ value, label, disabled }]. Opcional com fundo branco; required, fundo colorido. */
+  function Select(props) {
+    var idRef = React.useRef(null);
+    if (!idRef.current) idRef.current = props.id || 'rf-field-' + (++fid);
+    var id = idRef.current;
+    var status = props.disabled ? 'disabled' : (props.status || 'default');
+    var helpId = id + '-help';
+    var rest = omit(props, ['label', 'helper', 'status', 'options', 'placeholder', 'className', 'id', 'children']);
+    rest.id = id;
+    rest.className = 'rf-field-input rf-select-input';
+    if (props.helper) rest['aria-describedby'] = helpId;
+    if (status === 'error') rest['aria-invalid'] = 'true';
+    var options = (props.options || []).map(function (o) {
+      return h('option', { key: String(o.value), value: o.value, disabled: o.disabled }, o.label);
+    });
+    if (props.placeholder) options.unshift(h('option', { key: '__placeholder', value: '', disabled: !!props.required }, props.placeholder));
+    return h('div', { className: cx('rf-field', 'rf-select', 'rf-field-' + status, props.required && 'rf-field-required', props.className) },
+      h('label', { className: 'rf-field-label', htmlFor: id }, props.label),
+      h('div', { className: 'rf-field-box' },
+        h('select', rest, options, props.children),
+        h(Icon, { name: 'expand_more', size: 24, className: 'rf-select-chevron' })),
       props.helper ? h('p', { className: 'rf-field-help', id: helpId }, props.helper) : null);
   }
 
@@ -294,17 +322,19 @@
           h(IconButton, { icon: 'menu', label: 'Abrir menu', className: 'rf-appbar-menu', onClick: props.onMenu }))));
   }
 
-  /* ---------- Tabs ---------- */
+  /* ---------- Tabs ----------
+     variant="secondary" (01/11/2026): abas dentro de outra aba (ex.: situações da lista), menores e sem ícone.
+     tone no item (01/11/2026): a pílula da contagem com a cor do Badge do mesmo tom (ex.: a situação). */
   function Tabs(props) {
     var items = props.items || [];
-    return h('div', { className: cx('rf-tabs', props.className), role: 'tablist', 'aria-label': props.label },
+    return h('div', { className: cx('rf-tabs', props.variant === 'secondary' && 'rf-tabs-secondary', props.className), role: 'tablist', 'aria-label': props.label },
       items.map(function (it) {
         var active = it.value === props.value;
         return h('button', { key: it.value, type: 'button', role: 'tab', 'aria-selected': active, tabIndex: active ? 0 : -1,
           className: cx('rf-tab', 'rf-state', active && 'is-active'), onClick: function () { props.onChange && props.onChange(it.value); } },
           it.icon ? h(Icon, { name: it.icon, size: 20 }) : null,
           h('span', null, it.label),
-          it.count !== undefined ? h('span', { className: 'rf-tab-count' }, it.count) : null);
+          it.count !== undefined ? h('span', { className: cx('rf-tab-count', it.tone && 'rf-tab-count-' + it.tone) }, it.count) : null);
       }));
   }
 
@@ -651,7 +681,7 @@
 
   window.RecantoFerrari = Object.assign(window.RecantoFerrari || {}, {
     Logo: Logo, Icon: Icon, Button: Button, IconButton: IconButton, Chip: Chip, TextField: TextField,
-    Checkbox: Checkbox, Switch: Switch, Card: Card, ListItem: ListItem, Badge: Badge, Alert: Alert,
+    Select: Select, Checkbox: Checkbox, Switch: Switch, Card: Card, ListItem: ListItem, Badge: Badge, Alert: Alert,
     Dialog: Dialog, TopAppBar: TopAppBar, Tabs: Tabs, Calendar: Calendar, DataTable: DataTable,
     Menu: Menu, NavigationDrawer: NavigationDrawer, Footer: Footer, Hero: Hero, RadioGroup: RadioGroup, FileUpload: FileUpload,
     MapEmbed: MapEmbed

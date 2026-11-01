@@ -1,4 +1,4 @@
-<!-- @dsCard group="Navegação" height=80 -->
+<!-- @dsCard group="Navegação" height=150 -->
 <!doctype html>
 <html lang="pt-BR">
 <head><meta charset="utf-8"><title>Tabs</title>
@@ -15,8 +15,13 @@
   var R = window.RecantoFerrari, h = React.createElement;
   function App() {
     var s = React.useState('proximas'), v = s[0], set = s[1];
-    return h(R.Tabs, { label: 'Reservas', value: v, onChange: set,
-      items: [{ value: 'proximas', label: 'Próximas', count: 2 }, { value: 'historico', label: 'Histórico' }, { value: 'espacos', label: 'Espaços', icon: 'home' }] });
+    var s2 = React.useState('novo'), v2 = s2[0], set2 = s2[1];
+    return h('div', { className: 'col' },
+      h(R.Tabs, { label: 'Reservas', value: v, onChange: set,
+        items: [{ value: 'proximas', label: 'Próximas', count: 2 }, { value: 'historico', label: 'Histórico' }, { value: 'espacos', label: 'Espaços', icon: 'home' }] }),
+      h(R.Tabs, { label: 'Situação', variant: 'secondary', value: v2, onChange: set2,
+        items: [{ value: 'todas', label: 'Todas', count: 9, tone: 'neutral' }, { value: 'novo', label: 'Novas', count: 2, tone: 'info' }, { value: 'em_andamento', label: 'Em andamento', count: 3, tone: 'warning' },
+          { value: 'respondido', label: 'Respondidas', count: 4, tone: 'success' }, { value: 'concluido', label: 'Concluídas', count: 0, tone: 'neutral' }] }));
   }
   ReactDOM.createRoot(document.getElementById('root')).render(h(App));
 </script>

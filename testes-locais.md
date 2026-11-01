@@ -81,12 +81,12 @@ As datas partem do dia em que o script rodou: a oferta aberta, o prazo da leitur
 Marque o que funcionou e anote o que estranhar: palavra difícil, botão que não achou, informação que faltou.
 
 ### Moradora, perfil principal (Ana)
-- [ ] No Início: o aviso fixado, "Precisa da sua resposta" (corte de grama, leitura do hidrômetro e o alerta da caixa d'água adiada), Para você e a coleta de lixo.
+- [ ] No Início: o alerta verde "Sua demanda foi respondida" no alto (fechar no X e ver que não volta), o aviso fixado, "Precisa da sua resposta" (corte de grama, leitura do hidrômetro e o alerta da caixa d'água adiada), Para você e a coleta de lixo.
 - [ ] Aderir ao corte de grama: marcar a autorização e confirmar. Ver o e-mail de confirmação no terminal do backend.
 - [ ] Cancelar a adesão pelo link do e-mail (`/servicos/cancelar/...`).
 - [ ] Enviar a leitura do hidrômetro com uma foto qualquer do computador. Testar um número menor que o anterior (deve recusar) e depois corrigir a leitura.
 - [ ] No histórico do hidrômetro, ver o valor da água dos meses calculados.
-- [ ] Ouvidoria: enviar uma demanda com o nome e outra sem identificação; abrir "Minhas demandas" e ler a resposta da lâmpada.
+- [ ] Ouvidoria: abrir "Como funciona"; ver as dicas embaixo dos campos (tipo, categoria); escolher a categoria na lista; enviar uma demanda com o nome e outra sem identificação; abrir "Minhas demandas" e ler a resposta da lâmpada (selo "Resposta nova" até abrir).
 - [ ] Minha casa: ver os moradores e os pets; indicar um morador novo; liberar ou tirar o acesso financeiro do João.
 - [ ] Documentos e Avisos: ler o regimento e o mural.
 - [ ] Menu da conta: Meu registro e Trocar a senha.
@@ -97,9 +97,9 @@ Marque o que funcionou e anote o que estranhar: palavra difícil, botão que nã
 - [ ] Os dois veem quem da casa aderiu e quem enviou a leitura.
 
 ### Síndico (Carlos)
-- [ ] No Início: "Para a gestão" no alto, com as demandas novas e as denúncias não lidas.
+- [ ] No Início: as abas "Para você" (abre primeiro) e "Para gestão"; em "Para gestão", o card Ouvidoria (megafone) com a soma das demandas novas e das denúncias não lidas. Responder uma demanda da Ana e, entrando como Ana, ver o alerta no Início.
 - [ ] Unidades e Pessoas: aprovar o Lucas (Casa 14); ver o ex-morador e o bloqueado; reenviar um convite (Casas 27 e 28).
-- [ ] Ouvidoria da gestão: responder uma demanda, mudar a situação, abrir uma denúncia (a leitura fica registrada) e encaminhar para avaliação jurídica.
+- [ ] Ouvidoria da gestão: "Como funciona" nas abas Demandas e Denúncias; filtrar pelo tipo (chips), pela categoria (lista) e pela situação (abas com a contagem); responder uma demanda, mudar a situação e a categoria, abrir uma denúncia (a leitura fica registrada) e encaminhar para avaliação jurídica.
 - [ ] Avisos: publicar, editar, fixar e retirar.
 - [ ] Gestão dos serviços (menu da conta): abrir uma oferta, editar uma com casas inscritas (as casas recebem e-mail), adiar, cancelar e exportar a lista para o boleto (Excel, PDF e CSV). Ligar o "e-mail a cada adesão" e aderir com a Ana para ver o aviso.
 - [ ] Leituras das casas: filtrar, abrir a foto da Casa 21 (fora do padrão), conferir uma leitura, pedir nova foto, registrar troca de hidrômetro e exportar as leituras.

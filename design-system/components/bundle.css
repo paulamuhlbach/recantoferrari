@@ -296,6 +296,23 @@ textarea.rf-field-input { resize: vertical; }
 .rf-tab.is-active::after { background: var(--primary); }
 .rf-tab-count { min-width: 20px; height: 20px; padding: 0 6px; box-sizing: border-box; border-radius: var(--radius-full); background: var(--primary); color: var(--on-primary); font-size: 11px; font-weight: 600; display: inline-grid; place-items: center; }
 
+/* Abas secundárias (01/11/2026): dentro de uma aba principal, ex.: as situações da lista da Ouvidoria.
+   Menores, sem ícone e com sublinhado fino, para não parecerem um segundo menu igual ao de cima. */
+.rf-tabs-secondary .rf-tab { height: 40px; padding: 0 var(--space-3); font-size: 14px; }
+.rf-tabs-secondary .rf-tab > .rf-icon { display: none; }
+.rf-tabs-secondary .rf-tab::after { left: 0; right: 0; height: 2px; border-radius: 0; }
+.rf-tabs-secondary .rf-tab.is-active { color: var(--on-surface); }
+.rf-tabs-secondary .rf-tab-count { background: var(--surface-container-high); color: var(--on-surface-variant); }
+.rf-tabs-secondary .rf-tab.is-active .rf-tab-count { background: var(--primary-container); color: var(--on-primary-container); }
+/* Contagem com o tom do Badge (01/11/2026): a pílula de cada situação tem a cor do selo dessa situação na lista. */
+.rf-tab .rf-tab-count-neutral, .rf-tabs-secondary .rf-tab.is-active .rf-tab-count-neutral { background: var(--surface-container-high); color: var(--on-surface); }
+.rf-tab .rf-tab-count-info, .rf-tabs-secondary .rf-tab.is-active .rf-tab-count-info { background: var(--secondary-container); color: var(--on-secondary-container); }
+.rf-tab .rf-tab-count-success, .rf-tabs-secondary .rf-tab.is-active .rf-tab-count-success { background: var(--success-container); color: var(--on-success-container); }
+.rf-tab .rf-tab-count-warning, .rf-tabs-secondary .rf-tab.is-active .rf-tab-count-warning { background: var(--warning-container); color: var(--on-warning-container); }
+.rf-tab .rf-tab-count-error, .rf-tabs-secondary .rf-tab.is-active .rf-tab-count-error { background: var(--error-container); color: var(--on-error-container); }
+.rf-tab .rf-tab-count-tertiary, .rf-tabs-secondary .rf-tab.is-active .rf-tab-count-tertiary { background: var(--tertiary-container); color: var(--on-tertiary-container); }
+.rf-tab .rf-tab-count-primary, .rf-tabs-secondary .rf-tab.is-active .rf-tab-count-primary { background: var(--primary-container); color: var(--on-primary-container); }
+
 /* ---------- Calendar (date table) ---------- */
 .rf-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .rf-cal { display: inline-flex; flex-direction: column; gap: var(--space-2); width: 100%; max-width: 360px; box-sizing: border-box;
@@ -566,6 +583,13 @@ th.is-num .rf-dt-sort { flex-direction: row-reverse; }
 }
 /* Tabs sem rolagem horizontal (24/10/2026): as abas quebram linha quando não cabem. */
 .rf-tabs { flex-wrap: wrap; overflow-x: visible; }
+
+/* ---------- Select (01/11/2026) ---------- */
+.rf-select .rf-field-box { position: relative; padding-right: 0; }
+.rf-select-input { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 44px; text-overflow: ellipsis; }
+.rf-select-input option { color: var(--on-surface); background: var(--surface-container-lowest); }
+.rf-select-chevron { position: absolute; right: var(--space-3); top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--on-surface-variant); }
+.rf-field-disabled .rf-select-input { cursor: not-allowed; }
 
 /* ---------- MapEmbed ---------- */
 .rf-map { border: 1px solid var(--outline-variant); border-radius: var(--radius-xs); overflow: hidden; background: var(--surface-container); min-width: 0; }

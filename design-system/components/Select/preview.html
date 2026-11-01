@@ -1,0 +1,27 @@
+<!-- @dsCard group="Formulários" height=260 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Select</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  var cats = [{ value: 'todas', label: 'Todas as categorias' }, { value: 'barulho', label: 'Barulho' }, { value: 'grama', label: 'Grama' },
+    { value: 'limpeza', label: 'Limpeza' }, { value: 'manutencao', label: 'Manutenção predial' }, { value: 'sem', label: 'Sem categoria' }];
+  function App() {
+    var a = React.useState('todas'), b = React.useState(''), c = React.useState('');
+    return h('div', { className: 'grid' },
+      h(R.Select, { label: 'Categoria', options: cats, value: a[0], onChange: function (e) { a[1](e.target.value); }, helper: 'Filtro: opcional, fundo branco.' }),
+      h(R.Select, { label: 'Categoria (opcional)', placeholder: 'Não sei', options: cats.slice(1, 5), value: b[0], onChange: function (e) { b[1](e.target.value); }, helper: 'Se não souber, deixe em Não sei.' }),
+      h(R.Select, { label: 'Tipo de serviço', required: true, placeholder: 'Escolha', options: [{ value: 'grama', label: 'Corte de grama' }, { value: 'inseto', label: 'Desinsetização' }],
+        value: c[0], onChange: function (e) { c[1](e.target.value); }, status: c[0] ? 'default' : 'error', helper: c[0] ? 'Obrigatório: fundo colorido.' : 'Escolha o tipo de serviço.' }),
+      h(R.Select, { label: 'Casa', disabled: true, options: [{ value: '14', label: 'Casa 14' }], value: '14', helper: 'Do seu cadastro.' }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

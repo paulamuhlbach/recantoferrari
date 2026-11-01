@@ -5,7 +5,7 @@ export type IconName = 'home' | 'notifications' | 'event' | 'description' | 'per
   | 'info' | 'warning' | 'error' | 'check_circle' | 'arrow_forward' | 'chevron_right' | 'search' | 'download' | 'local_parking' | 'payments' | 'chevron_left' | 'arrow_upward' | 'arrow_downward' | 'remove'
   | 'settings' | 'logout' | 'edit' | 'block' | 'lock' | 'visibility' | 'visibility_off' | 'mail' | 'open_in_new' | 'expand_more' | 'cloud' | 'link' | 'person_add' | 'person_remove' | 'history' | 'key' | 'swap_horiz' | 'group'
   | 'grass' | 'pest_control' | 'plumbing' | 'cleaning_services' | 'water_drop' | 'photo_camera' | 'calculate' | 'pets'
-  | 'compost' | 'recycling' | 'help' | 'location_on';
+  | 'compost' | 'recycling' | 'help' | 'location_on' | 'campaign';
 
 export interface LogoProps { variant?: 'horizontal' | 'vertical' | 'simbolo'; size?: 'sm' | 'md' | 'lg'; tagline?: boolean;
   /** "deep": versão para fundo azul profundo (surface-deep, blue-1, Hero, rodapé). Nome em on-surface-deep e tagline em primary-container. */ tone?: 'default' | 'deep'; className?: string; }
@@ -34,6 +34,15 @@ export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputEleme
   /** Unidade depois do valor, ex.: "m³" na leitura do hidrômetro. */ suffix?: string;
 }
 export declare function TextField(props: TextFieldProps): React.ReactElement;
+
+export interface SelectOption { value: string; label: string; disabled?: boolean; }
+/** Lista de escolha (01/11/2026): <select> nativo com a aparência dos campos. Ex.: filtro de categoria da Ouvidoria. */
+export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
+  label: string; options: SelectOption[]; helper?: string; status?: 'default' | 'success' | 'error' | 'highlight';
+  /** Primeira opção vazia (ex.: "Escolha"). Com required, ela não pode ser escolhida de volta. */ placeholder?: string;
+  /** Obrigatório: fundo colorido. Sem required, fundo branco. */ required?: boolean;
+}
+export declare function Select(props: SelectProps): React.ReactElement;
 
 export interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> { label: React.ReactNode; supporting?: React.ReactNode; }
 export declare function Checkbox(props: CheckboxProps): React.ReactElement;
@@ -65,8 +74,10 @@ export interface NavItem { value: string; label: string; href?: string; /** Outr
 export interface TopAppBarProps { items?: NavItem[]; value?: string; onChange?: (value: string) => void; actions?: React.ReactNode; onMenu?: () => void; homeHref?: string; }
 export declare function TopAppBar(props: TopAppBarProps): React.ReactElement;
 
-export interface TabItem { value: string; label: string; icon?: IconName; count?: number; }
-export interface TabsProps { items: TabItem[]; value: string; onChange?: (value: string) => void; label?: string; }
+export interface TabItem { value: string; label: string; icon?: IconName; count?: number;
+  /** Cor da pílula da contagem, a mesma do Badge (01/11/2026). Ex.: situação "Nova" = info. */ tone?: 'neutral' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'tertiary'; }
+export interface TabsProps { items: TabItem[]; value: string; onChange?: (value: string) => void; label?: string;
+  /** secondary (01/11/2026): abas dentro de outra aba, menores e sem ícone. */ variant?: 'primary' | 'secondary'; className?: string; }
 export declare function Tabs(props: TabsProps): React.ReactElement;
 
 export interface CalendarLegendItem { kind: 'selected' | 'today' | 'booked' | 'primary' | 'tertiary' | 'warning' | 'error' | 'info'; label: string; }
