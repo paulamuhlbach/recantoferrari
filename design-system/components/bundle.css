@@ -242,6 +242,13 @@ textarea.rf-field-input { resize: vertical; }
 .rf-badge-tertiary { background: var(--tertiary-container); color: var(--on-tertiary-container); }
 
 /* ---------- Alert ---------- */
+/* ---------- Banner (faixa no alto da página, 01/11/2026) ---------- */
+.rf-banner { width: 100%; box-sizing: border-box; border-bottom: 1px solid; font-family: var(--font-body); font-size: 14px; line-height: 20px; font-weight: 600; }
+.rf-banner-inner { max-width: var(--content-max, 1200px); margin: 0 auto; padding: var(--space-2) var(--space-4); display: flex; align-items: flex-start; justify-content: center; gap: var(--space-2); text-align: center; }
+.rf-banner-icon { flex: none; }
+.rf-banner-text { min-width: 0; overflow-wrap: anywhere; }
+.rf-banner-warning { background: var(--warning-container); color: var(--on-warning-container); border-color: var(--warning); }
+.rf-banner-info { background: var(--secondary-container); color: var(--on-secondary-container); border-color: var(--secondary); }
 .rf-alert {
   display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-4); border-radius: var(--radius-xs);
   border: 1px solid; font-family: var(--font-body); font-size: 16px; line-height: 24px;

@@ -353,6 +353,18 @@
   var ALERT_ICON = { info: 'info', success: 'check_circle', warning: 'warning', error: 'error' };
   /* Alert (01/11/2026): o X aparece em todo alerta, salvo dismissible={false} (erros de formulário, listas vazias).
      Fechado, ele some até a tela ser aberta de novo (estado do próprio componente); onClose avisa a tela. */
+  /* ---------- Banner (faixa no alto da página, 01/11/2026) ----------
+     Faixa na largura toda, acima do cabeçalho, para avisos do próprio portal que valem em todas as
+     telas (ex.: "Ambiente de testes"). Não fecha. tone: warning (padrão) ou info. */
+  function Banner(props) {
+    var tone = props.tone || 'warning';
+    var icone = props.icon === undefined ? (tone === 'info' ? 'info' : 'warning') : props.icon;
+    return h('div', { className: cx('rf-banner', 'rf-banner-' + tone, props.className), role: 'note', 'aria-label': props.label || 'Aviso do portal' },
+      h('div', { className: 'rf-banner-inner' },
+        icone ? h(Icon, { name: icone, size: 20, className: 'rf-banner-icon' }) : null,
+        h('span', { className: 'rf-banner-text' }, props.children)));
+  }
+
   function Alert(props) {
     var tone = props.tone || 'info';
     var fs = React.useState(false), fechado = fs[0], setFechado = fs[1];
@@ -928,7 +940,7 @@
 
   window.RecantoFerrari = Object.assign(window.RecantoFerrari || {}, {
     Logo: Logo, Icon: Icon, Button: Button, IconButton: IconButton, Chip: Chip, TextField: TextField,
-    Select: Select, Checkbox: Checkbox, Switch: Switch, Card: Card, ListItem: ListItem, Badge: Badge, Alert: Alert,
+    Select: Select, Checkbox: Checkbox, Switch: Switch, Card: Card, ListItem: ListItem, Badge: Badge, Alert: Alert, Banner: Banner,
     Dialog: Dialog, TopAppBar: TopAppBar, Tabs: Tabs, Calendar: Calendar, DateField: DateField, MonthField: MonthField, TimeField: TimeField, DataTable: DataTable,
     Menu: Menu, NavigationDrawer: NavigationDrawer, Footer: Footer, Hero: Hero, RadioGroup: RadioGroup, FileUpload: FileUpload,
     MapEmbed: MapEmbed

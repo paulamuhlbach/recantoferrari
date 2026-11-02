@@ -96,6 +96,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - **Todo `Alert` tem o X** (pedido da Paula, 01/11/2026). Fechado, some até a pessoa abrir a tela de novo.
 - Sem X (`dismissible={false}`): **erros** ("Não foi possível…", que somem quando a pessoa corrige ou recarrega) e **listas vazias** ("Nenhum aviso no mural"), que são o conteúdo da tela.
 - Quando a tela precisa lembrar que foi fechado (ex.: "Sua demanda foi respondida"), use `onClose` e guarde no backend.
+- **Aviso do portal inteiro** (ex.: "Ambiente de testes", 01/11/2026): `Banner`, uma faixa na largura toda acima do cabeçalho, em todas as telas, sem X.
 
 ## Ação em andamento
 
