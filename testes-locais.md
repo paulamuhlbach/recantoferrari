@@ -65,7 +65,7 @@ As datas partem do dia em que o script rodou: a oferta aberta, o prazo da leitur
 - **Casas:** 30. Da 01 à 26 cadastradas; 27 e 28 com convite enviado e não aceito; 29 e 30 sem convite.
 - **Casa 14 (Ana):** João (sem acesso financeiro), Lia (com acesso financeiro), Lucas indicado esperando a aprovação do síndico; pets Thor e Mia.
 - **Administradora do condomínio:** contrato vigente com a "Administradora Exemplo Ltda.", vence em cerca de 2 meses.
-- **Ouvidoria:** 9 demandas em todas as situações (nova, em andamento, respondida, concluída), uma sem identificação, 2 denúncias (uma em avaliação jurídica) e 5 categorias internas. A Ana tem uma demanda respondida ("Lâmpada queimada na rua interna").
+- **Ouvidoria:** 11 demandas em todas as situações (nova, em andamento, avaliação jurídica, respondida, concluída), uma sem identificação, 2 denúncias (uma em avaliação jurídica), uma queixa aguardando o parecer da administradora ("Caçamba de obra na calçada") e outra já com parecer ("Garagem usada como depósito") e 5 categorias internas. A Ana tem uma demanda respondida ("Lâmpada queimada na rua interna").
 - **Avisos:** 4, um fixado (assembleia), um com data e horário (limpeza da caixa d'água).
 - **Documentos:** regimento, convenção, termos e política com textos de exemplo; coleta de lixo com dias e horários.
 - **Ofertas de serviço:**
@@ -103,6 +103,7 @@ Marque o que funcionou e anote o que estranhar: palavra difícil, botão que nã
 - [ ] Fechar alertas no X (avisos, sigilo, pendências) e ver que voltam ao abrir a tela de novo; erros de formulário e listas vazias não têm X. Aviso fixado com fundo azul bem claro.
 - [ ] Unidades e Pessoas: aprovar o Lucas (Casa 14); ver o ex-morador e o bloqueado; reenviar um convite (Casas 27 e 28).
 - [ ] Ouvidoria da gestão: "Como funciona" nas abas Demandas e Denúncias; filtrar pelo tipo (chips), pela categoria (lista) e pela situação (abas com a contagem); responder uma demanda, mudar a situação e a categoria, abrir uma denúncia (a leitura fica registrada) e encaminhar para avaliação jurídica.
+- [ ] Ouvidoria, andamento e avaliação jurídica: abrir "Portão da garagem lento" (Nova), mudar a categoria e ver que passa para Em andamento; encaminhar para avaliação jurídica com uma observação (a Juliana recebe o e-mail no terminal do backend); o andamento começa do mais novo e o botão inverte a ordem.
 - [ ] Avisos: publicar, editar, fixar e retirar.
 - [ ] Gestão dos serviços (menu da conta): abrir uma oferta, editar uma com casas inscritas (as casas recebem e-mail), adiar, cancelar e exportar a lista para o boleto (Excel, PDF e CSV). Ligar o "e-mail a cada adesão" e aderir com a Ana para ver o aviso.
 - [ ] Leituras das casas: filtrar, abrir a foto da Casa 21 (fora do padrão), conferir uma leitura, pedir nova foto, registrar troca de hidrômetro e exportar as leituras.
@@ -119,6 +120,7 @@ Marque o que funcionou e anote o que estranhar: palavra difícil, botão que nã
 - [ ] Beatriz (sem o termo): vê as listas sem os dados pessoais (código no lugar do nome, e-mail mascarado), só os números das leituras; recebe o pedido para assinar o termo.
 - [ ] Rafael (com o termo): tem os mesmos poderes do síndico.
 - [ ] Juliana (administradora, com o termo): vê o aviso de até quando vale o acesso, lê denúncias, confere leituras e calcula a água.
+- [ ] Juliana: no Início, aba Para gestão, o card "Pedidos de análise jurídica" (Caçamba de obra na calçada e Cachorro solto aguardando; Garagem usada como depósito analisada). Abrir um pedido, registrar o parecer e ver que o síndico recebe o e-mail e a demanda volta para Em andamento.
 - [ ] Fernando (administradora, sem o termo): precisa assinar o termo antes de ver os dados.
 
 ### Quem não entra
