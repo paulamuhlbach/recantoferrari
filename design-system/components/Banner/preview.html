@@ -1,0 +1,21 @@
+<!-- @dsCard group="Feedback" height=200 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Banner</title>
+<style>
+  body { margin:0; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .col { display:flex; flex-direction:column; gap:16px; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    return h('div', { className: 'col' },
+      h(R.Banner, null, 'Ambiente de testes. Os dados são fictícios e os e-mails não chegam aos moradores.'),
+      h(R.Banner, { tone: 'info' }, 'O portal fica fora do ar hoje, das 23h à meia-noite, para manutenção.'));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>

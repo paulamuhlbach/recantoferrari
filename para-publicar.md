@@ -2,7 +2,7 @@
 
 Lista do que precisa ser feito quando o portal sair da máquina de desenvolvimento e for para o ar. Vale para a primeira publicação; marque cada item quando estiver pronto. Os testes até agora rodaram com SQLite, o Gmail pessoal e o site em `localhost`, e nada disso vai para a produção.
 
-Atualizada em 31/10/2026.
+Atualizada em 01/11/2026.
 
 ## 0. Roteiro até a produção (combinado em 31/10/2026)
 
@@ -25,24 +25,28 @@ A ordem definida pela Paula, com as sugestões aceitas para cada etapa.
 8. [ ] **Fase 4** (WhatsApp), testada primeiro na homologação.
 
 **Adiantar durante os passos 1 e 2** (coisas que demoram e não dependem dos testes):
-- [ ] Domínio e e-mail do condomínio, com SPF e DKIM no DNS (sem isso, os convites caem no spam).
+- [ ] E-mail do condomínio no domínio `recantoferrari.com.br` (que a Paula já tem), com SPF e DKIM no DNS (sem isso, os convites caem no spam).
 - [ ] Revisão jurídica do termo de confidencialidade, da política de privacidade e dos termos de uso, e a cláusula de proteção de dados no contrato com a Auxiliadora Predial.
-- [ ] Escolha da hospedagem (API, site, PostgreSQL e arquivos), já prevendo os dois ambientes.
+- [x] Escolha da hospedagem: **VPS da Hostinger** (decisão da Paula, 01/11/2026). Ver a seção 1.
 
 **Adiantar durante o passo 4** (para a Fase 4 começar sem espera):
 - [ ] Escolher o provedor de WhatsApp, verificar a empresa na Meta e pedir a aprovação dos modelos de mensagem (leva semanas).
 
-**A desenvolver para este roteiro**: faixa "Ambiente de testes" e e-mails para a caixa de testes (passo 3); importação das casas por planilha (passo 7); arquivos de publicação para o provedor escolhido, com homologação e produção separadas.
+**A desenvolver para este roteiro**: ~~faixa "Ambiente de testes" e e-mails para a caixa de testes (passo 3)~~ feito em 01/11/2026 (`AMBIENTE=homologacao` e `EMAIL_CAIXA_TESTES`, ver a seção 3); importação das casas por planilha (passo 7); arquivos de publicação para o provedor escolhido, com homologação e produção separadas.
 
 ## 1. Decisões antes de começar
 
-- [ ] **Domínio e endereços.** Exemplo: `portal.recantoferrari.com.br` para o site e `api.recantoferrari.com.br` para a API. Quem registra e paga o domínio, e quem cuida do DNS.
-- [ ] **Hospedagem da API** (Python/FastAPI): PaaS de baixo custo (Render, Railway) ou um VPS simples. Precisa de HTTPS.
-- [ ] **Hospedagem do site** (arquivos estáticos da pasta `dist/`): Render Static Site, Cloudflare Pages, Netlify ou GitHub Pages. Tem que devolver `index.html` em qualquer caminho, porque o site usa rotas como `/entrar` e `/convite/...`.
-- [ ] **Banco de dados PostgreSQL**, de preferência o do próprio provedor da API, com backup automático.
-- [ ] **Onde ficam os arquivos** (fotos dos pets e do hidrômetro, anexos da ouvidoria, PDFs dos documentos e do contrato). Hoje elas ficam na pasta `arquivos/` do servidor. Em PaaS, o disco costuma ser apagado a cada nova versão, então é preciso um **disco persistente** ou um **bucket privado** compatível com S3. O bucket exige uma pequena mudança no código, que deve ser feita antes da publicação.
+- [x] **Domínio**: `recantoferrari.com.br`, já registrado pela Paula (01/11/2026).
+- [ ] **Endereços** (sugestão, a confirmar): produção em `portal.recantoferrari.com.br` e homologação em `testes.recantoferrari.com.br`, cada um com a API no mesmo endereço, em `/api` (sem um subdomínio só para a API e sem CORS). No DNS, os dois apontam para o IP da VPS.
+- [x] **Hospedagem** (decisão da Paula, 01/11/2026): **VPS da Hostinger, plano KVM 2** (2 vCPU, 8 GB de RAM, 100 GB NVMe), **servidor no Brasil**, **Ubuntu sem painel**. Na mesma VPS ficam a API, o site, o PostgreSQL e os arquivos, com **dois ambientes separados** (homologação e produção), cada um com o seu banco e a sua pasta de arquivos.
+  - Comparadas em 01/11/2026: Render (gerenciada, em dólar, cerca de 2 a 4 vezes mais cara com os dois ambientes), Square Cloud (gerenciada e brasileira, mas nova e focada em bots; os arquivos exigiriam mudar o código), Magalu Cloud (mais trabalhosa de montar) e Locaweb (sem vantagem sobre a Hostinger). A Hostinger compartilhada não roda Python: tem que ser VPS.
+  - É autogerenciada: atualizações do sistema, segurança, HTTPS e backups ficam com o responsável técnico. A instalação fica automatizada (Docker, HTTPS automático, backup diário fora da VPS, roteiro de atualização).
+  - VPS contratada em 02/11/2026 (acesso só por chave SSH; a senha root e a chave ficam no cofre de senhas da Paula). Roteiro de instalação, atualização, backup e migração: `deploy/README.md` no repositório do backend.
+  - **Dá para migrar depois** para uma hospedagem gerenciada sem perder nada: o banco é PostgreSQL padrão (cópia com `pg_dump`), os arquivos ficam numa pasta, as configurações só no `.env`, e o domínio é apontado para o novo endereço. Por isso tudo roda em contêineres desde o começo. Roteiro de migração a escrever junto com a instalação.
+- [x] **Banco de dados PostgreSQL**: na própria VPS, um banco por ambiente, com backup diário guardado fora da VPS.
+- [x] **Onde ficam os arquivos** (fotos dos pets e do hidrômetro, anexos da ouvidoria, PDFs): na pasta de arquivos de cada ambiente, no disco da VPS (persistente), com backup diário junto do banco.
 - [ ] **Serviço de e-mail transacional** com endereço do domínio do condomínio: Brevo (grátis até 300 por dia), Amazon SES ou Resend.
-- [ ] **Quem será o responsável técnico** pela hospedagem, pelas senhas e pelos backups. Guardar os acessos num cofre de senhas, não em planilha.
+- [x] **Responsável técnico** pela hospedagem, pelas senhas e pelos backups: **a Paula** (01/11/2026). Guardar os acessos num cofre de senhas, não em planilha.
 
 ## 2. Banco de dados
 
@@ -72,6 +76,8 @@ Nunca subir o `.env` para o Git. No PaaS, as variáveis são preenchidas no pain
 | `EMAIL_RESPONDER_PARA` | E-mail da administração, se as respostas devem ir para alguém |
 | `GOOGLE_CLIENT_ID` | O mesmo ID do cliente já criado (ver item 5) |
 | `PASTA_ARQUIVOS` | Caminho do disco persistente (ou trocar pelo bucket) |
+| `AMBIENTE` | `producao` na produção e `homologacao` na homologação (faixa "Ambiente de testes" em todas as telas, com o texto de `ambiente.faixa_texto`) |
+| `EMAIL_CAIXA_TESTES` | Só na homologação: a caixa que recebe todos os e-mails (ex.: `testes@recantoferrari.com.br`). Sem ela, os e-mails da homologação não saem. |
 | `CONFIAR_NO_PROXY` | `true` quando a API estiver atrás de proxy (o normal em PaaS), para o registro de atividades gravar o IP real de quem acessou |
 
 ## 4. E-mail

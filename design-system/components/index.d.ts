@@ -81,6 +81,13 @@ export declare function ListItem(props: ListItemProps): React.ReactElement;
 export interface BadgeProps { tone?: 'neutral' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'tertiary'; icon?: IconName | false; children: React.ReactNode; }
 export declare function Badge(props: BadgeProps): React.ReactElement;
 
+export interface BannerProps {
+  /** warning (padrão) ou info. */ tone?: 'warning' | 'info'; icon?: IconName | false;
+  /** Nome para o leitor de tela (padrão "Aviso do portal"). */ label?: string; className?: string; children: React.ReactNode;
+}
+/** Faixa na largura toda, acima do cabeçalho, para avisos do portal em todas as telas (ex.: "Ambiente de testes"). */
+export declare function Banner(props: BannerProps): React.ReactElement;
+
 export interface AlertProps { tone?: 'info' | 'success' | 'warning' | 'error'; title?: React.ReactNode; children?: React.ReactNode; action?: React.ReactNode; onClose?: () => void;
   /** O X aparece sempre (01/11/2026), salvo dismissible={false}: erros de formulário e listas vazias. */ dismissible?: boolean; className?: string; }
 export declare function Alert(props: AlertProps): React.ReactElement;
