@@ -5,7 +5,7 @@ export type IconName = 'home' | 'notifications' | 'event' | 'description' | 'per
   | 'info' | 'warning' | 'error' | 'check_circle' | 'arrow_forward' | 'chevron_right' | 'search' | 'download' | 'local_parking' | 'payments' | 'chevron_left' | 'arrow_upward' | 'arrow_downward' | 'remove'
   | 'settings' | 'logout' | 'edit' | 'block' | 'lock' | 'visibility' | 'visibility_off' | 'mail' | 'open_in_new' | 'expand_more' | 'cloud' | 'link' | 'person_add' | 'person_remove' | 'history' | 'key' | 'swap_horiz' | 'group'
   | 'grass' | 'pest_control' | 'plumbing' | 'cleaning_services' | 'water_drop' | 'photo_camera' | 'calculate' | 'pets'
-  | 'compost' | 'recycling' | 'help' | 'location_on' | 'campaign';
+  | 'compost' | 'recycling' | 'help' | 'location_on' | 'campaign' | 'calendar_month' | 'schedule';
 
 export interface LogoProps { variant?: 'horizontal' | 'vertical' | 'simbolo'; size?: 'sm' | 'md' | 'lg'; tagline?: boolean;
   /** "deep": versão para fundo azul profundo (surface-deep, blue-1, Hero, rodapé). Nome em on-surface-deep e tagline em primary-container. */ tone?: 'default' | 'deep'; className?: string; }
@@ -35,6 +35,22 @@ export interface TextFieldProps extends React.InputHTMLAttributes<HTMLInputEleme
 }
 export declare function TextField(props: TextFieldProps): React.ReactElement;
 
+interface CampoDataBase {
+  label: string; name?: string; id?: string; required?: boolean; disabled?: boolean; helper?: string; placeholder?: string;
+  status?: 'default' | 'success' | 'error' | 'highlight'; className?: string; onBlur?: () => void;
+  /** Recebe um evento com target.value, como os campos nativos (texto vazio quando a pessoa limpa). */
+  onChange?: (e: { target: { value: string; name?: string } }) => void;
+}
+/** Data (01/11/2026): valor "aaaa-mm-dd"; digita dd/mm/aaaa ou escolhe no Calendar do DS. */
+export interface DateFieldProps extends CampoDataBase { value?: string; min?: string; max?: string; }
+export declare function DateField(props: DateFieldProps): React.ReactElement;
+/** Mês (01/11/2026): valor "aaaa-mm"; grade dos 12 meses com o ano. */
+export interface MonthFieldProps extends CampoDataBase { value?: string; min?: string; max?: string; }
+export declare function MonthField(props: MonthFieldProps): React.ReactElement;
+/** Hora (01/11/2026): valor "hh:mm"; digita ou escolhe na lista (passo em minutos, padrão 30). */
+export interface TimeFieldProps extends CampoDataBase { value?: string; step?: number; inicio?: string; }
+export declare function TimeField(props: TimeFieldProps): React.ReactElement;
+
 export interface SelectOption { value: string; label: string; disabled?: boolean; }
 /** Lista de escolha (01/11/2026): <select> nativo com a aparência dos campos. Ex.: filtro de categoria da Ouvidoria. */
 export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'children'> {
@@ -51,7 +67,7 @@ export interface SwitchProps extends React.InputHTMLAttributes<HTMLInputElement>
 export declare function Switch(props: SwitchProps): React.ReactElement;
 
 export interface CardProps extends React.HTMLAttributes<HTMLElement> {
-  variant?: 'elevated' | 'filled' | 'outlined'; eyebrow?: React.ReactNode; badge?: React.ReactNode; title?: React.ReactNode;
+  /** highlight (01/11/2026): azul bem claro, sem sombra (aviso fixado). */ variant?: 'elevated' | 'filled' | 'outlined' | 'highlight'; eyebrow?: React.ReactNode; badge?: React.ReactNode; title?: React.ReactNode;
   meta?: React.ReactNode; media?: React.ReactNode; actions?: React.ReactNode; href?: string; as?: string;
   /** Ícone em círculo ao lado do título (ex.: ícone do serviço). */ icon?: IconName; /** secondary (azul, padrão) ou primary (terracota). */ iconTone?: 'secondary' | 'primary';
 }
@@ -64,7 +80,8 @@ export declare function ListItem(props: ListItemProps): React.ReactElement;
 export interface BadgeProps { tone?: 'neutral' | 'primary' | 'info' | 'success' | 'warning' | 'error' | 'tertiary'; icon?: IconName | false; children: React.ReactNode; }
 export declare function Badge(props: BadgeProps): React.ReactElement;
 
-export interface AlertProps { tone?: 'info' | 'success' | 'warning' | 'error'; title?: React.ReactNode; children?: React.ReactNode; action?: React.ReactNode; onClose?: () => void; }
+export interface AlertProps { tone?: 'info' | 'success' | 'warning' | 'error'; title?: React.ReactNode; children?: React.ReactNode; action?: React.ReactNode; onClose?: () => void;
+  /** O X aparece sempre (01/11/2026), salvo dismissible={false}: erros de formulário e listas vazias. */ dismissible?: boolean; className?: string; }
 export declare function Alert(props: AlertProps): React.ReactElement;
 
 export interface DialogProps { open?: boolean; title: React.ReactNode; icon?: IconName; children?: React.ReactNode; actions?: React.ReactNode; onClose?: () => void; inline?: boolean; id?: string; }

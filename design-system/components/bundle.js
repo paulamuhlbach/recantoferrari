@@ -70,6 +70,9 @@
     location_on: 'M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z',
     /* Ouvidoria (01/11/2026): megafone do card da gestão. */
     campaign: 'M18 11v2h4v-2h-4zm-2 6.61c.96.71 2.21 1.65 3.2 2.39.4-.53.8-1.07 1.2-1.6-.99-.74-2.24-1.68-3.2-2.4-.4.54-.8 1.08-1.2 1.61zM20.4 5.6c-.4-.53-.8-1.07-1.2-1.6-.99.74-2.24 1.68-3.2 2.4.4.53.8 1.07 1.2 1.6.96-.72 2.21-1.65 3.2-2.4zM4 9c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h1v4h2v-4h1l5 3V6L8 9H4zm11.5 3c0-1.33-.58-2.53-1.5-3.35v6.69c.92-.81 1.5-2.01 1.5-3.34z',
+    /* Campos de data e hora (01/11/2026). */
+    calendar_month: 'M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z',
+    schedule: 'M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z',
     pets: 'M2 9.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM6.5 5.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM12.5 5.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM17 9.5a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0zM17.34 14.86c-.87-1.02-1.6-1.89-2.48-2.91-.46-.54-1.05-1.08-1.75-1.32-.11-.04-.22-.07-.33-.09-.25-.04-.52-.04-.78-.04s-.53 0-.79.05c-.11.02-.22.05-.33.09-.7.24-1.28.78-1.75 1.32-.87 1.02-1.6 1.89-2.48 2.91-1.31 1.31-2.92 2.76-2.62 4.79.29 1.02 1.02 2.03 2.33 2.32.73.15 3.06-.44 5.54-.44h.18c2.48 0 4.81.58 5.54.44 1.31-.29 2.04-1.31 2.33-2.32.31-2.04-1.3-3.49-2.61-4.8z'
   };
   function Icon(props) {
@@ -176,26 +179,94 @@
   /* ---------- Select (01/11/2026) ----------
      Lista de escolha (<select> nativo: acessível e bom no celular) com a aparência dos campos.
      options: [{ value, label, disabled }]. Opcional com fundo branco; required, fundo colorido. */
+  /* Select (01/11/2026, revisto na mesma data a pedido da Paula): lista própria no padrão do DS, no lugar
+     da lista do navegador (que não aceita estilo). Mesma interface do <select>: value, onChange com
+     e.target.value (texto), options [{value,label,disabled}], placeholder, required, helper, status, name.
+     Teclado: Enter, Espaço ou setas abrem; setas, Home/End e a primeira letra andam; Enter escolhe; Esc fecha.
+     No celular (até 599 px), a lista abre embaixo da tela, como os campos de data. */
   function Select(props) {
     var idRef = React.useRef(null);
     if (!idRef.current) idRef.current = props.id || 'rf-field-' + (++fid);
     var id = idRef.current;
     var status = props.disabled ? 'disabled' : (props.status || 'default');
-    var helpId = id + '-help';
-    var rest = omit(props, ['label', 'helper', 'status', 'options', 'placeholder', 'className', 'id', 'children']);
-    rest.id = id;
-    rest.className = 'rf-field-input rf-select-input';
-    if (props.helper) rest['aria-describedby'] = helpId;
-    if (status === 'error') rest['aria-invalid'] = 'true';
-    var options = (props.options || []).map(function (o) {
-      return h('option', { key: String(o.value), value: o.value, disabled: o.disabled }, o.label);
+    var helpId = id + '-help', listId = id + '-lista', labelId = id + '-rotulo';
+    var opcoes = (props.options || []).map(function (o) { return { value: String(o.value), label: o.label, disabled: !!o.disabled }; });
+    if (props.placeholder) opcoes.unshift({ value: '', label: props.placeholder, disabled: !!props.required, placeholder: true });
+    var vs = React.useState(props.defaultValue !== undefined ? String(props.defaultValue) : (opcoes[0] ? opcoes[0].value : '')), interno = vs[0], setInterno = vs[1];
+    var valor = props.value !== undefined && props.value !== null ? String(props.value) : interno;
+    var painel = usePainel({ largura: 'campo', alto: 360 });
+    var as = React.useState(-1), ativo = as[0], setAtivo = as[1];
+    var lista = React.useRef(null), botao = React.useRef(null), busca = React.useRef({ t: '', ate: 0 });
+    var atual = -1;
+    opcoes.forEach(function (o, n) { if (o.value === valor && atual < 0) atual = n; });
+    var escolhida = opcoes[atual];
+    function habilitada(n) { return opcoes[n] && !opcoes[n].disabled; }
+    function passo(de, dir) { var n = de; for (var k = 0; k < opcoes.length; k++) { n += dir; if (n < 0 || n >= opcoes.length) return de; if (habilitada(n)) return n; } return de; }
+    function primeira(dir) { return passo(dir > 0 ? -1 : opcoes.length, dir); }
+    function abrir() { if (props.disabled) return; setAtivo(atual >= 0 ? atual : primeira(1)); painel.setAberto(true); }
+    function escolher(n) {
+      if (!habilitada(n)) return;
+      var v = opcoes[n].value;
+      painel.setAberto(false);
+      if (botao.current) botao.current.focus();
+      if (v === valor) return;
+      if (props.value === undefined) setInterno(v);
+      if (props.onChange) props.onChange(evento(props, v));
+    }
+    React.useEffect(function () {
+      if (!painel.aberto || ativo < 0 || !lista.current) return;
+      var el = lista.current.querySelector('[data-i="' + ativo + '"]');
+      if (el && el.scrollIntoView) el.scrollIntoView({ block: 'nearest' });
+    }, [painel.aberto, ativo]);
+    function letra(k) {
+      var b = busca.current, agora = Date.now();
+      b.t = (agora < b.ate ? b.t : '') + k.toLowerCase(); b.ate = agora + 700;
+      var base = painel.aberto ? ativo : atual;
+      for (var d = 1; d <= opcoes.length; d++) {
+        var n = (Math.max(base, 0) + (b.t.length > 1 ? d - 1 : d)) % opcoes.length;
+        if (habilitada(n) && String(opcoes[n].label).toLowerCase().indexOf(b.t) === 0) return n;
+      }
+      return -1;
+    }
+    function tecla(e) {
+      var k = e.key;
+      if (!painel.aberto) {
+        if (k === 'Enter' || k === ' ' || k === 'ArrowDown' || k === 'ArrowUp') { e.preventDefault(); abrir(); return; }
+        if (k.length === 1 && /\S/.test(k)) { var m = letra(k); if (m >= 0) escolher(m); }
+        return;
+      }
+      if (k === 'ArrowDown') { e.preventDefault(); setAtivo(passo(ativo, 1)); }
+      else if (k === 'ArrowUp') { e.preventDefault(); setAtivo(passo(ativo, -1)); }
+      else if (k === 'Home') { e.preventDefault(); setAtivo(primeira(1)); }
+      else if (k === 'End') { e.preventDefault(); setAtivo(primeira(-1)); }
+      else if (k === 'Enter' || k === ' ') { e.preventDefault(); escolher(ativo); }
+      else if (k === 'Tab') { painel.setAberto(false); }
+      else if (k.length === 1 && /\S/.test(k)) { var n = letra(k); if (n >= 0) setAtivo(n); }
+    }
+    var itens = opcoes.map(function (o, n) {
+      var sel = n === atual;
+      return h('li', { key: o.value + '-' + n, id: id + '-op-' + n, 'data-i': n, role: 'option', 'aria-selected': sel, 'aria-disabled': o.disabled || undefined,
+        className: cx('rf-select-item', sel && 'is-selected', n === ativo && 'is-active', o.disabled && 'is-disabled', o.placeholder && 'is-placeholder'),
+        onMouseDown: function (e) { e.preventDefault(); },
+        onMouseMove: function () { if (ativo !== n && !o.disabled) setAtivo(n); },
+        onClick: function () { escolher(n); } },
+        h('span', { className: 'rf-select-item-text' }, o.label),
+        sel ? h(Icon, { name: 'check', size: 20 }) : null);
     });
-    if (props.placeholder) options.unshift(h('option', { key: '__placeholder', value: '', disabled: !!props.required }, props.placeholder));
-    return h('div', { className: cx('rf-field', 'rf-select', 'rf-field-' + status, props.required && 'rf-field-required', props.className) },
-      h('label', { className: 'rf-field-label', htmlFor: id }, props.label),
+    return h('div', { ref: painel.raiz, className: cx('rf-field', 'rf-select', 'rf-pick', 'rf-field-' + status, props.required && 'rf-field-required', props.className) },
+      h('span', { className: 'rf-field-label', id: labelId, onClick: function () { if (botao.current) botao.current.focus(); } }, props.label),
       h('div', { className: 'rf-field-box' },
-        h('select', rest, options, props.children),
-        h(Icon, { name: 'expand_more', size: 24, className: 'rf-select-chevron' })),
+        h('button', { ref: botao, type: 'button', id: id, name: props.name, className: 'rf-field-input rf-select-trigger', disabled: props.disabled,
+          role: 'combobox', 'aria-haspopup': 'listbox', 'aria-expanded': painel.aberto, 'aria-controls': listId, 'aria-labelledby': labelId + ' ' + id,
+          'aria-describedby': props.helper ? helpId : undefined, 'aria-invalid': status === 'error' ? 'true' : undefined, 'aria-required': props.required || undefined,
+          'aria-activedescendant': painel.aberto && ativo >= 0 ? id + '-op-' + ativo : undefined,
+          onClick: function () { painel.aberto ? painel.setAberto(false) : abrir(); }, onKeyDown: tecla, onBlur: props.onBlur, onFocus: props.onFocus },
+          h('span', { className: cx('rf-select-valor', (!escolhida || escolhida.placeholder) && 'rf-pick-placeholder') }, escolhida ? escolhida.label : (props.placeholder || ''))),
+        h(Icon, { name: 'expand_more', size: 24, className: cx('rf-select-chevron', painel.aberto && 'is-open') })),
+      painel.aberto ? h('div', { className: 'rf-pick-scrim', onMouseDown: function () { painel.setAberto(false); } }) : null,
+      painel.aberto ? h('div', { className: cx('rf-pick-panel', 'rf-select-panel', painel.pos && 'is-fixed'), style: painel.pos || undefined },
+        h('p', { className: 'rf-select-sheet-title' }, props.label),
+        h('ul', { ref: lista, id: listId, role: 'listbox', 'aria-labelledby': labelId, className: 'rf-select-list' }, itens)) : null,
       props.helper ? h('p', { className: 'rf-field-help', id: helpId }, props.helper) : null);
   }
 
@@ -274,15 +345,23 @@
 
   /* ---------- Alert ---------- */
   var ALERT_ICON = { info: 'info', success: 'check_circle', warning: 'warning', error: 'error' };
+  /* Alert (01/11/2026): o X aparece em todo alerta, salvo dismissible={false} (erros de formulário, listas vazias).
+     Fechado, ele some até a tela ser aberta de novo (estado do próprio componente); onClose avisa a tela. */
   function Alert(props) {
     var tone = props.tone || 'info';
+    var fs = React.useState(false), fechado = fs[0], setFechado = fs[1];
+    var chave = String(props.title || '') + '|' + (typeof props.children === 'string' ? props.children : '');
+    React.useEffect(function () { setFechado(false); }, [chave]);
+    if (fechado) return null;
+    var podeFechar = props.dismissible !== false;
+    var fechar = function () { setFechado(true); if (props.onClose) props.onClose(); };
     return h('div', { className: cx('rf-alert', 'rf-alert-' + tone, props.className), role: tone === 'error' || tone === 'warning' ? 'alert' : 'status' },
       h(Icon, { name: ALERT_ICON[tone], size: 24, className: 'rf-alert-icon' }),
       h('div', { className: 'rf-alert-body' },
         props.title ? h('p', { className: 'rf-alert-title' }, props.title) : null,
         props.children ? h('div', { className: 'rf-alert-text' }, props.children) : null,
         props.action ? h('div', { className: 'rf-alert-action' }, props.action) : null),
-      props.onClose ? h(IconButton, { icon: 'close', label: 'Fechar aviso', onClick: props.onClose, className: 'rf-alert-close' }) : null);
+      podeFechar ? h(IconButton, { icon: 'close', label: 'Fechar aviso', onClick: fechar, className: 'rf-alert-close' }) : null);
   }
 
   /* ---------- Dialog ---------- */
@@ -427,6 +506,168 @@
       })) : null);
   }
 
+
+  /* ---------- Campos de data, mês e hora (01/11/2026, pedido da Paula) ----------
+     DateField, MonthField e TimeField: a aparência dos campos (rótulo, borda, obrigatório colorido,
+     opcional branco, helper, status) e um painel no estilo do Calendar, no lugar dos seletores do
+     navegador. No celular (até 599 px), o painel abre como diálogo, embaixo. onChange recebe um
+     evento com target.value (e target.name), como os campos nativos: "aaaa-mm-dd", "aaaa-mm" ou "hh:mm"
+     (texto vazio quando a pessoa limpa). */
+  var MESES_CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+  function evento(props, valor) { return { target: { value: valor, name: props.name }, currentTarget: { value: valor, name: props.name } }; }
+  function usePainel(cfg) {
+    cfg = cfg || {};
+    var st = React.useState(false), aberto = st[0], setAberto = st[1];
+    var ps = React.useState(null), pos = ps[0], setPos = ps[1];
+    var raiz = React.useRef(null);
+    // O painel fica em posição fixa, colado à caixa do campo, para não ser cortado por um Dialog que rola.
+    // Sem espaço embaixo, abre para cima. No celular (até 599 px), o CSS o põe embaixo da tela.
+    React.useLayoutEffect(function () {
+      if (!aberto) { setPos(null); return; }
+      function medir() {
+        var caixa = raiz.current && raiz.current.querySelector('.rf-field-box');
+        if (!caixa || window.innerWidth < 600) { setPos(null); return; }
+        var r = caixa.getBoundingClientRect(), alto = cfg.alto || 420;
+        var largura = cfg.largura === 'campo' ? Math.min(r.width, window.innerWidth - 16) : 360;
+        var esquerda = Math.max(8, Math.min(r.left, window.innerWidth - largura - 8));
+        var extra = cfg.largura === 'campo' ? { width: largura } : {};
+        if (window.innerHeight - r.bottom < alto && r.top > window.innerHeight - r.bottom) setPos(Object.assign({ left: esquerda, top: 'auto', bottom: window.innerHeight - r.top + 4 }, extra));
+        else setPos(Object.assign({ left: esquerda, top: r.bottom + 4 }, extra));
+      }
+      medir();
+      window.addEventListener('resize', medir);
+      window.addEventListener('scroll', medir, true);
+      return function () { window.removeEventListener('resize', medir); window.removeEventListener('scroll', medir, true); };
+    }, [aberto]);
+    React.useEffect(function () {
+      if (!aberto) return;
+      function fora(e) { if (raiz.current && !raiz.current.contains(e.target)) setAberto(false); }
+      function tecla(e) { if (e.key === 'Escape') { setAberto(false); var b = raiz.current && raiz.current.querySelector('.rf-pick-toggle, .rf-select-trigger'); if (b) b.focus(); } }
+      document.addEventListener('mousedown', fora);
+      document.addEventListener('keydown', tecla);
+      return function () { document.removeEventListener('mousedown', fora); document.removeEventListener('keydown', tecla); };
+    }, [aberto]);
+    return { aberto: aberto, setAberto: setAberto, raiz: raiz, pos: pos };
+  }
+  function CampoPainel(props, conteudo, campo, painelLabel) {
+    // Estrutura comum: rótulo, caixa do campo com o botão do painel, painel e texto de apoio.
+    var idRef = React.useRef(null);
+    if (!idRef.current) idRef.current = props.id || 'rf-field-' + (++fid);
+    var id = idRef.current;
+    var status = props.disabled ? 'disabled' : (props.status || 'default');
+    var helpId = id + '-help';
+    var p = props.painel;
+    return h('div', { ref: p.raiz, className: cx('rf-field', 'rf-pick', 'rf-field-' + status, props.required && 'rf-field-required', props.className) },
+      h('label', { className: 'rf-field-label', htmlFor: id }, props.label),
+      h('div', { className: 'rf-field-box' },
+        campo(id, props.helper ? helpId : undefined, status),
+        h('button', { type: 'button', className: 'rf-pick-toggle rf-state', disabled: props.disabled, 'aria-label': painelLabel, 'aria-haspopup': 'dialog', 'aria-expanded': p.aberto,
+          onClick: function () { p.setAberto(!p.aberto); } }, h(Icon, { name: props.icone, size: 22 }))),
+      p.aberto ? h('div', { className: 'rf-pick-scrim', onMouseDown: function () { p.setAberto(false); } }) : null,
+      p.aberto ? h('div', { className: cx('rf-pick-panel', p.pos && 'is-fixed'), style: p.pos || undefined, role: 'dialog', 'aria-label': painelLabel }, conteudo) : null,
+      props.helper ? h('p', { className: 'rf-field-help', id: helpId }, props.helper) : null);
+  }
+  function dataBr(v) { if (!v) return ''; var p = String(v).split('-'); return p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : ''; }
+  function mascaraData(t) {
+    var d = String(t).replace(/\D/g, '').slice(0, 8);
+    return d.length > 4 ? d.slice(0, 2) + '/' + d.slice(2, 4) + '/' + d.slice(4) : d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d;
+  }
+  function DateField(props) {
+    var painel = usePainel();
+    var ts = React.useState(dataBr(props.value)), texto = ts[0], setTexto = ts[1];
+    React.useEffect(function () { setTexto(dataBr(props.value)); }, [props.value]);
+    function mudar(v) { if (props.onChange) props.onChange(evento(props, v)); }
+    function digitar(e) {
+      var t = mascaraData(e.target.value);
+      setTexto(t);
+      if (!t) { mudar(''); return; }
+      if (t.length === 10) {
+        var dd = +t.slice(0, 2), mm = +t.slice(3, 5), aa = +t.slice(6);
+        var dt = new Date(aa, mm - 1, dd);
+        if (dt.getFullYear() === aa && dt.getMonth() === mm - 1 && dt.getDate() === dd) {
+          var v = iso(aa, mm - 1, dd);
+          if ((!props.min || v >= props.min) && (!props.max || v <= props.max)) mudar(v);
+        }
+      }
+    }
+    var hoje = todayIso();
+    var podeHoje = (!props.min || hoje >= props.min) && (!props.max || hoje <= props.max);
+    var conteudo = h('div', { className: 'rf-pick-body' },
+      h(Calendar, { value: props.value || undefined, month: props.value || props.min || undefined, min: props.min, max: props.max,
+        onChange: function (d) { mudar(d); painel.setAberto(false); } }),
+      h('div', { className: 'rf-pick-foot' },
+        props.required ? h('span') : h(Button, { variant: 'text', size: 'sm', onClick: function () { mudar(''); painel.setAberto(false); } }, 'Limpar'),
+        podeHoje ? h(Button, { variant: 'text', size: 'sm', onClick: function () { mudar(hoje); painel.setAberto(false); } }, 'Hoje') : null));
+    return CampoPainel(Object.assign({}, props, { painel: painel, icone: 'calendar_month' }), conteudo, function (id, helpId, status) {
+      return h('input', { id: id, name: props.name, className: 'rf-field-input', type: 'text', inputMode: 'numeric', autoComplete: 'off',
+        placeholder: props.placeholder || 'dd/mm/aaaa', value: texto, onChange: digitar, onBlur: function () { setTexto(dataBr(props.value)); if (props.onBlur) props.onBlur(); },
+        disabled: props.disabled, required: props.required, 'aria-describedby': helpId, 'aria-invalid': status === 'error' ? 'true' : undefined });
+    }, 'Escolher a data no calendário');
+  }
+  function mesExtenso(v) { if (!v) return ''; var p = String(v).split('-'); return MESES[(+p[1] || 1) - 1] + ' de ' + p[0]; }
+  function MonthField(props) {
+    var painel = usePainel();
+    var agora = todayIso().slice(0, 7);
+    var base = props.value || agora;
+    var as = React.useState(+base.slice(0, 4)), ano = as[0], setAno = as[1];
+    React.useEffect(function () { if (painel.aberto) setAno(+(props.value || agora).slice(0, 4)); }, [painel.aberto]);
+    function mudar(v) { if (props.onChange) props.onChange(evento(props, v)); painel.setAberto(false); }
+    function fora(v) { return (props.min && v < props.min) || (props.max && v > props.max); }
+    var conteudo = h('div', { className: 'rf-pick-body rf-month' },
+      h('div', { className: 'rf-cal-head' },
+        h('p', { className: 'rf-cal-title', 'aria-live': 'polite' }, String(ano)),
+        h('div', { className: 'rf-cal-nav' },
+          h(IconButton, { icon: 'chevron_left', label: 'Ano anterior', disabled: !!(props.min && ano - 1 < +props.min.slice(0, 4)), onClick: function () { setAno(ano - 1); } }),
+          h(IconButton, { icon: 'chevron_right', label: 'Próximo ano', disabled: !!(props.max && ano + 1 > +props.max.slice(0, 4)), onClick: function () { setAno(ano + 1); } }))),
+      h('div', { className: 'rf-month-grid', role: 'group', 'aria-label': 'Meses de ' + ano },
+        MESES_CURTOS.map(function (m, i) {
+          var v = ano + '-' + pad2(i + 1);
+          return h('button', { key: v, type: 'button', disabled: fora(v), 'aria-label': MESES[i] + ' de ' + ano, 'aria-pressed': v === props.value,
+            className: cx('rf-month-item', 'rf-state', v === props.value && 'is-selected', v === agora && 'is-today'), onClick: function () { mudar(v); } }, m);
+        })),
+      h('div', { className: 'rf-pick-foot' },
+        props.required ? h('span') : h(Button, { variant: 'text', size: 'sm', onClick: function () { mudar(''); } }, 'Limpar'),
+        fora(agora) ? null : h(Button, { variant: 'text', size: 'sm', onClick: function () { mudar(agora); } }, 'Este mês')));
+    return CampoPainel(Object.assign({}, props, { painel: painel, icone: 'calendar_month' }), conteudo, function (id, helpId, status) {
+      return h('button', { id: id, type: 'button', className: 'rf-field-input rf-pick-value', disabled: props.disabled, 'aria-haspopup': 'dialog', 'aria-expanded': painel.aberto,
+        'aria-describedby': helpId, 'aria-invalid': status === 'error' ? 'true' : undefined, onClick: function () { painel.setAberto(!painel.aberto); } },
+        props.value ? mesExtenso(props.value) : h('span', { className: 'rf-pick-placeholder' }, props.placeholder || 'Escolha o mês'));
+    }, 'Escolher o mês');
+  }
+  function mascaraHora(t) { var d = String(t).replace(/\D/g, '').slice(0, 4); return d.length > 2 ? d.slice(0, 2) + ':' + d.slice(2) : d; }
+  function TimeField(props) {
+    var painel = usePainel();
+    var ts = React.useState(props.value || ''), texto = ts[0], setTexto = ts[1];
+    React.useEffect(function () { setTexto(props.value || ''); }, [props.value]);
+    var lista = React.useRef(null);
+    React.useEffect(function () {
+      if (!painel.aberto || !lista.current) return;
+      var el = lista.current.querySelector('.is-selected') || lista.current.querySelector('[data-hora="' + (props.inicio || '08:00') + '"]');
+      if (el) { lista.current.scrollTop = el.offsetTop - 8; el.focus(); }
+    }, [painel.aberto]);
+    function mudar(v) { if (props.onChange) props.onChange(evento(props, v)); }
+    function digitar(e) {
+      var t = mascaraHora(e.target.value);
+      setTexto(t);
+      if (!t) { mudar(''); return; }
+      if (t.length === 5 && +t.slice(0, 2) < 24 && +t.slice(3) < 60) mudar(t);
+    }
+    var passo = props.step || 30, horas = [];
+    for (var m = 0; m < 24 * 60; m += passo) horas.push(pad2(Math.floor(m / 60)) + ':' + pad2(m % 60));
+    var conteudo = h('div', { className: 'rf-pick-body rf-time' },
+      h('ul', { className: 'rf-time-list', ref: lista, role: 'listbox', 'aria-label': 'Horários' },
+        horas.map(function (x) {
+          return h('li', { key: x }, h('button', { type: 'button', role: 'option', 'aria-selected': x === props.value, 'data-hora': x,
+            className: cx('rf-time-item', 'rf-state', x === props.value && 'is-selected'), onClick: function () { mudar(x); painel.setAberto(false); } }, x));
+        })),
+      props.required ? null : h('div', { className: 'rf-pick-foot' },
+        h(Button, { variant: 'text', size: 'sm', onClick: function () { mudar(''); painel.setAberto(false); } }, 'Limpar'), h('span')));
+    return CampoPainel(Object.assign({}, props, { painel: painel, icone: 'schedule' }), conteudo, function (id, helpId, status) {
+      return h('input', { id: id, name: props.name, className: 'rf-field-input', type: 'text', inputMode: 'numeric', autoComplete: 'off',
+        placeholder: props.placeholder || 'hh:mm', value: texto, onChange: digitar, onBlur: function () { setTexto(props.value || ''); },
+        disabled: props.disabled, required: props.required, 'aria-describedby': helpId, 'aria-invalid': status === 'error' ? 'true' : undefined });
+    }, 'Escolher o horário');
+  }
 
   /* ---------- DataTable ---------- */
   function DataTable(props) {
@@ -682,7 +923,7 @@
   window.RecantoFerrari = Object.assign(window.RecantoFerrari || {}, {
     Logo: Logo, Icon: Icon, Button: Button, IconButton: IconButton, Chip: Chip, TextField: TextField,
     Select: Select, Checkbox: Checkbox, Switch: Switch, Card: Card, ListItem: ListItem, Badge: Badge, Alert: Alert,
-    Dialog: Dialog, TopAppBar: TopAppBar, Tabs: Tabs, Calendar: Calendar, DataTable: DataTable,
+    Dialog: Dialog, TopAppBar: TopAppBar, Tabs: Tabs, Calendar: Calendar, DateField: DateField, MonthField: MonthField, TimeField: TimeField, DataTable: DataTable,
     Menu: Menu, NavigationDrawer: NavigationDrawer, Footer: Footer, Hero: Hero, RadioGroup: RadioGroup, FileUpload: FileUpload,
     MapEmbed: MapEmbed
   });

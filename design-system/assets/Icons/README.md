@@ -9,4 +9,5 @@ Desenhos oficiais do Material Icons (Apache 2.0, pacote `@material-design-icons/
 - `key.svg`: senha (Trocar a senha, no menu da conta).
 - `compost.svg` (orgânico), `recycling.svg` (reciclável), `location_on.svg` (endereço, ex.: ecoponto), `help.svg` (ajuda curta): coleta de lixo.
 - `campaign.svg`: megafone da Ouvidoria (card "Ouvidoria" da aba Para gestão, 01/11/2026).
+- `calendar_month.svg` (data e mês) e `schedule.svg` (hora): campos `DateField`, `MonthField` e `TimeField` (01/11/2026).
 - Para um ícone novo, copie o SVG oficial do pacote; nunca redesenhe à mão.
