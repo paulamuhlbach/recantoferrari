@@ -1,4 +1,4 @@
-<!-- @dsCard group="Ações" height=150 -->
+<!-- @dsCard group="Ações" height=210 -->
 <!doctype html>
 <html lang="pt-BR">
 <head><meta charset="utf-8"><title>Button</title>
@@ -24,7 +24,11 @@
         h(R.Button, { variant: 'secondary', size: 'sm', icon: 'download' }, 'Baixar boleto'),
         h(R.Button, { variant: 'danger', size: 'sm' }, 'Excluir reserva'),
         h(R.Button, { size: 'lg' }, 'Entrar'),
-        h(R.Button, { disabled: true }, 'Indisponível')));
+        h(R.Button, { disabled: true }, 'Indisponível')),
+      h('div', { className: 'row' },
+        h(R.Button, { icon: 'lock', loading: true }, 'Encaminhando…'),
+        h(R.Button, { variant: 'danger', icon: 'close', loading: true }, 'Cancelando…'),
+        h(R.Button, { variant: 'outlined', loading: true }, 'Carregando…')));
   }
   ReactDOM.createRoot(document.getElementById('root')).render(h(App));
 </script>

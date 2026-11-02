@@ -67,6 +67,17 @@
 .rf-btn-outlined:disabled, .rf-btn-text:disabled {
   color: color-mix(in srgb, var(--on-surface) 38%, transparent); border-color: color-mix(in srgb, var(--on-surface) 12%, transparent);
 }
+/* Botão em andamento (loading, 01/11/2026): mantém as cores (não parece desabilitado) e mostra o círculo girando. */
+.rf-btn.is-loading:disabled { opacity: 1; cursor: progress; }
+.rf-btn-filled.is-loading:disabled { background: var(--primary); color: var(--on-primary); }
+.rf-btn-tonal.is-loading:disabled { background: var(--primary-container); color: var(--on-primary-container); }
+.rf-btn-secondary.is-loading:disabled { background: var(--secondary); color: var(--on-secondary); }
+.rf-btn-danger.is-loading:disabled { background: var(--error); color: var(--on-error); }
+.rf-btn-outlined.is-loading:disabled, .rf-btn-text.is-loading:disabled { color: var(--primary); }
+.rf-spinner { display: inline-block; flex: none; box-sizing: border-box; border-radius: var(--radius-full);
+  border: 2px solid currentColor; border-right-color: transparent; animation: rf-girar .8s linear infinite; }
+@keyframes rf-girar { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .rf-spinner { animation-duration: 2s; } }
 
 /* ---------- IconButton ---------- */
 .rf-iconbtn {

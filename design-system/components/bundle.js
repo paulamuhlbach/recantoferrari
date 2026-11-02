@@ -119,12 +119,18 @@
   function Button(props) {
     var variant = props.variant || 'filled';
     var size = props.size || 'md';
-    var rest = omit(props, ['variant', 'size', 'icon', 'trailingIcon', 'fullWidth', 'className', 'children', 'as']);
+    var rest = omit(props, ['variant', 'size', 'icon', 'trailingIcon', 'fullWidth', 'className', 'children', 'as', 'loading']);
     var Tag = props.as || (props.href ? 'a' : 'button');
     if (Tag === 'button' && !rest.type) rest.type = 'button';
-    rest.className = cx('rf-btn', 'rf-state', 'rf-btn-' + variant, 'rf-btn-' + size, props.fullWidth && 'rf-btn-block', props.className);
+    // loading (01/11/2026): a ação está em andamento. O círculo girando entra no lugar do ícone,
+    // o botão não aceita outro clique e o leitor de tela ouve que está ocupado.
+    var carregando = !!props.loading;
+    if (carregando) { rest.disabled = true; rest['aria-busy'] = 'true'; }
+    var tam = size === 'sm' ? 18 : 20;
+    rest.className = cx('rf-btn', 'rf-state', 'rf-btn-' + variant, 'rf-btn-' + size, props.fullWidth && 'rf-btn-block', carregando && 'is-loading', props.className);
     return h(Tag, rest,
-      props.icon ? h(Icon, { name: props.icon, size: size === 'sm' ? 18 : 20 }) : null,
+      carregando ? h('span', { className: 'rf-spinner', 'aria-hidden': 'true', style: { width: tam, height: tam } })
+        : (props.icon ? h(Icon, { name: props.icon, size: tam }) : null),
       h('span', null, props.children),
       props.trailingIcon ? h(Icon, { name: props.trailingIcon, size: size === 'sm' ? 18 : 20 }) : null);
   }
