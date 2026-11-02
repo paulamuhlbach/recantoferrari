@@ -98,6 +98,9 @@ Marque o que funcionou e anote o que estranhar: palavra difícil, botão que nã
 
 ### Síndico (Carlos)
 - [ ] No Início: as abas "Para você" (abre primeiro) e "Para gestão"; em "Para gestão", o card Ouvidoria (megafone) com a soma das demandas novas e das denúncias não lidas. Responder uma demanda da Ana e, entrando como Ana, ver o alerta no Início.
+- [ ] "Para você" igual ao Início da Ana: sem "Publicar aviso", sem "Editar" na coleta e sem alertas da conta. Em "Para gestão": os alertas da conta (contrato), "Publicar aviso" e o card "Coleta de lixo", que abre a edição numa página própria; salvar volta para "Para gestão" com o alerta "Coleta de lixo atualizada".
+- [ ] Datas, meses e horários pelos campos do portal (calendário, grade de meses, lista de horários), sem o seletor do navegador: publicar um aviso com data e horário; no celular (390 px), o painel abre por baixo.
+- [ ] Fechar alertas no X (avisos, sigilo, pendências) e ver que voltam ao abrir a tela de novo; erros de formulário e listas vazias não têm X. Aviso fixado com fundo azul bem claro.
 - [ ] Unidades e Pessoas: aprovar o Lucas (Casa 14); ver o ex-morador e o bloqueado; reenviar um convite (Casas 27 e 28).
 - [ ] Ouvidoria da gestão: "Como funciona" nas abas Demandas e Denúncias; filtrar pelo tipo (chips), pela categoria (lista) e pela situação (abas com a contagem); responder uma demanda, mudar a situação e a categoria, abrir uma denúncia (a leitura fica registrada) e encaminhar para avaliação jurídica.
 - [ ] Avisos: publicar, editar, fixar e retirar.

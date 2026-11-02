@@ -21,6 +21,7 @@ A paleta Terracota é a identidade. Azul, verde, amarelo, vermelho e roxo têm f
 - Ação principal: `primary` (terracota escura) com `on-primary`. Use um único botão `filled` por área da tela.
 - `accent` (terracota média) é a cor da palavra CONDOMÍNIO e dos telhados laterais. Use em sobretítulos, ícones e detalhes. Não use em texto corrido (contraste 3.3:1).
 - Areia (`surface-container`, `#EBE7E3`) é o fundo dos cards; `surface-container-high` para faixas de seção e menus.
+- **Destaque leve** (01/11/2026): `surface-highlight` (`#F1F7FB`, azul bem claro) com a borda `outline-highlight` (`blue-5`), no `Card` `variant="highlight"`. Uso: o aviso fixado. Texto `on-surface` (contraste acima de 13:1).
 - `secondary` (azul) para links, informação e ações secundárias. Links em texto corrido usam `link` com sublinhado.
 - `tertiary` (roxo) para eventos, assembleias, campos destacados pela administração e a situação "Adiado" de serviços.
 - **Azul profundo como acento de apoio.** A Terracota continua sendo a identidade (ação principal, item ativo, logo); os azuis escuros equilibram os tons quentes em poucas áreas por tela: o `Hero` (foto com véu `hero-overlay`, azul `blue-1`), o rodapé (`surface-deep`, `blue-2`), os ícones de listas informativas (`ListItem` com `tone="secondary"`), o círculo do ícone de serviço (`Card` com `icon`), o item aberto em listas (`ListItem` com `selected`), a resposta do síndico e links. Sobre `surface-deep` use `on-surface-deep` e `on-surface-deep-variant`. Um fio `accent` de 4px separa o azul do resto da página.
@@ -69,6 +70,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Pets: `pets` (cadastro de pets da casa, em Minha casa).
 - Histórico: `history` (registro de atividades de uma pessoa e a tela Registro de atividades).
 - Senha: `key` ("Trocar a senha" no menu da conta). `lock` fica para sigilo (termo de confidencialidade, denúncias).
+- Datas: `calendar_month` (campos de data e mês) e `schedule` (campo de hora), 01/11/2026.
 - Ouvidoria: `campaign` (megafone) no card "Ouvidoria" da aba Para gestão (01/11/2026); `help` abre o "Como funciona".
 - Ícones de serviço (`Icon.servicos`): `grass`, `pest_control`, `plumbing`, `cleaning_services` e `event` (genérico). Quem cadastra o serviço escolhe o ícone numa lista; nada fica fixo no código.
 
@@ -78,7 +80,8 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Quando a tela tem os dois tipos, o rótulo do opcional termina em "(opcional)", para não depender só da cor.
 - `status` continua mandando no fundo: `error` (vermelho), `success` (verde), `highlight` (roxo, valor pré-preenchido que pode mudar) e `disabled` (cinza).
 - Os formulários usam `noValidate` e mostram os próprios erros no campo; o `required` também avisa o leitor de tela.
-- **Listas longas ou que crescem** (ex.: categorias da Ouvidoria, cadastradas pela gestão) usam o `Select` (01/11/2026), com a mesma regra de fundo. Chips e `RadioGroup` ficam para poucas opções fixas.
+- **Datas, meses e horas** usam `DateField`, `MonthField` e `TimeField` (01/11/2026, pedido da Paula), nunca os seletores do navegador (`type="date|month|time"`), que não seguem o DS e mudam de navegador para navegador. O painel segue o `Calendar` (terracota, raio 3 px); no celular, abre embaixo, como diálogo.
+- **Listas longas ou que crescem** (ex.: categorias da Ouvidoria, cadastradas pela gestão) usam o `Select` (01/11/2026), com a mesma regra de fundo. A lista aberta é do DS (não a do navegador), no mesmo padrão dos painéis de data. Chips e `RadioGroup` ficam para poucas opções fixas.
 - **Dicas nos campos**: texto curto no `helper`, sempre visível embaixo do campo (funciona no celular, sem depender do mouse). Ex.: o que é cada tipo de demanda, o que muda com e sem identificação, o que o morador vê da resposta.
 
 ## Lista e detalhe (uma coluna)
@@ -87,6 +90,12 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - **Filtros diferentes, visuais diferentes** (01/11/2026): o tipo em `Chip` `filter`; a categoria num `Select` (as categorias crescem); a **situação em abas secundárias** (`Tabs` `variant="secondary"`) logo acima da lista, com a contagem de cada uma, **na cor do selo da situação** (`tone` no item da aba, pedido da Paula, 01/11/2026). As contagens respeitam o tipo e a categoria escolhidos. Demandas e Denúncias usam o mesmo padrão.
 - Nada de painel lateral vazio esperando a escolha. O `selected` do `ListItem` fica para listas em diálogos ou menus.
 - Na lista do morador, o selo `Badge` `success` "Resposta nova" aparece acima da situação até ele abrir a demanda.
+
+## Alertas
+
+- **Todo `Alert` tem o X** (pedido da Paula, 01/11/2026). Fechado, some até a pessoa abrir a tela de novo.
+- Sem X (`dismissible={false}`): **erros** ("Não foi possível…", que somem quando a pessoa corrige ou recarrega) e **listas vazias** ("Nenhum aviso no mural"), que são o conteúdo da tela.
+- Quando a tela precisa lembrar que foi fechado (ex.: "Sua demanda foi respondida"), use `onClose` e guarde no backend.
 
 ## Ajuda de contexto ("Como funciona")
 
@@ -147,7 +156,7 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 ## Minha casa
 
 - Moradores da casa num `DataTable` no tamanho padrão: nome e e-mail, vínculo com o `Badge` `primary` "Principal", parentesco com o perfil principal e situação (`Badge` `success` "Ativo", `warning` "Aguardando aprovação", `info` "Aguardando criar o acesso").
-- O parentesco tem uma lista de sugestões vinda das configurações e aceita texto livre: use `TextField` com `list` (datalist) até o sistema ter um Select.
+- O parentesco tem uma lista de sugestões vinda das configurações e aceita texto livre: use `TextField` com `list` (datalist): o `Select` não aceita texto livre.
 - Pets em cartões com foto (miniatura 96px, `radius-xs`; sem foto, o ícone `pets` sobre `surface-container-high`), nome, espécie · raça · porte, cor, sinais e observações. Cadastro e edição num `Dialog` com `FileUpload`.
 
 ## Ex-moradores e registro de atividades
@@ -188,11 +197,13 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 ## Início por perfil
 
 - O Início é feito de blocos: **avisos** (o último aviso do mural), **serviços** ("Precisa da sua resposta": um card por oferta de serviço que a casa não respondeu, o `Alert` de cada oferta adiada e o card da leitura do hidrômetro enquanto a casa não envia), **gestão** (atalhos da gestão), **para você** (Enviar demanda, Minhas demandas, Regras do condomínio) e **coleta de lixo**.
+- **"Para você" é igual ao Início do morador comum** (pedido da Paula, 01/11/2026): nada de editar ou administrar ali. Publicar aviso, editar a coleta de lixo (card "Coleta de lixo", ícone `recycling`, que abre a página própria de edição) e os alertas da conta (termo de confidencialidade a assinar, contrato de administração vencendo, até quando vale o acesso da administradora) ficam em **"Para gestão"**. Sem abas (administrador do site sem cargo), o alerta do termo e o "Editar" da coleta continuam no Início.
 - **Abas para quem tem cargo** (pedido da Paula, 01/11/2026): síndico, subsíndico, presidência, conselho, administradora do condomínio e administrador do site com plenos poderes veem `Tabs` com **"Para você"** (os blocos de morador, na ordem configurada, com os atalhos sob o título "Atalhos") e **"Para gestão"** (os atalhos da gestão, com a contagem do que chegou de novo na pílula da aba). Abre em "Para você" (configuração `inicio.aba_inicial_gestao`); a aba fica no endereço (`?aba=gestao`). Quem é só morador não tem abas.
 - Na aba Para gestão, **um card só para a Ouvidoria** (ícone `campaign`), com um `Badge` `warning` somando as demandas novas e as denúncias não lidas ("4 novas"); as denúncias só entram para quem pode lê-las. Os outros atalhos: Publicar aviso (`notifications`), Leituras das casas (`water_drop`), Serviços com adesão (`event`), conforme o que a pessoa pode fazer.
 - **Alerta de resposta** no topo de Para você (e do Início do morador): `Alert` `success` com `onClose`, "Sua demanda foi respondida" ou "2 demandas suas foram respondidas", e o botão "Ver minhas demandas". Some quando a pessoa abre a demanda ou fecha o alerta, e volta com uma resposta nova. Vale para denúncias com nome. Textos em `ouvidoria.alerta_resposta.*`.
 - A ordem dos blocos de cada perfil (morador, síndico, gestão, administradora) fica nas configurações; nada fixo no código.
 - A faixa com a foto (`Hero`) é compacta (pedido da Paula, 28/10/2026): 184 px no computador e 160 px no celular, para os avisos aparecerem logo.
+- O **aviso fixado** usa o `Card` `variant="highlight"` (azul bem claro, `surface-highlight`), no Início e no mural (01/11/2026).
 - Atalhos são `Card` `outlined` com `href`; os da gestão levam ícone e, quando há algo esperando, um `Badge` `warning` sem ícone.
 
 ## Componentes

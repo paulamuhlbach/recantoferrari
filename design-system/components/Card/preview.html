@@ -1,4 +1,4 @@
-<!-- @dsCard group="Conteúdo" height=620 -->
+<!-- @dsCard group="Conteúdo" height=820 -->
 <!doctype html>
 <html lang="pt-BR">
 <head><meta charset="utf-8"><title>Card</title>
@@ -20,6 +20,8 @@
         h('p', null, 'O abastecimento será interrompido durante o serviço. Separe água para o período.')),
       h(R.Card, { variant: 'filled', eyebrow: 'Evento', title: 'Assembleia geral ordinária', meta: '14 de novembro · 19h30 · Salão de festas',
         actions: [h(R.Button, { key: 'a', size: 'sm' }, 'Confirmar presença'), h(R.Button, { key: 'b', size: 'sm', variant: 'outlined' }, 'Pauta')] }),
+      h(R.Card, { variant: 'highlight', eyebrow: 'Fixado', title: 'Assembleia geral ordinária', meta: 'Sexta, 13/11/2026 · a partir das 19h30' },
+        h('p', null, 'A assembleia será no salão de festas. Pauta: prestação de contas e obras da guarita.')),
       h(R.Card, { variant: 'outlined', href: '#', eyebrow: 'Documento', title: 'Regimento interno 2026', meta: 'PDF · 1,2 MB · atualizado em 02/09' }),
       h(R.Card, { variant: 'elevated', icon: 'grass', eyebrow: 'Serviço com adesão', badge: h(R.Badge, { tone: 'warning', icon: 'cloud' }, 'Se chover, remarcamos'), title: 'Corte de grama', meta: 'Sábado, 17/10 · R$ 60,00 por casa' },
         h('p', null, 'Inclua o gramado da área privativa da sua casa.')));

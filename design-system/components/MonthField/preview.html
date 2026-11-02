@@ -1,0 +1,22 @@
+<!-- @dsCard group="Formulários" height=520 -->
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>MonthField</title>
+<style>
+  body { margin:0; padding:16px; background:var(--surface); color:var(--on-surface); font-family:var(--font-body); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; align-items:start; }
+</style></head>
+<body>
+<div id="root"></div>
+<script>
+  var R = window.RecantoFerrari, h = React.createElement;
+  function App() {
+    var a = React.useState('2026-11'), b = React.useState('');
+    return h('div', { className: 'grid' },
+      h(R.MonthField, Object.assign({ label: 'Mês do boleto', required: true, value: a[0], onChange: function (e) { a[1](e.target.value); }, helper: 'Obrigatório: fundo colorido.' }, {})),
+      h(R.MonthField, { label: 'Mês (opcional)', value: b[0], onChange: function (e) { b[1](e.target.value); }, helper: 'Opcional: fundo branco.' }));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+</script>
+</body>
+</html>
