@@ -17,6 +17,7 @@ export declare function Icon(props: IconProps): React.ReactElement;
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'filled' | 'tonal' | 'outlined' | 'text' | 'secondary' | 'danger';
   size?: 'sm' | 'md' | 'lg'; icon?: IconName; trailingIcon?: IconName; fullWidth?: boolean; href?: string; children: React.ReactNode;
+  /** Ação em andamento (01/11/2026): círculo girando no lugar do ícone, sem novo clique, aria-busy. Use com o texto da ação no gerúndio ("Salvando…"). */ loading?: boolean;
 }
 export declare function Button(props: ButtonProps): React.ReactElement;
 

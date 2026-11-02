@@ -97,6 +97,11 @@ Escala (Material 3): `display-*` para hero; `headline-large` para o título da p
 - Sem X (`dismissible={false}`): **erros** ("Não foi possível…", que somem quando a pessoa corrige ou recarrega) e **listas vazias** ("Nenhum aviso no mural"), que são o conteúdo da tela.
 - Quando a tela precisa lembrar que foi fechado (ex.: "Sua demanda foi respondida"), use `onClose` e guarde no backend.
 
+## Ação em andamento
+
+- Enquanto o portal salva ou envia algo, o botão que disparou a ação fica com `loading` (01/11/2026, pedido da Paula): círculo girando no lugar do ícone e o texto no gerúndio ("Salvando…", "Encaminhando…"). Os outros botões da área ficam só `disabled`.
+- Os e-mails automáticos saem depois que a ação é gravada, sem a tela esperar o servidor de e-mail; por isso a espera costuma ser curta.
+
 ## Ajuda de contexto ("Como funciona")
 
 - Botão `Button` `text` `icon="help"` "Como funciona" ao lado do título da página, que abre um `Dialog` com `icon="help"` e o botão "Entendi" (01/11/2026, Ouvidoria do morador e da gestão). A ajuda não ocupa espaço na página e está sempre à mão.
