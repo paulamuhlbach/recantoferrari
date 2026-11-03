@@ -22,7 +22,7 @@ A ordem definida pela Paula, com as sugestões aceitas para cada etapa.
 5. [ ] **Ajustes** depois do uso deles, testados primeiro na homologação.
 6. [ ] **Criar a produção**: banco novo e vazio (ver a seção 2), sem nada da homologação. A homologação continua no ar para os próximos testes.
 7. [ ] **Site valendo para uso real**: backup automático ligado e uma restauração testada, casas reais importadas de uma planilha, convites em pequenos grupos, comunicado aos moradores com um passo a passo curto e canal para dúvidas nas primeiras semanas, login do Google publicado (seções 2 a 8).
-8. [ ] **Fase 4** (WhatsApp), testada primeiro na homologação.
+8. [ ] **Fase 4** (WhatsApp, apps externos configuráveis e botão "Pagar o condomínio"), testada primeiro na homologação.
 
 **Adiantar durante os passos 1 e 2** (coisas que demoram e não dependem dos testes):
 - [ ] E-mail do condomínio no domínio `recantoferrari.com.br` (que a Paula já tem), com SPF e DKIM no DNS (sem isso, os convites caem no spam).

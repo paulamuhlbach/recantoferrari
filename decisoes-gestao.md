@@ -2,7 +2,7 @@
 
 Lista dos pontos que ainda precisam de uma decisão da gestão do condomínio. Para cada um, está como o portal funciona **hoje**, a **proposta** e um espaço para anotar a decisão.
 
-Atualizada em 31/10/2026.
+Atualizada em 02/11/2026.
 
 **Como usar**
 - Marque o item com `[x]` quando ele for decidido e anote a decisão e a data na linha "Decisão".
@@ -182,6 +182,26 @@ Detalhes no [para-publicar.md](para-publicar.md).
 - [ ] **Hospedagem e e-mail do condomínio**: provedor e custo mensal.
 - [ ] **Responsável técnico** pelas senhas, pela hospedagem e pelos backups.
 - [ ] **Canal para dúvidas dos moradores** nas primeiras semanas.
+
+## 10. Apps externos, pagamento e portaria (Fases 4 e 5)
+
+Detalhes no `arquitetura-mvp.md` (módulo 6 e seção 7.1).
+
+- [ ] **Quem vê o botão "Pagar o condomínio"** (Fase 4) ⚙️
+  - Proposta: o perfil principal da casa e quem tem acesso financeiro. O botão abre o portal da administradora contratada (hoje, Auxiliadora Predial); boletos não ficam no portal.
+  - Decisão:
+
+- [ ] **Prestação de contas no portal**
+  - Proposta: a administradora (ou o síndico) publica o balancete do mês em Documentos, com aviso no mural.
+  - Decisão:
+
+- [ ] **Perguntas à Rosser sobre o Condfy** (quem envia: síndico ou Paula, com o síndico em cópia)
+  - Integração ou exportação do cadastro de moradores, para o morador não se cadastrar duas vezes; se a foto do rosto pode ser enviada; link direto para as câmeras; custo.
+  - Decisão:
+
+- [ ] **Contrato com a Rosser**
+  - Conferir quem paga o Condfy, o que acontece com os cadastros e as fotos se o condomínio trocar de empresa, e se o condomínio tem usuário e senha de administrador do gravador das câmeras (os equipamentos são do condomínio).
+  - Decisão:
 
 ---
 
