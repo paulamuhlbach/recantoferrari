@@ -2,7 +2,7 @@
 
 Lista dos pontos que ainda precisam de uma decisão da gestão do condomínio. Para cada um, está como o portal funciona **hoje**, a **proposta** e um espaço para anotar a decisão.
 
-Atualizada em 02/11/2026.
+Atualizada em 09/11/2026.
 
 **Como usar**
 - Marque o item com `[x]` quando ele for decidido e anote a decisão e a data na linha "Decisão".
@@ -201,6 +201,44 @@ Detalhes no `arquitetura-mvp.md` (módulo 6 e seção 7.1).
 
 - [ ] **Contrato com a Rosser**
   - Conferir quem paga o Condfy, o que acontece com os cadastros e as fotos se o condomínio trocar de empresa, e se o condomínio tem usuário e senha de administrador do gravador das câmeras (os equipamentos são do condomínio).
+  - Decisão:
+
+## 11. Reservas do salão de festas (09/11/2026)
+
+Detalhes no `arquitetura-mvp.md` (módulo 8). Decidido pela Paula: reserva por dia, limpeza por conta de quem usa, aprovação pelo síndico, subsíndico e presidente do conselho, fila pela ordem de chegada (com o histórico da casa para avaliar), taxa no boleto e suspensão de casas.
+
+- [ ] **Valor da taxa de uso do salão** ⚙️
+  - Hoje: em branco (sem taxa) até a gestão preencher em Reservas → Espaços.
+  - Proposta: informar o valor atual cobrado pela administradora.
+  - Decisão:
+
+- [ ] **Regras do salão (Anexo I do Regimento Interno)** ⚙️
+  - Hoje: um texto inicial tirado do Regimento Interno e do Regulamento Interno (uso só por moradores, silêncio das 22h às 8h, limpeza e danos, responsabilidade pelos convidados, suspensão de 3 a 12 meses). O Anexo I, que traz as regras do salão, não foi encontrado.
+  - Proposta: localizar o Anexo I e colar o texto em Reservas → Espaços.
+  - Decisão:
+
+- [x] **Horário de silêncio que vale**
+  - O Regimento Interno diz 22h às 8h; o Regulamento Interno de 2008 dizia 22h às 8h e 12h às 14h nos dias úteis, e 22h às 10h e 12h às 13h nos fins de semana e feriados.
+  - Decisão (Paula, 09/11/2026): vale o **Regimento Interno: silêncio das 22h às 8h**. Está nas regras do salão e nos e-mails de confirmação e de lembrete.
+
+- [ ] **Antecedência e cancelamento** ⚙️
+  - Hoje: pedir de 2 a 90 dias antes; a casa cancela uma reserva confirmada pelo portal até 7 dias antes (depois, só a gestão).
+  - Proposta: manter.
+  - Decisão:
+
+- [ ] **Quem pede a reserva** ⚙️
+  - Hoje: o perfil principal da casa e quem tem acesso financeiro, porque há taxa.
+  - Proposta: manter (a outra opção é qualquer morador).
+  - Decisão:
+
+- [ ] **Caução**
+  - Hoje: não há caução no portal.
+  - Proposta: manter sem caução; danos seguem o Regulamento Interno (Art. 14).
+  - Decisão:
+
+- [ ] **Pedidos que chegam por WhatsApp, Condfy ou pessoalmente**
+  - Hoje: a gestão registra no portal (já confirmada, sem os limites de antecedência), para o calendário ser o registro único.
+  - Proposta: avisar os moradores de que, a partir da abertura, o pedido é pelo portal; a gestão continua registrando os que chegarem por outros meios.
   - Decisão:
 
 ---

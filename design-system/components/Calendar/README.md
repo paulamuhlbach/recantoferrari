@@ -5,6 +5,7 @@ Tabela de datas de um mês (date table / date picker do Material 3) para escolhe
 **Props:** `value` (data ISO `"2026-10-17"`) e `onChange(data)`, ou `defaultValue`; `month` (`"2026-10"`, mês inicial); `today` (padrão: a data de hoje); `min`, `max` (ISO); `unavailable` (lista de datas ISO já reservadas); `marked` (`{ "2026-10-14": { tone: "tertiary", label: "assembleia" } }`, tons `primary` | `tertiary` | `warning` | `error` | `info`); `legend` (`[{ kind, label }]`, `kind` = `selected` | `today` | `booked` | um tom).
 
 - Use nas reservas de salão de festas, churrasqueiras e quadra, e para mostrar a agenda do condomínio.
+- Reservas do salão (09/11/2026): `unavailable` para reservado e bloqueado, `marked` `warning` para dia com pedido na fila, `primary` para o que é da casa de quem vê e `error` para bloqueado (com o motivo no `label`). Use `min` e `max` com a antecedência permitida e controle o `value` (passe `''` para limpar a escolha depois de pedir).
 - A semana começa no domingo (padrão brasileiro). Nomes de mês e dia em português.
 - Dias em `unavailable` ficam riscados e não podem ser escolhidos; sempre mostre a legenda "Reservado".
 - Eventos aparecem como um ponto abaixo do número. Dê um `label` a cada um: ele é lido por leitores de tela.
