@@ -55,6 +55,7 @@ A ordem definida pela Paula, com as sugestões aceitas para cada etapa.
 - [ ] Rodar as migrações: `python -m alembic upgrade head`. Elas já foram testadas em PostgreSQL 16.
 - [ ] Criar o primeiro síndico: `python criar_primeiro_sindico.py`.
 - [ ] Ligar o backup diário do provedor e testar uma restauração pelo menos uma vez.
+- [ ] Conferir o cron das tarefas diárias (lembrete da véspera das reservas do salão, `portal tarefas`, às 8h; ver `deploy/README.md` no backend).
 - [ ] Não levar o `condominio.db` de desenvolvimento: ele só tem dados de teste.
 - [ ] **Nunca rodar `dados_ficticios.py` no banco de produção**: ele cria o condomínio de exemplo e, com `--apagar`, apaga tudo. O script recusa bancos que não sejam SQLite, a menos que se passe `--permitir-outro-banco`.
 
